@@ -415,12 +415,12 @@
        
           
         // Set up the markers on the map
-        var markerAA11 = new google.maps.Marker({
+        /*var markerAA11 = new google.maps.Marker({
             position: {lat: 54.759410, lng: -1.579580},
             map: map,
             icon: icon,
             title: 'AA11'
-        });
+        });*/
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1713,14 +1713,14 @@ markerZC13.addListener('click', function() {
 ------------------------------------------------------------------------------
             Popup Form Code 
 -----------------------------------------------------------------------------*/        
-        markerAA11.addListener('click', function() {
+       /* markerAA11.addListener('click', function() {
             document.getElementById('eggFound').style.display= 'block' ;
             document.getElementById('eggID').innerHTML = 'AA11';
             document.getElementById('eggidcode').value = 'AA11';
             document.getElementById("eggidcode").readOnly = true;
             document.getElementById('mySubmit').disabled = false;
             document.getElementById('myConf').innerHTML = '';});
-          
+          */
 markerUU72.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
    document.getElementById('eggFound').style.backgroundImage='url("EasterBackground.png")'; 
