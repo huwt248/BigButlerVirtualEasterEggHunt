@@ -1628,6 +1628,1713 @@
         });
 
 
+ 
+
+
+
+ 
+
+
+        
+          
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+            Map clicking
+-----------------------------------------------------------------------------*/
+
+        // We get the map's default panorama and set up some defaults.
+        // Note that we don't yet set it visible.
+        panorama = map.getStreetView();
+        panorama.setPosition(crossroads);
+        panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+          heading: 170,
+          pitch: 0
+        }));
+        panorama.setVisible(true);
+        
+        var youremailcount = 0;  
+          
+        var spreadsheetID = "19mmsjD_CnocnAMGMMF9sY0tIIB2NTXlVjjKktBUaquE";
+        var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/1/public/values?alt=json";
+        $( document ).ready(function() {
+            $.getJSON(url,function(data){
+                var entry = data.feed.entry;
+                $(entry).each(function(){
+                    $('#eggIDlist').append(this.gsx$eggid.$t+'</br>');
+                    $('#emailList').append(this.gsx$email.$t+'</br>');
+                    
+                    if( this.gsx$count.$t.length !== 0 ) {
+                        var eggsRemain = 200 - this.gsx$count.$t;
+                        $('#eggCount').html(eggsRemain);
+                    }
+                    if (eggsRemain === 0) {
+                        $('#allEggsFound').css("display","block");
+                    }
+                    
+
+                });
+            });
+        });   
+
+       document.addEventListener("click", function(){
+            position = panorama.getPosition();
+            positionLat = position.lat();
+            positionLong = position.lng();
+           
+            var eggs = document.getElementById("eggIDlist");
+            
+           
+            $.getJSON(url,function(data){
+                var entry = data.feed.entry;
+                $(entry).each(function(){
+                    $('#eggIDlist').append(this.gsx$eggid.$t+'</br>');
+                    $('#emailList').append(this.gsx$email.$t+'</br>');
+                    
+                    if( this.gsx$count.$t.length !== 0 ) {
+                        var eggsRemain = 200 - this.gsx$count.$t;
+                        $('#eggCount').html(eggsRemain);
+                    }
+                    if (eggsRemain === 0) {
+                        $('#allEggsFound').css("display","block");
+                    }
+
+                });
+            });
+            
+           var eggs = document.getElementById("eggIDlist");
+           
+           var emails = document.getElementById("emailList").innerHTML;
+           var re = new RegExp(youremail,'g');
+           var youremailcount = (emails.match(re) || []).length;
+           console.log(youremailcount)
+           
+           if ( emailentered ){
+              document.getElementById("yourEggs").innerHTML = youremailcount;
+           }
+           else {
+               document.getElementById("yourEggs").innerHTML = 0;
+           }
+  
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+            Hide Found Eggs 
+-----------------------------------------------------------------------------*/           
+             
+           
+           
+           
+           
+          
+    var minDist = 0.000225;        
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+            Add code about hiding distant eggs here 
+-----------------------------------------------------------------------------*/
+
+           
+ positionUU72 = markerUU72.getPosition(); 
+positionUU72Lat = positionUU72.lat(); 
+positionUU72Long = positionUU72.lng(); 
+distanceUU72 = Math.sqrt(Math.pow((positionLat-positionUU72Lat),2) + Math.pow((positionLong-positionUU72Long),2)); 
+if ( (distanceUU72 < minDist) && (eggs.innerHTML.indexOf('UU72') === -1)) { 
+   markerUU72.setVisible(true); 
+} else { 
+   markerUU72.setVisible(false);} 
+positionNN53 = markerNN53.getPosition(); 
+positionNN53Lat = positionNN53.lat(); 
+positionNN53Long = positionNN53.lng(); 
+distanceNN53 = Math.sqrt(Math.pow((positionLat-positionNN53Lat),2) + Math.pow((positionLong-positionNN53Long),2)); 
+if ( (distanceNN53 < minDist) && (eggs.innerHTML.indexOf('NN53') === -1)) { 
+   markerNN53.setVisible(true); 
+} else { 
+   markerNN53.setVisible(false);} 
+positionYH55 = markerYH55.getPosition(); 
+positionYH55Lat = positionYH55.lat(); 
+positionYH55Long = positionYH55.lng(); 
+distanceYH55 = Math.sqrt(Math.pow((positionLat-positionYH55Lat),2) + Math.pow((positionLong-positionYH55Long),2)); 
+if ( (distanceYH55 < minDist) && (eggs.innerHTML.indexOf('YH55') === -1)) { 
+   markerYH55.setVisible(true); 
+} else { 
+   markerYH55.setVisible(false);} 
+positionNH62 = markerNH62.getPosition(); 
+positionNH62Lat = positionNH62.lat(); 
+positionNH62Long = positionNH62.lng(); 
+distanceNH62 = Math.sqrt(Math.pow((positionLat-positionNH62Lat),2) + Math.pow((positionLong-positionNH62Long),2)); 
+if ( (distanceNH62 < minDist) && (eggs.innerHTML.indexOf('NH62') === -1)) { 
+   markerNH62.setVisible(true); 
+} else { 
+   markerNH62.setVisible(false);} 
+positionGP84 = markerGP84.getPosition(); 
+positionGP84Lat = positionGP84.lat(); 
+positionGP84Long = positionGP84.lng(); 
+distanceGP84 = Math.sqrt(Math.pow((positionLat-positionGP84Lat),2) + Math.pow((positionLong-positionGP84Long),2)); 
+if ( (distanceGP84 < minDist) && (eggs.innerHTML.indexOf('GP84') === -1)) { 
+   markerGP84.setVisible(true); 
+} else { 
+   markerGP84.setVisible(false);} 
+positionNZ82 = markerNZ82.getPosition(); 
+positionNZ82Lat = positionNZ82.lat(); 
+positionNZ82Long = positionNZ82.lng(); 
+distanceNZ82 = Math.sqrt(Math.pow((positionLat-positionNZ82Lat),2) + Math.pow((positionLong-positionNZ82Long),2)); 
+if ( (distanceNZ82 < minDist) && (eggs.innerHTML.indexOf('NZ82') === -1)) { 
+   markerNZ82.setVisible(true); 
+} else { 
+   markerNZ82.setVisible(false);} 
+positionJD17 = markerJD17.getPosition(); 
+positionJD17Lat = positionJD17.lat(); 
+positionJD17Long = positionJD17.lng(); 
+distanceJD17 = Math.sqrt(Math.pow((positionLat-positionJD17Lat),2) + Math.pow((positionLong-positionJD17Long),2)); 
+if ( (distanceJD17 < minDist) && (eggs.innerHTML.indexOf('JD17') === -1)) { 
+   markerJD17.setVisible(true); 
+} else { 
+   markerJD17.setVisible(false);} 
+positionYD23 = markerYD23.getPosition(); 
+positionYD23Lat = positionYD23.lat(); 
+positionYD23Long = positionYD23.lng(); 
+distanceYD23 = Math.sqrt(Math.pow((positionLat-positionYD23Lat),2) + Math.pow((positionLong-positionYD23Long),2)); 
+if ( (distanceYD23 < minDist) && (eggs.innerHTML.indexOf('YD23') === -1)) { 
+   markerYD23.setVisible(true); 
+} else { 
+   markerYD23.setVisible(false);} 
+positionCQ82 = markerCQ82.getPosition(); 
+positionCQ82Lat = positionCQ82.lat(); 
+positionCQ82Long = positionCQ82.lng(); 
+distanceCQ82 = Math.sqrt(Math.pow((positionLat-positionCQ82Lat),2) + Math.pow((positionLong-positionCQ82Long),2)); 
+if ( (distanceCQ82 < minDist) && (eggs.innerHTML.indexOf('CQ82') === -1)) { 
+   markerCQ82.setVisible(true); 
+} else { 
+   markerCQ82.setVisible(false);} 
+positionHE53 = markerHE53.getPosition(); 
+positionHE53Lat = positionHE53.lat(); 
+positionHE53Long = positionHE53.lng(); 
+distanceHE53 = Math.sqrt(Math.pow((positionLat-positionHE53Lat),2) + Math.pow((positionLong-positionHE53Long),2)); 
+if ( (distanceHE53 < minDist) && (eggs.innerHTML.indexOf('HE53') === -1)) { 
+   markerHE53.setVisible(true); 
+} else { 
+   markerHE53.setVisible(false);} 
+positionFX23 = markerFX23.getPosition(); 
+positionFX23Lat = positionFX23.lat(); 
+positionFX23Long = positionFX23.lng(); 
+distanceFX23 = Math.sqrt(Math.pow((positionLat-positionFX23Lat),2) + Math.pow((positionLong-positionFX23Long),2)); 
+if ( (distanceFX23 < minDist) && (eggs.innerHTML.indexOf('FX23') === -1)) { 
+   markerFX23.setVisible(true); 
+} else { 
+   markerFX23.setVisible(false);} 
+positionXF71 = markerXF71.getPosition(); 
+positionXF71Lat = positionXF71.lat(); 
+positionXF71Long = positionXF71.lng(); 
+distanceXF71 = Math.sqrt(Math.pow((positionLat-positionXF71Lat),2) + Math.pow((positionLong-positionXF71Long),2)); 
+if ( (distanceXF71 < minDist) && (eggs.innerHTML.indexOf('XF71') === -1)) { 
+   markerXF71.setVisible(true); 
+} else { 
+   markerXF71.setVisible(false);} 
+positionPB12 = markerPB12.getPosition(); 
+positionPB12Lat = positionPB12.lat(); 
+positionPB12Long = positionPB12.lng(); 
+distancePB12 = Math.sqrt(Math.pow((positionLat-positionPB12Lat),2) + Math.pow((positionLong-positionPB12Long),2)); 
+if ( (distancePB12 < minDist) && (eggs.innerHTML.indexOf('PB12') === -1)) { 
+   markerPB12.setVisible(true); 
+} else { 
+   markerPB12.setVisible(false);} 
+positionZV96 = markerZV96.getPosition(); 
+positionZV96Lat = positionZV96.lat(); 
+positionZV96Long = positionZV96.lng(); 
+distanceZV96 = Math.sqrt(Math.pow((positionLat-positionZV96Lat),2) + Math.pow((positionLong-positionZV96Long),2)); 
+if ( (distanceZV96 < minDist) && (eggs.innerHTML.indexOf('ZV96') === -1)) { 
+   markerZV96.setVisible(true); 
+} else { 
+   markerZV96.setVisible(false);} 
+positionZC13 = markerZC13.getPosition(); 
+positionZC13Lat = positionZC13.lat(); 
+positionZC13Long = positionZC13.lng(); 
+distanceZC13 = Math.sqrt(Math.pow((positionLat-positionZC13Lat),2) + Math.pow((positionLong-positionZC13Long),2)); 
+if ( (distanceZC13 < minDist) && (eggs.innerHTML.indexOf('ZC13') === -1)) { 
+   markerZC13.setVisible(true); 
+} else { 
+   markerZC13.setVisible(false);} 
+positionSW89 = markerSW89.getPosition(); 
+positionSW89Lat = positionSW89.lat(); 
+positionSW89Long = positionSW89.lng(); 
+distanceSW89 = Math.sqrt(Math.pow((positionLat-positionSW89Lat),2) + Math.pow((positionLong-positionSW89Long),2)); 
+if ( (distanceSW89 < minDist) && (eggs.innerHTML.indexOf('SW89') === -1)) { 
+   markerSW89.setVisible(true); 
+} else { 
+   markerSW89.setVisible(false);} 
+positionHC81 = markerHC81.getPosition(); 
+positionHC81Lat = positionHC81.lat(); 
+positionHC81Long = positionHC81.lng(); 
+distanceHC81 = Math.sqrt(Math.pow((positionLat-positionHC81Lat),2) + Math.pow((positionLong-positionHC81Long),2)); 
+if ( (distanceHC81 < minDist) && (eggs.innerHTML.indexOf('HC81') === -1)) { 
+   markerHC81.setVisible(true); 
+} else { 
+   markerHC81.setVisible(false);} 
+positionUF95 = markerUF95.getPosition(); 
+positionUF95Lat = positionUF95.lat(); 
+positionUF95Long = positionUF95.lng(); 
+distanceUF95 = Math.sqrt(Math.pow((positionLat-positionUF95Lat),2) + Math.pow((positionLong-positionUF95Long),2)); 
+if ( (distanceUF95 < minDist) && (eggs.innerHTML.indexOf('UF95') === -1)) { 
+   markerUF95.setVisible(true); 
+} else { 
+   markerUF95.setVisible(false);} 
+positionFT81 = markerFT81.getPosition(); 
+positionFT81Lat = positionFT81.lat(); 
+positionFT81Long = positionFT81.lng(); 
+distanceFT81 = Math.sqrt(Math.pow((positionLat-positionFT81Lat),2) + Math.pow((positionLong-positionFT81Long),2)); 
+if ( (distanceFT81 < minDist) && (eggs.innerHTML.indexOf('FT81') === -1)) { 
+   markerFT81.setVisible(true); 
+} else { 
+   markerFT81.setVisible(false);} 
+positionQF91 = markerQF91.getPosition(); 
+positionQF91Lat = positionQF91.lat(); 
+positionQF91Long = positionQF91.lng(); 
+distanceQF91 = Math.sqrt(Math.pow((positionLat-positionQF91Lat),2) + Math.pow((positionLong-positionQF91Long),2)); 
+if ( (distanceQF91 < minDist) && (eggs.innerHTML.indexOf('QF91') === -1)) { 
+   markerQF91.setVisible(true); 
+} else { 
+   markerQF91.setVisible(false);} 
+positionVS13 = markerVS13.getPosition(); 
+positionVS13Lat = positionVS13.lat(); 
+positionVS13Long = positionVS13.lng(); 
+distanceVS13 = Math.sqrt(Math.pow((positionLat-positionVS13Lat),2) + Math.pow((positionLong-positionVS13Long),2)); 
+if ( (distanceVS13 < minDist) && (eggs.innerHTML.indexOf('VS13') === -1)) { 
+   markerVS13.setVisible(true); 
+} else { 
+   markerVS13.setVisible(false);} 
+positionFG67 = markerFG67.getPosition(); 
+positionFG67Lat = positionFG67.lat(); 
+positionFG67Long = positionFG67.lng(); 
+distanceFG67 = Math.sqrt(Math.pow((positionLat-positionFG67Lat),2) + Math.pow((positionLong-positionFG67Long),2)); 
+if ( (distanceFG67 < minDist) && (eggs.innerHTML.indexOf('FG67') === -1)) { 
+   markerFG67.setVisible(true); 
+} else { 
+   markerFG67.setVisible(false);} 
+positionJV82 = markerJV82.getPosition(); 
+positionJV82Lat = positionJV82.lat(); 
+positionJV82Long = positionJV82.lng(); 
+distanceJV82 = Math.sqrt(Math.pow((positionLat-positionJV82Lat),2) + Math.pow((positionLong-positionJV82Long),2)); 
+if ( (distanceJV82 < minDist) && (eggs.innerHTML.indexOf('JV82') === -1)) { 
+   markerJV82.setVisible(true); 
+} else { 
+   markerJV82.setVisible(false);} 
+positionBR25 = markerBR25.getPosition(); 
+positionBR25Lat = positionBR25.lat(); 
+positionBR25Long = positionBR25.lng(); 
+distanceBR25 = Math.sqrt(Math.pow((positionLat-positionBR25Lat),2) + Math.pow((positionLong-positionBR25Long),2)); 
+if ( (distanceBR25 < minDist) && (eggs.innerHTML.indexOf('BR25') === -1)) { 
+   markerBR25.setVisible(true); 
+} else { 
+   markerBR25.setVisible(false);} 
+positionKM28 = markerKM28.getPosition(); 
+positionKM28Lat = positionKM28.lat(); 
+positionKM28Long = positionKM28.lng(); 
+distanceKM28 = Math.sqrt(Math.pow((positionLat-positionKM28Lat),2) + Math.pow((positionLong-positionKM28Long),2)); 
+if ( (distanceKM28 < minDist) && (eggs.innerHTML.indexOf('KM28') === -1)) { 
+   markerKM28.setVisible(true); 
+} else { 
+   markerKM28.setVisible(false);} 
+positionOI57 = markerOI57.getPosition(); 
+positionOI57Lat = positionOI57.lat(); 
+positionOI57Long = positionOI57.lng(); 
+distanceOI57 = Math.sqrt(Math.pow((positionLat-positionOI57Lat),2) + Math.pow((positionLong-positionOI57Long),2)); 
+if ( (distanceOI57 < minDist) && (eggs.innerHTML.indexOf('OI57') === -1)) { 
+   markerOI57.setVisible(true); 
+} else { 
+   markerOI57.setVisible(false);} 
+positionHZ88 = markerHZ88.getPosition(); 
+positionHZ88Lat = positionHZ88.lat(); 
+positionHZ88Long = positionHZ88.lng(); 
+distanceHZ88 = Math.sqrt(Math.pow((positionLat-positionHZ88Lat),2) + Math.pow((positionLong-positionHZ88Long),2)); 
+if ( (distanceHZ88 < minDist) && (eggs.innerHTML.indexOf('HZ88') === -1)) { 
+   markerHZ88.setVisible(true); 
+} else { 
+   markerHZ88.setVisible(false);} 
+positionYF71 = markerYF71.getPosition(); 
+positionYF71Lat = positionYF71.lat(); 
+positionYF71Long = positionYF71.lng(); 
+distanceYF71 = Math.sqrt(Math.pow((positionLat-positionYF71Lat),2) + Math.pow((positionLong-positionYF71Long),2)); 
+if ( (distanceYF71 < minDist) && (eggs.innerHTML.indexOf('YF71') === -1)) { 
+   markerYF71.setVisible(true); 
+} else { 
+   markerYF71.setVisible(false);} 
+positionQB59 = markerQB59.getPosition(); 
+positionQB59Lat = positionQB59.lat(); 
+positionQB59Long = positionQB59.lng(); 
+distanceQB59 = Math.sqrt(Math.pow((positionLat-positionQB59Lat),2) + Math.pow((positionLong-positionQB59Long),2)); 
+if ( (distanceQB59 < minDist) && (eggs.innerHTML.indexOf('QB59') === -1)) { 
+   markerQB59.setVisible(true); 
+} else { 
+   markerQB59.setVisible(false);} 
+positionVP52 = markerVP52.getPosition(); 
+positionVP52Lat = positionVP52.lat(); 
+positionVP52Long = positionVP52.lng(); 
+distanceVP52 = Math.sqrt(Math.pow((positionLat-positionVP52Lat),2) + Math.pow((positionLong-positionVP52Long),2)); 
+if ( (distanceVP52 < minDist) && (eggs.innerHTML.indexOf('VP52') === -1)) { 
+   markerVP52.setVisible(true); 
+} else { 
+   markerVP52.setVisible(false);} 
+positionBZ14 = markerBZ14.getPosition(); 
+positionBZ14Lat = positionBZ14.lat(); 
+positionBZ14Long = positionBZ14.lng(); 
+distanceBZ14 = Math.sqrt(Math.pow((positionLat-positionBZ14Lat),2) + Math.pow((positionLong-positionBZ14Long),2)); 
+if ( (distanceBZ14 < minDist) && (eggs.innerHTML.indexOf('BZ14') === -1)) { 
+   markerBZ14.setVisible(true); 
+} else { 
+   markerBZ14.setVisible(false);} 
+positionOQ29 = markerOQ29.getPosition(); 
+positionOQ29Lat = positionOQ29.lat(); 
+positionOQ29Long = positionOQ29.lng(); 
+distanceOQ29 = Math.sqrt(Math.pow((positionLat-positionOQ29Lat),2) + Math.pow((positionLong-positionOQ29Long),2)); 
+if ( (distanceOQ29 < minDist) && (eggs.innerHTML.indexOf('OQ29') === -1)) { 
+   markerOQ29.setVisible(true); 
+} else { 
+   markerOQ29.setVisible(false);} 
+positionFT73 = markerFT73.getPosition(); 
+positionFT73Lat = positionFT73.lat(); 
+positionFT73Long = positionFT73.lng(); 
+distanceFT73 = Math.sqrt(Math.pow((positionLat-positionFT73Lat),2) + Math.pow((positionLong-positionFT73Long),2)); 
+if ( (distanceFT73 < minDist) && (eggs.innerHTML.indexOf('FT73') === -1)) { 
+   markerFT73.setVisible(true); 
+} else { 
+   markerFT73.setVisible(false);} 
+positionPN47 = markerPN47.getPosition(); 
+positionPN47Lat = positionPN47.lat(); 
+positionPN47Long = positionPN47.lng(); 
+distancePN47 = Math.sqrt(Math.pow((positionLat-positionPN47Lat),2) + Math.pow((positionLong-positionPN47Long),2)); 
+if ( (distancePN47 < minDist) && (eggs.innerHTML.indexOf('PN47') === -1)) { 
+   markerPN47.setVisible(true); 
+} else { 
+   markerPN47.setVisible(false);} 
+positionCP52 = markerCP52.getPosition(); 
+positionCP52Lat = positionCP52.lat(); 
+positionCP52Long = positionCP52.lng(); 
+distanceCP52 = Math.sqrt(Math.pow((positionLat-positionCP52Lat),2) + Math.pow((positionLong-positionCP52Long),2)); 
+if ( (distanceCP52 < minDist) && (eggs.innerHTML.indexOf('CP52') === -1)) { 
+   markerCP52.setVisible(true); 
+} else { 
+   markerCP52.setVisible(false);} 
+positionCR12 = markerCR12.getPosition(); 
+positionCR12Lat = positionCR12.lat(); 
+positionCR12Long = positionCR12.lng(); 
+distanceCR12 = Math.sqrt(Math.pow((positionLat-positionCR12Lat),2) + Math.pow((positionLong-positionCR12Long),2)); 
+if ( (distanceCR12 < minDist) && (eggs.innerHTML.indexOf('CR12') === -1)) { 
+   markerCR12.setVisible(true); 
+} else { 
+   markerCR12.setVisible(false);} 
+positionRL98 = markerRL98.getPosition(); 
+positionRL98Lat = positionRL98.lat(); 
+positionRL98Long = positionRL98.lng(); 
+distanceRL98 = Math.sqrt(Math.pow((positionLat-positionRL98Lat),2) + Math.pow((positionLong-positionRL98Long),2)); 
+if ( (distanceRL98 < minDist) && (eggs.innerHTML.indexOf('RL98') === -1)) { 
+   markerRL98.setVisible(true); 
+} else { 
+   markerRL98.setVisible(false);} 
+positionJR79 = markerJR79.getPosition(); 
+positionJR79Lat = positionJR79.lat(); 
+positionJR79Long = positionJR79.lng(); 
+distanceJR79 = Math.sqrt(Math.pow((positionLat-positionJR79Lat),2) + Math.pow((positionLong-positionJR79Long),2)); 
+if ( (distanceJR79 < minDist) && (eggs.innerHTML.indexOf('JR79') === -1)) { 
+   markerJR79.setVisible(true); 
+} else { 
+   markerJR79.setVisible(false);} 
+positionKD38 = markerKD38.getPosition(); 
+positionKD38Lat = positionKD38.lat(); 
+positionKD38Long = positionKD38.lng(); 
+distanceKD38 = Math.sqrt(Math.pow((positionLat-positionKD38Lat),2) + Math.pow((positionLong-positionKD38Long),2)); 
+if ( (distanceKD38 < minDist) && (eggs.innerHTML.indexOf('KD38') === -1)) { 
+   markerKD38.setVisible(true); 
+} else { 
+   markerKD38.setVisible(false);} 
+positionKK34 = markerKK34.getPosition(); 
+positionKK34Lat = positionKK34.lat(); 
+positionKK34Long = positionKK34.lng(); 
+distanceKK34 = Math.sqrt(Math.pow((positionLat-positionKK34Lat),2) + Math.pow((positionLong-positionKK34Long),2)); 
+if ( (distanceKK34 < minDist) && (eggs.innerHTML.indexOf('KK34') === -1)) { 
+   markerKK34.setVisible(true); 
+} else { 
+   markerKK34.setVisible(false);} 
+positionHR61 = markerHR61.getPosition(); 
+positionHR61Lat = positionHR61.lat(); 
+positionHR61Long = positionHR61.lng(); 
+distanceHR61 = Math.sqrt(Math.pow((positionLat-positionHR61Lat),2) + Math.pow((positionLong-positionHR61Long),2)); 
+if ( (distanceHR61 < minDist) && (eggs.innerHTML.indexOf('HR61') === -1)) { 
+   markerHR61.setVisible(true); 
+} else { 
+   markerHR61.setVisible(false);} 
+positionXA41 = markerXA41.getPosition(); 
+positionXA41Lat = positionXA41.lat(); 
+positionXA41Long = positionXA41.lng(); 
+distanceXA41 = Math.sqrt(Math.pow((positionLat-positionXA41Lat),2) + Math.pow((positionLong-positionXA41Long),2)); 
+if ( (distanceXA41 < minDist) && (eggs.innerHTML.indexOf('XA41') === -1)) { 
+   markerXA41.setVisible(true); 
+} else { 
+   markerXA41.setVisible(false);} 
+positionMM75 = markerMM75.getPosition(); 
+positionMM75Lat = positionMM75.lat(); 
+positionMM75Long = positionMM75.lng(); 
+distanceMM75 = Math.sqrt(Math.pow((positionLat-positionMM75Lat),2) + Math.pow((positionLong-positionMM75Long),2)); 
+if ( (distanceMM75 < minDist) && (eggs.innerHTML.indexOf('MM75') === -1)) { 
+   markerMM75.setVisible(true); 
+} else { 
+   markerMM75.setVisible(false);} 
+positionDL54 = markerDL54.getPosition(); 
+positionDL54Lat = positionDL54.lat(); 
+positionDL54Long = positionDL54.lng(); 
+distanceDL54 = Math.sqrt(Math.pow((positionLat-positionDL54Lat),2) + Math.pow((positionLong-positionDL54Long),2)); 
+if ( (distanceDL54 < minDist) && (eggs.innerHTML.indexOf('DL54') === -1)) { 
+   markerDL54.setVisible(true); 
+} else { 
+   markerDL54.setVisible(false);} 
+positionCB65 = markerCB65.getPosition(); 
+positionCB65Lat = positionCB65.lat(); 
+positionCB65Long = positionCB65.lng(); 
+distanceCB65 = Math.sqrt(Math.pow((positionLat-positionCB65Lat),2) + Math.pow((positionLong-positionCB65Long),2)); 
+if ( (distanceCB65 < minDist) && (eggs.innerHTML.indexOf('CB65') === -1)) { 
+   markerCB65.setVisible(true); 
+} else { 
+   markerCB65.setVisible(false);} 
+positionKS16 = markerKS16.getPosition(); 
+positionKS16Lat = positionKS16.lat(); 
+positionKS16Long = positionKS16.lng(); 
+distanceKS16 = Math.sqrt(Math.pow((positionLat-positionKS16Lat),2) + Math.pow((positionLong-positionKS16Long),2)); 
+if ( (distanceKS16 < minDist) && (eggs.innerHTML.indexOf('KS16') === -1)) { 
+   markerKS16.setVisible(true); 
+} else { 
+   markerKS16.setVisible(false);} 
+positionTW26 = markerTW26.getPosition(); 
+positionTW26Lat = positionTW26.lat(); 
+positionTW26Long = positionTW26.lng(); 
+distanceTW26 = Math.sqrt(Math.pow((positionLat-positionTW26Lat),2) + Math.pow((positionLong-positionTW26Long),2)); 
+if ( (distanceTW26 < minDist) && (eggs.innerHTML.indexOf('TW26') === -1)) { 
+   markerTW26.setVisible(true); 
+} else { 
+   markerTW26.setVisible(false);} 
+positionUI38 = markerUI38.getPosition(); 
+positionUI38Lat = positionUI38.lat(); 
+positionUI38Long = positionUI38.lng(); 
+distanceUI38 = Math.sqrt(Math.pow((positionLat-positionUI38Lat),2) + Math.pow((positionLong-positionUI38Long),2)); 
+if ( (distanceUI38 < minDist) && (eggs.innerHTML.indexOf('UI38') === -1)) { 
+   markerUI38.setVisible(true); 
+} else { 
+   markerUI38.setVisible(false);} 
+positionGP51 = markerGP51.getPosition(); 
+positionGP51Lat = positionGP51.lat(); 
+positionGP51Long = positionGP51.lng(); 
+distanceGP51 = Math.sqrt(Math.pow((positionLat-positionGP51Lat),2) + Math.pow((positionLong-positionGP51Long),2)); 
+if ( (distanceGP51 < minDist) && (eggs.innerHTML.indexOf('GP51') === -1)) { 
+   markerGP51.setVisible(true); 
+} else { 
+   markerGP51.setVisible(false);} 
+positionUC78 = markerUC78.getPosition(); 
+positionUC78Lat = positionUC78.lat(); 
+positionUC78Long = positionUC78.lng(); 
+distanceUC78 = Math.sqrt(Math.pow((positionLat-positionUC78Lat),2) + Math.pow((positionLong-positionUC78Long),2)); 
+if ( (distanceUC78 < minDist) && (eggs.innerHTML.indexOf('UC78') === -1)) { 
+   markerUC78.setVisible(true); 
+} else { 
+   markerUC78.setVisible(false);} 
+positionIH31 = markerIH31.getPosition(); 
+positionIH31Lat = positionIH31.lat(); 
+positionIH31Long = positionIH31.lng(); 
+distanceIH31 = Math.sqrt(Math.pow((positionLat-positionIH31Lat),2) + Math.pow((positionLong-positionIH31Long),2)); 
+if ( (distanceIH31 < minDist) && (eggs.innerHTML.indexOf('IH31') === -1)) { 
+   markerIH31.setVisible(true); 
+} else { 
+   markerIH31.setVisible(false);} 
+positionUC64 = markerUC64.getPosition(); 
+positionUC64Lat = positionUC64.lat(); 
+positionUC64Long = positionUC64.lng(); 
+distanceUC64 = Math.sqrt(Math.pow((positionLat-positionUC64Lat),2) + Math.pow((positionLong-positionUC64Long),2)); 
+if ( (distanceUC64 < minDist) && (eggs.innerHTML.indexOf('UC64') === -1)) { 
+   markerUC64.setVisible(true); 
+} else { 
+   markerUC64.setVisible(false);} 
+positionYU83 = markerYU83.getPosition(); 
+positionYU83Lat = positionYU83.lat(); 
+positionYU83Long = positionYU83.lng(); 
+distanceYU83 = Math.sqrt(Math.pow((positionLat-positionYU83Lat),2) + Math.pow((positionLong-positionYU83Long),2)); 
+if ( (distanceYU83 < minDist) && (eggs.innerHTML.indexOf('YU83') === -1)) { 
+   markerYU83.setVisible(true); 
+} else { 
+   markerYU83.setVisible(false);} 
+positionXP36 = markerXP36.getPosition(); 
+positionXP36Lat = positionXP36.lat(); 
+positionXP36Long = positionXP36.lng(); 
+distanceXP36 = Math.sqrt(Math.pow((positionLat-positionXP36Lat),2) + Math.pow((positionLong-positionXP36Long),2)); 
+if ( (distanceXP36 < minDist) && (eggs.innerHTML.indexOf('XP36') === -1)) { 
+   markerXP36.setVisible(true); 
+} else { 
+   markerXP36.setVisible(false);} 
+positionHL51 = markerHL51.getPosition(); 
+positionHL51Lat = positionHL51.lat(); 
+positionHL51Long = positionHL51.lng(); 
+distanceHL51 = Math.sqrt(Math.pow((positionLat-positionHL51Lat),2) + Math.pow((positionLong-positionHL51Long),2)); 
+if ( (distanceHL51 < minDist) && (eggs.innerHTML.indexOf('HL51') === -1)) { 
+   markerHL51.setVisible(true); 
+} else { 
+   markerHL51.setVisible(false);} 
+positionDJ55 = markerDJ55.getPosition(); 
+positionDJ55Lat = positionDJ55.lat(); 
+positionDJ55Long = positionDJ55.lng(); 
+distanceDJ55 = Math.sqrt(Math.pow((positionLat-positionDJ55Lat),2) + Math.pow((positionLong-positionDJ55Long),2)); 
+if ( (distanceDJ55 < minDist) && (eggs.innerHTML.indexOf('DJ55') === -1)) { 
+   markerDJ55.setVisible(true); 
+} else { 
+   markerDJ55.setVisible(false);} 
+positionZF45 = markerZF45.getPosition(); 
+positionZF45Lat = positionZF45.lat(); 
+positionZF45Long = positionZF45.lng(); 
+distanceZF45 = Math.sqrt(Math.pow((positionLat-positionZF45Lat),2) + Math.pow((positionLong-positionZF45Long),2)); 
+if ( (distanceZF45 < minDist) && (eggs.innerHTML.indexOf('ZF45') === -1)) { 
+   markerZF45.setVisible(true); 
+} else { 
+   markerZF45.setVisible(false);} 
+positionPJ54 = markerPJ54.getPosition(); 
+positionPJ54Lat = positionPJ54.lat(); 
+positionPJ54Long = positionPJ54.lng(); 
+distancePJ54 = Math.sqrt(Math.pow((positionLat-positionPJ54Lat),2) + Math.pow((positionLong-positionPJ54Long),2)); 
+if ( (distancePJ54 < minDist) && (eggs.innerHTML.indexOf('PJ54') === -1)) { 
+   markerPJ54.setVisible(true); 
+} else { 
+   markerPJ54.setVisible(false);} 
+positionEG25 = markerEG25.getPosition(); 
+positionEG25Lat = positionEG25.lat(); 
+positionEG25Long = positionEG25.lng(); 
+distanceEG25 = Math.sqrt(Math.pow((positionLat-positionEG25Lat),2) + Math.pow((positionLong-positionEG25Long),2)); 
+if ( (distanceEG25 < minDist) && (eggs.innerHTML.indexOf('EG25') === -1)) { 
+   markerEG25.setVisible(true); 
+} else { 
+   markerEG25.setVisible(false);} 
+positionHC43 = markerHC43.getPosition(); 
+positionHC43Lat = positionHC43.lat(); 
+positionHC43Long = positionHC43.lng(); 
+distanceHC43 = Math.sqrt(Math.pow((positionLat-positionHC43Lat),2) + Math.pow((positionLong-positionHC43Long),2)); 
+if ( (distanceHC43 < minDist) && (eggs.innerHTML.indexOf('HC43') === -1)) { 
+   markerHC43.setVisible(true); 
+} else { 
+   markerHC43.setVisible(false);} 
+positionJI44 = markerJI44.getPosition(); 
+positionJI44Lat = positionJI44.lat(); 
+positionJI44Long = positionJI44.lng(); 
+distanceJI44 = Math.sqrt(Math.pow((positionLat-positionJI44Lat),2) + Math.pow((positionLong-positionJI44Long),2)); 
+if ( (distanceJI44 < minDist) && (eggs.innerHTML.indexOf('JI44') === -1)) { 
+   markerJI44.setVisible(true); 
+} else { 
+   markerJI44.setVisible(false);} 
+positionZZ15 = markerZZ15.getPosition(); 
+positionZZ15Lat = positionZZ15.lat(); 
+positionZZ15Long = positionZZ15.lng(); 
+distanceZZ15 = Math.sqrt(Math.pow((positionLat-positionZZ15Lat),2) + Math.pow((positionLong-positionZZ15Long),2)); 
+if ( (distanceZZ15 < minDist) && (eggs.innerHTML.indexOf('ZZ15') === -1)) { 
+   markerZZ15.setVisible(true); 
+} else { 
+   markerZZ15.setVisible(false);} 
+positionGM91 = markerGM91.getPosition(); 
+positionGM91Lat = positionGM91.lat(); 
+positionGM91Long = positionGM91.lng(); 
+distanceGM91 = Math.sqrt(Math.pow((positionLat-positionGM91Lat),2) + Math.pow((positionLong-positionGM91Long),2)); 
+if ( (distanceGM91 < minDist) && (eggs.innerHTML.indexOf('GM91') === -1)) { 
+   markerGM91.setVisible(true); 
+} else { 
+   markerGM91.setVisible(false);} 
+positionKJ78 = markerKJ78.getPosition(); 
+positionKJ78Lat = positionKJ78.lat(); 
+positionKJ78Long = positionKJ78.lng(); 
+distanceKJ78 = Math.sqrt(Math.pow((positionLat-positionKJ78Lat),2) + Math.pow((positionLong-positionKJ78Long),2)); 
+if ( (distanceKJ78 < minDist) && (eggs.innerHTML.indexOf('KJ78') === -1)) { 
+   markerKJ78.setVisible(true); 
+} else { 
+   markerKJ78.setVisible(false);} 
+positionMW95 = markerMW95.getPosition(); 
+positionMW95Lat = positionMW95.lat(); 
+positionMW95Long = positionMW95.lng(); 
+distanceMW95 = Math.sqrt(Math.pow((positionLat-positionMW95Lat),2) + Math.pow((positionLong-positionMW95Long),2)); 
+if ( (distanceMW95 < minDist) && (eggs.innerHTML.indexOf('MW95') === -1)) { 
+   markerMW95.setVisible(true); 
+} else { 
+   markerMW95.setVisible(false);} 
+positionAD33 = markerAD33.getPosition(); 
+positionAD33Lat = positionAD33.lat(); 
+positionAD33Long = positionAD33.lng(); 
+distanceAD33 = Math.sqrt(Math.pow((positionLat-positionAD33Lat),2) + Math.pow((positionLong-positionAD33Long),2)); 
+if ( (distanceAD33 < minDist) && (eggs.innerHTML.indexOf('AD33') === -1)) { 
+    markerAD33.setVisible(true); 
+} else { 
+   markerAD33.setVisible(false);} 
+positionRC33 = markerRC33.getPosition(); 
+positionRC33Lat = positionRC33.lat(); 
+positionRC33Long = positionRC33.lng(); 
+distanceRC33 = Math.sqrt(Math.pow((positionLat-positionRC33Lat),2) + Math.pow((positionLong-positionRC33Long),2)); 
+           
+if ( (distanceRC33 < minDist) && (eggs.innerHTML.indexOf('RC33') === -1)) { 
+   markerRC33.setVisible(true); 
+} else { 
+   markerRC33.setVisible(false);} 
+positionVM31 = markerVM31.getPosition(); 
+positionVM31Lat = positionVM31.lat(); 
+positionVM31Long = positionVM31.lng(); 
+distanceVM31 = Math.sqrt(Math.pow((positionLat-positionVM31Lat),2) + Math.pow((positionLong-positionVM31Long),2)); 
+if ( (distanceVM31 < minDist) && (eggs.innerHTML.indexOf('VM31') === -1)) { 
+   markerVM31.setVisible(true); 
+} else { 
+   markerVM31.setVisible(false);} 
+positionIE17 = markerIE17.getPosition(); 
+positionIE17Lat = positionIE17.lat(); 
+positionIE17Long = positionIE17.lng(); 
+distanceIE17 = Math.sqrt(Math.pow((positionLat-positionIE17Lat),2) + Math.pow((positionLong-positionIE17Long),2)); 
+if ( (distanceIE17 < minDist) && (eggs.innerHTML.indexOf('IE17') === -1)) { 
+   markerIE17.setVisible(true); 
+} else { 
+   markerIE17.setVisible(false);} 
+positionAK16 = markerAK16.getPosition(); 
+positionAK16Lat = positionAK16.lat(); 
+positionAK16Long = positionAK16.lng(); 
+distanceAK16 = Math.sqrt(Math.pow((positionLat-positionAK16Lat),2) + Math.pow((positionLong-positionAK16Long),2)); 
+if ( (distanceAK16 < minDist) && (eggs.innerHTML.indexOf('AK16') === -1)) { 
+   markerAK16.setVisible(true); 
+} else { 
+   markerAK16.setVisible(false);} 
+positionIO29 = markerIO29.getPosition(); 
+positionIO29Lat = positionIO29.lat(); 
+positionIO29Long = positionIO29.lng(); 
+distanceIO29 = Math.sqrt(Math.pow((positionLat-positionIO29Lat),2) + Math.pow((positionLong-positionIO29Long),2)); 
+if ( (distanceIO29 < minDist) && (eggs.innerHTML.indexOf('IO29') === -1)) { 
+   markerIO29.setVisible(true); 
+} else { 
+   markerIO29.setVisible(false);} 
+positionAM26 = markerAM26.getPosition(); 
+positionAM26Lat = positionAM26.lat(); 
+positionAM26Long = positionAM26.lng(); 
+distanceAM26 = Math.sqrt(Math.pow((positionLat-positionAM26Lat),2) + Math.pow((positionLong-positionAM26Long),2)); 
+if ( (distanceAM26 < minDist) && (eggs.innerHTML.indexOf('AM26') === -1)) { 
+   markerAM26.setVisible(true); 
+} else { 
+   markerAM26.setVisible(false);} 
+positionRS57 = markerRS57.getPosition(); 
+positionRS57Lat = positionRS57.lat(); 
+positionRS57Long = positionRS57.lng(); 
+distanceRS57 = Math.sqrt(Math.pow((positionLat-positionRS57Lat),2) + Math.pow((positionLong-positionRS57Long),2)); 
+if ( (distanceRS57 < minDist) && (eggs.innerHTML.indexOf('RS57') === -1)) { 
+   markerRS57.setVisible(true); 
+} else { 
+   markerRS57.setVisible(false);} 
+positionLY83 = markerLY83.getPosition(); 
+positionLY83Lat = positionLY83.lat(); 
+positionLY83Long = positionLY83.lng(); 
+distanceLY83 = Math.sqrt(Math.pow((positionLat-positionLY83Lat),2) + Math.pow((positionLong-positionLY83Long),2)); 
+if ( (distanceLY83 < minDist) && (eggs.innerHTML.indexOf('LY83') === -1)) { 
+   markerLY83.setVisible(true); 
+} else { 
+   markerLY83.setVisible(false);} 
+positionZS57 = markerZS57.getPosition(); 
+positionZS57Lat = positionZS57.lat(); 
+positionZS57Long = positionZS57.lng(); 
+distanceZS57 = Math.sqrt(Math.pow((positionLat-positionZS57Lat),2) + Math.pow((positionLong-positionZS57Long),2)); 
+if ( (distanceZS57 < minDist) && (eggs.innerHTML.indexOf('ZS57') === -1)) { 
+   markerZS57.setVisible(true); 
+} else { 
+   markerZS57.setVisible(false);} 
+positionLZ99 = markerLZ99.getPosition(); 
+positionLZ99Lat = positionLZ99.lat(); 
+positionLZ99Long = positionLZ99.lng(); 
+distanceLZ99 = Math.sqrt(Math.pow((positionLat-positionLZ99Lat),2) + Math.pow((positionLong-positionLZ99Long),2)); 
+if ( (distanceLZ99 < minDist) && (eggs.innerHTML.indexOf('LZ99') === -1)) { 
+   markerLZ99.setVisible(true); 
+} else { 
+   markerLZ99.setVisible(false);} 
+positionKB32 = markerKB32.getPosition(); 
+positionKB32Lat = positionKB32.lat(); 
+positionKB32Long = positionKB32.lng(); 
+distanceKB32 = Math.sqrt(Math.pow((positionLat-positionKB32Lat),2) + Math.pow((positionLong-positionKB32Long),2)); 
+if ( (distanceKB32 < minDist) && (eggs.innerHTML.indexOf('KB32') === -1)) { 
+   markerKB32.setVisible(true); 
+} else { 
+   markerKB32.setVisible(false);} 
+positionOO79 = markerOO79.getPosition(); 
+positionOO79Lat = positionOO79.lat(); 
+positionOO79Long = positionOO79.lng(); 
+distanceOO79 = Math.sqrt(Math.pow((positionLat-positionOO79Lat),2) + Math.pow((positionLong-positionOO79Long),2)); 
+if ( (distanceOO79 < minDist) && (eggs.innerHTML.indexOf('OO79') === -1)) { 
+   markerOO79.setVisible(true); 
+} else { 
+   markerOO79.setVisible(false);} 
+positionRG46 = markerRG46.getPosition(); 
+positionRG46Lat = positionRG46.lat(); 
+positionRG46Long = positionRG46.lng(); 
+distanceRG46 = Math.sqrt(Math.pow((positionLat-positionRG46Lat),2) + Math.pow((positionLong-positionRG46Long),2)); 
+if ( (distanceRG46 < minDist) && (eggs.innerHTML.indexOf('RG46') === -1)) { 
+   markerRG46.setVisible(true); 
+} else { 
+   markerRG46.setVisible(false);} 
+positionIB56 = markerIB56.getPosition(); 
+positionIB56Lat = positionIB56.lat(); 
+positionIB56Long = positionIB56.lng(); 
+distanceIB56 = Math.sqrt(Math.pow((positionLat-positionIB56Lat),2) + Math.pow((positionLong-positionIB56Long),2)); 
+if ( (distanceIB56 < minDist) && (eggs.innerHTML.indexOf('IB56') === -1)) { 
+   markerIB56.setVisible(true); 
+} else { 
+   markerIB56.setVisible(false);} 
+positionCQ16 = markerCQ16.getPosition(); 
+positionCQ16Lat = positionCQ16.lat(); 
+positionCQ16Long = positionCQ16.lng(); 
+distanceCQ16 = Math.sqrt(Math.pow((positionLat-positionCQ16Lat),2) + Math.pow((positionLong-positionCQ16Long),2)); 
+if ( (distanceCQ16 < minDist) && (eggs.innerHTML.indexOf('CQ16') === -1)) { 
+   markerCQ16.setVisible(true); 
+} else { 
+   markerCQ16.setVisible(false);} 
+positionNY26 = markerNY26.getPosition(); 
+positionNY26Lat = positionNY26.lat(); 
+positionNY26Long = positionNY26.lng(); 
+distanceNY26 = Math.sqrt(Math.pow((positionLat-positionNY26Lat),2) + Math.pow((positionLong-positionNY26Long),2)); 
+if ( (distanceNY26 < minDist) && (eggs.innerHTML.indexOf('NY26') === -1)) { 
+   markerNY26.setVisible(true); 
+} else { 
+   markerNY26.setVisible(false);} 
+positionAT14 = markerAT14.getPosition(); 
+positionAT14Lat = positionAT14.lat(); 
+positionAT14Long = positionAT14.lng(); 
+distanceAT14 = Math.sqrt(Math.pow((positionLat-positionAT14Lat),2) + Math.pow((positionLong-positionAT14Long),2)); 
+if ( (distanceAT14 < minDist) && (eggs.innerHTML.indexOf('AT14') === -1)) { 
+   markerAT14.setVisible(true); 
+} else { 
+   markerAT14.setVisible(false);} 
+positionWN37 = markerWN37.getPosition(); 
+positionWN37Lat = positionWN37.lat(); 
+positionWN37Long = positionWN37.lng(); 
+distanceWN37 = Math.sqrt(Math.pow((positionLat-positionWN37Lat),2) + Math.pow((positionLong-positionWN37Long),2)); 
+if ( (distanceWN37 < minDist) && (eggs.innerHTML.indexOf('WN37') === -1)) { 
+   markerWN37.setVisible(true); 
+} else { 
+   markerWN37.setVisible(false);} 
+positionYV79 = markerYV79.getPosition(); 
+positionYV79Lat = positionYV79.lat(); 
+positionYV79Long = positionYV79.lng(); 
+distanceYV79 = Math.sqrt(Math.pow((positionLat-positionYV79Lat),2) + Math.pow((positionLong-positionYV79Long),2)); 
+if ( (distanceYV79 < minDist) && (eggs.innerHTML.indexOf('YV79') === -1)) { 
+   markerYV79.setVisible(true); 
+} else { 
+   markerYV79.setVisible(false);} 
+positionWM74 = markerWM74.getPosition(); 
+positionWM74Lat = positionWM74.lat(); 
+positionWM74Long = positionWM74.lng(); 
+distanceWM74 = Math.sqrt(Math.pow((positionLat-positionWM74Lat),2) + Math.pow((positionLong-positionWM74Long),2)); 
+if ( (distanceWM74 < minDist) && (eggs.innerHTML.indexOf('WM74') === -1)) { 
+   markerWM74.setVisible(true); 
+} else { 
+   markerWM74.setVisible(false);} 
+positionQK69 = markerQK69.getPosition(); 
+positionQK69Lat = positionQK69.lat(); 
+positionQK69Long = positionQK69.lng(); 
+distanceQK69 = Math.sqrt(Math.pow((positionLat-positionQK69Lat),2) + Math.pow((positionLong-positionQK69Long),2)); 
+if ( (distanceQK69 < minDist) && (eggs.innerHTML.indexOf('QK69') === -1)) { 
+   markerQK69.setVisible(true); 
+} else { 
+   markerQK69.setVisible(false);} 
+positionAO27 = markerAO27.getPosition(); 
+positionAO27Lat = positionAO27.lat(); 
+positionAO27Long = positionAO27.lng(); 
+distanceAO27 = Math.sqrt(Math.pow((positionLat-positionAO27Lat),2) + Math.pow((positionLong-positionAO27Long),2)); 
+if ( (distanceAO27 < minDist) && (eggs.innerHTML.indexOf('AO27') === -1)) { 
+   markerAO27.setVisible(true); 
+} else { 
+   markerAO27.setVisible(false);} 
+positionJU69 = markerJU69.getPosition(); 
+positionJU69Lat = positionJU69.lat(); 
+positionJU69Long = positionJU69.lng(); 
+distanceJU69 = Math.sqrt(Math.pow((positionLat-positionJU69Lat),2) + Math.pow((positionLong-positionJU69Long),2)); 
+if ( (distanceJU69 < minDist) && (eggs.innerHTML.indexOf('JU69') === -1)) { 
+   markerJU69.setVisible(true); 
+} else { 
+   markerJU69.setVisible(false);} 
+positionUI82 = markerUI82.getPosition(); 
+positionUI82Lat = positionUI82.lat(); 
+positionUI82Long = positionUI82.lng(); 
+distanceUI82 = Math.sqrt(Math.pow((positionLat-positionUI82Lat),2) + Math.pow((positionLong-positionUI82Long),2)); 
+if ( (distanceUI82 < minDist) && (eggs.innerHTML.indexOf('UI82') === -1)) { 
+   markerUI82.setVisible(true); 
+} else { 
+   markerUI82.setVisible(false);} 
+positionVG65 = markerVG65.getPosition(); 
+positionVG65Lat = positionVG65.lat(); 
+positionVG65Long = positionVG65.lng(); 
+distanceVG65 = Math.sqrt(Math.pow((positionLat-positionVG65Lat),2) + Math.pow((positionLong-positionVG65Long),2)); 
+if ( (distanceVG65 < minDist) && (eggs.innerHTML.indexOf('VG65') === -1)) { 
+   markerVG65.setVisible(true); 
+} else { 
+   markerVG65.setVisible(false);} 
+positionWT92 = markerWT92.getPosition(); 
+positionWT92Lat = positionWT92.lat(); 
+positionWT92Long = positionWT92.lng(); 
+distanceWT92 = Math.sqrt(Math.pow((positionLat-positionWT92Lat),2) + Math.pow((positionLong-positionWT92Long),2)); 
+if ( (distanceWT92 < minDist) && (eggs.innerHTML.indexOf('WT92') === -1)) { 
+   markerWT92.setVisible(true); 
+} else { 
+   markerWT92.setVisible(false);} 
+positionJI68 = markerJI68.getPosition(); 
+positionJI68Lat = positionJI68.lat(); 
+positionJI68Long = positionJI68.lng(); 
+distanceJI68 = Math.sqrt(Math.pow((positionLat-positionJI68Lat),2) + Math.pow((positionLong-positionJI68Long),2)); 
+if ( (distanceJI68 < minDist) && (eggs.innerHTML.indexOf('JI68') === -1)) { 
+   markerJI68.setVisible(true); 
+} else { 
+   markerJI68.setVisible(false);} 
+positionCG81 = markerCG81.getPosition(); 
+positionCG81Lat = positionCG81.lat(); 
+positionCG81Long = positionCG81.lng(); 
+distanceCG81 = Math.sqrt(Math.pow((positionLat-positionCG81Lat),2) + Math.pow((positionLong-positionCG81Long),2)); 
+if ( (distanceCG81 < minDist) && (eggs.innerHTML.indexOf('CG81') === -1)) { 
+   markerCG81.setVisible(true); 
+} else { 
+   markerCG81.setVisible(false);} 
+positionQO72 = markerQO72.getPosition(); 
+positionQO72Lat = positionQO72.lat(); 
+positionQO72Long = positionQO72.lng(); 
+distanceQO72 = Math.sqrt(Math.pow((positionLat-positionQO72Lat),2) + Math.pow((positionLong-positionQO72Long),2)); 
+if ( (distanceQO72 < minDist) && (eggs.innerHTML.indexOf('QO72') === -1)) { 
+   markerQO72.setVisible(true); 
+} else { 
+   markerQO72.setVisible(false);} 
+positionEK44 = markerEK44.getPosition(); 
+positionEK44Lat = positionEK44.lat(); 
+positionEK44Long = positionEK44.lng(); 
+distanceEK44 = Math.sqrt(Math.pow((positionLat-positionEK44Lat),2) + Math.pow((positionLong-positionEK44Long),2)); 
+if ( (distanceEK44 < minDist) && (eggs.innerHTML.indexOf('EK44') === -1)) { 
+   markerEK44.setVisible(true); 
+} else { 
+   markerEK44.setVisible(false);} 
+positionOK89 = markerOK89.getPosition(); 
+positionOK89Lat = positionOK89.lat(); 
+positionOK89Long = positionOK89.lng(); 
+distanceOK89 = Math.sqrt(Math.pow((positionLat-positionOK89Lat),2) + Math.pow((positionLong-positionOK89Long),2)); 
+if ( (distanceOK89 < minDist) && (eggs.innerHTML.indexOf('OK89') === -1)) { 
+   markerOK89.setVisible(true); 
+} else { 
+   markerOK89.setVisible(false);} 
+positionHM77 = markerHM77.getPosition(); 
+positionHM77Lat = positionHM77.lat(); 
+positionHM77Long = positionHM77.lng(); 
+distanceHM77 = Math.sqrt(Math.pow((positionLat-positionHM77Lat),2) + Math.pow((positionLong-positionHM77Long),2)); 
+if ( (distanceHM77 < minDist) && (eggs.innerHTML.indexOf('HM77') === -1)) { 
+   markerHM77.setVisible(true); 
+} else { 
+   markerHM77.setVisible(false);} 
+positionLZ52 = markerLZ52.getPosition(); 
+positionLZ52Lat = positionLZ52.lat(); 
+positionLZ52Long = positionLZ52.lng(); 
+distanceLZ52 = Math.sqrt(Math.pow((positionLat-positionLZ52Lat),2) + Math.pow((positionLong-positionLZ52Long),2)); 
+if ( (distanceLZ52 < minDist) && (eggs.innerHTML.indexOf('LZ52') === -1)) { 
+   markerLZ52.setVisible(true); 
+} else { 
+   markerLZ52.setVisible(false);} 
+positionVL46 = markerVL46.getPosition(); 
+positionVL46Lat = positionVL46.lat(); 
+positionVL46Long = positionVL46.lng(); 
+distanceVL46 = Math.sqrt(Math.pow((positionLat-positionVL46Lat),2) + Math.pow((positionLong-positionVL46Long),2)); 
+if ( (distanceVL46 < minDist) && (eggs.innerHTML.indexOf('VL46') === -1)) { 
+   markerVL46.setVisible(true); 
+} else { 
+   markerVL46.setVisible(false);} 
+positionVG67 = markerVG67.getPosition(); 
+positionVG67Lat = positionVG67.lat(); 
+positionVG67Long = positionVG67.lng(); 
+distanceVG67 = Math.sqrt(Math.pow((positionLat-positionVG67Lat),2) + Math.pow((positionLong-positionVG67Long),2)); 
+if ( (distanceVG67 < minDist) && (eggs.innerHTML.indexOf('VG67') === -1)) { 
+   markerVG67.setVisible(true); 
+} else { 
+   markerVG67.setVisible(false);} 
+positionAD43 = markerAD43.getPosition(); 
+positionAD43Lat = positionAD43.lat(); 
+positionAD43Long = positionAD43.lng(); 
+distanceAD43 = Math.sqrt(Math.pow((positionLat-positionAD43Lat),2) + Math.pow((positionLong-positionAD43Long),2)); 
+if ( (distanceAD43 < minDist) && (eggs.innerHTML.indexOf('AD43') === -1)) { 
+   markerAD43.setVisible(true); 
+} else { 
+   markerAD43.setVisible(false);} 
+positionHG51 = markerHG51.getPosition(); 
+positionHG51Lat = positionHG51.lat(); 
+positionHG51Long = positionHG51.lng(); 
+distanceHG51 = Math.sqrt(Math.pow((positionLat-positionHG51Lat),2) + Math.pow((positionLong-positionHG51Long),2)); 
+if ( (distanceHG51 < minDist) && (eggs.innerHTML.indexOf('HG51') === -1)) { 
+   markerHG51.setVisible(true); 
+} else { 
+   markerHG51.setVisible(false);} 
+positionEB16 = markerEB16.getPosition(); 
+positionEB16Lat = positionEB16.lat(); 
+positionEB16Long = positionEB16.lng(); 
+distanceEB16 = Math.sqrt(Math.pow((positionLat-positionEB16Lat),2) + Math.pow((positionLong-positionEB16Long),2)); 
+if ( (distanceEB16 < minDist) && (eggs.innerHTML.indexOf('EB16') === -1)) { 
+   markerEB16.setVisible(true); 
+} else { 
+   markerEB16.setVisible(false);} 
+positionXC22 = markerXC22.getPosition(); 
+positionXC22Lat = positionXC22.lat(); 
+positionXC22Long = positionXC22.lng(); 
+distanceXC22 = Math.sqrt(Math.pow((positionLat-positionXC22Lat),2) + Math.pow((positionLong-positionXC22Long),2)); 
+if ( (distanceXC22 < minDist) && (eggs.innerHTML.indexOf('XC22') === -1)) { 
+   markerXC22.setVisible(true); 
+} else { 
+   markerXC22.setVisible(false);} 
+positionRO65 = markerRO65.getPosition(); 
+positionRO65Lat = positionRO65.lat(); 
+positionRO65Long = positionRO65.lng(); 
+distanceRO65 = Math.sqrt(Math.pow((positionLat-positionRO65Lat),2) + Math.pow((positionLong-positionRO65Long),2)); 
+if ( (distanceRO65 < minDist) && (eggs.innerHTML.indexOf('RO65') === -1)) { 
+   markerRO65.setVisible(true); 
+} else { 
+   markerRO65.setVisible(false);} 
+positionYS27 = markerYS27.getPosition(); 
+positionYS27Lat = positionYS27.lat(); 
+positionYS27Long = positionYS27.lng(); 
+distanceYS27 = Math.sqrt(Math.pow((positionLat-positionYS27Lat),2) + Math.pow((positionLong-positionYS27Long),2)); 
+if ( (distanceYS27 < minDist) && (eggs.innerHTML.indexOf('YS27') === -1)) { 
+   markerYS27.setVisible(true); 
+} else { 
+   markerYS27.setVisible(false);} 
+positionFJ91 = markerFJ91.getPosition(); 
+positionFJ91Lat = positionFJ91.lat(); 
+positionFJ91Long = positionFJ91.lng(); 
+distanceFJ91 = Math.sqrt(Math.pow((positionLat-positionFJ91Lat),2) + Math.pow((positionLong-positionFJ91Long),2)); 
+if ( (distanceFJ91 < minDist) && (eggs.innerHTML.indexOf('FJ91') === -1)) { 
+   markerFJ91.setVisible(true); 
+} else { 
+   markerFJ91.setVisible(false);} 
+positionOS56 = markerOS56.getPosition(); 
+positionOS56Lat = positionOS56.lat(); 
+positionOS56Long = positionOS56.lng(); 
+distanceOS56 = Math.sqrt(Math.pow((positionLat-positionOS56Lat),2) + Math.pow((positionLong-positionOS56Long),2)); 
+if ( (distanceOS56 < minDist) && (eggs.innerHTML.indexOf('OS56') === -1)) { 
+   markerOS56.setVisible(true); 
+} else { 
+   markerOS56.setVisible(false);} 
+positionBW19 = markerBW19.getPosition(); 
+positionBW19Lat = positionBW19.lat(); 
+positionBW19Long = positionBW19.lng(); 
+distanceBW19 = Math.sqrt(Math.pow((positionLat-positionBW19Lat),2) + Math.pow((positionLong-positionBW19Long),2)); 
+if ( (distanceBW19 < minDist) && (eggs.innerHTML.indexOf('BW19') === -1)) { 
+   markerBW19.setVisible(true); 
+} else { 
+   markerBW19.setVisible(false);} 
+positionRS35 = markerRS35.getPosition(); 
+positionRS35Lat = positionRS35.lat(); 
+positionRS35Long = positionRS35.lng(); 
+distanceRS35 = Math.sqrt(Math.pow((positionLat-positionRS35Lat),2) + Math.pow((positionLong-positionRS35Long),2)); 
+if ( (distanceRS35 < minDist) && (eggs.innerHTML.indexOf('RS35') === -1)) { 
+   markerRS35.setVisible(true); 
+} else { 
+   markerRS35.setVisible(false);} 
+positionUZ81 = markerUZ81.getPosition(); 
+positionUZ81Lat = positionUZ81.lat(); 
+positionUZ81Long = positionUZ81.lng(); 
+distanceUZ81 = Math.sqrt(Math.pow((positionLat-positionUZ81Lat),2) + Math.pow((positionLong-positionUZ81Long),2)); 
+if ( (distanceUZ81 < minDist) && (eggs.innerHTML.indexOf('UZ81') === -1)) { 
+   markerUZ81.setVisible(true); 
+} else { 
+   markerUZ81.setVisible(false);} 
+positionQI43 = markerQI43.getPosition(); 
+positionQI43Lat = positionQI43.lat(); 
+positionQI43Long = positionQI43.lng(); 
+distanceQI43 = Math.sqrt(Math.pow((positionLat-positionQI43Lat),2) + Math.pow((positionLong-positionQI43Long),2)); 
+if ( (distanceQI43 < minDist) && (eggs.innerHTML.indexOf('QI43') === -1)) { 
+   markerQI43.setVisible(true); 
+} else { 
+   markerQI43.setVisible(false);} 
+positionVC37 = markerVC37.getPosition(); 
+positionVC37Lat = positionVC37.lat(); 
+positionVC37Long = positionVC37.lng(); 
+distanceVC37 = Math.sqrt(Math.pow((positionLat-positionVC37Lat),2) + Math.pow((positionLong-positionVC37Long),2)); 
+if ( (distanceVC37 < minDist) && (eggs.innerHTML.indexOf('VC37') === -1)) { 
+   markerVC37.setVisible(true); 
+} else { 
+   markerVC37.setVisible(false);} 
+positionZI98 = markerZI98.getPosition(); 
+positionZI98Lat = positionZI98.lat(); 
+positionZI98Long = positionZI98.lng(); 
+distanceZI98 = Math.sqrt(Math.pow((positionLat-positionZI98Lat),2) + Math.pow((positionLong-positionZI98Long),2)); 
+if ( (distanceZI98 < minDist) && (eggs.innerHTML.indexOf('ZI98') === -1)) { 
+   markerZI98.setVisible(true); 
+} else { 
+   markerZI98.setVisible(false);} 
+positionIV92 = markerIV92.getPosition(); 
+positionIV92Lat = positionIV92.lat(); 
+positionIV92Long = positionIV92.lng(); 
+distanceIV92 = Math.sqrt(Math.pow((positionLat-positionIV92Lat),2) + Math.pow((positionLong-positionIV92Long),2)); 
+if ( (distanceIV92 < minDist) && (eggs.innerHTML.indexOf('IV92') === -1)) { 
+   markerIV92.setVisible(true); 
+} else { 
+   markerIV92.setVisible(false);} 
+positionHX41 = markerHX41.getPosition(); 
+positionHX41Lat = positionHX41.lat(); 
+positionHX41Long = positionHX41.lng(); 
+distanceHX41 = Math.sqrt(Math.pow((positionLat-positionHX41Lat),2) + Math.pow((positionLong-positionHX41Long),2)); 
+if ( (distanceHX41 < minDist) && (eggs.innerHTML.indexOf('HX41') === -1)) { 
+   markerHX41.setVisible(true); 
+} else { 
+   markerHX41.setVisible(false);} 
+positionNO59 = markerNO59.getPosition(); 
+positionNO59Lat = positionNO59.lat(); 
+positionNO59Long = positionNO59.lng(); 
+distanceNO59 = Math.sqrt(Math.pow((positionLat-positionNO59Lat),2) + Math.pow((positionLong-positionNO59Long),2)); 
+if ( (distanceNO59 < minDist) && (eggs.innerHTML.indexOf('NO59') === -1)) { 
+   markerNO59.setVisible(true); 
+} else { 
+   markerNO59.setVisible(false);} 
+positionTW47 = markerTW47.getPosition(); 
+positionTW47Lat = positionTW47.lat(); 
+positionTW47Long = positionTW47.lng(); 
+distanceTW47 = Math.sqrt(Math.pow((positionLat-positionTW47Lat),2) + Math.pow((positionLong-positionTW47Long),2)); 
+if ( (distanceTW47 < minDist) && (eggs.innerHTML.indexOf('TW47') === -1)) { 
+   markerTW47.setVisible(true); 
+} else { 
+   markerTW47.setVisible(false);} 
+positionIR53 = markerIR53.getPosition(); 
+positionIR53Lat = positionIR53.lat(); 
+positionIR53Long = positionIR53.lng(); 
+distanceIR53 = Math.sqrt(Math.pow((positionLat-positionIR53Lat),2) + Math.pow((positionLong-positionIR53Long),2)); 
+if ( (distanceIR53 < minDist) && (eggs.innerHTML.indexOf('IR53') === -1)) { 
+   markerIR53.setVisible(true); 
+} else { 
+   markerIR53.setVisible(false);} 
+positionIR63 = markerIR63.getPosition(); 
+positionIR63Lat = positionIR63.lat(); 
+positionIR63Long = positionIR63.lng(); 
+distanceIR63 = Math.sqrt(Math.pow((positionLat-positionIR63Lat),2) + Math.pow((positionLong-positionIR63Long),2)); 
+if ( (distanceIR63 < minDist) && (eggs.innerHTML.indexOf('IR63') === -1)) { 
+   markerIR63.setVisible(true); 
+} else { 
+   markerIR63.setVisible(false);} 
+positionOH99 = markerOH99.getPosition(); 
+positionOH99Lat = positionOH99.lat(); 
+positionOH99Long = positionOH99.lng(); 
+distanceOH99 = Math.sqrt(Math.pow((positionLat-positionOH99Lat),2) + Math.pow((positionLong-positionOH99Long),2)); 
+if ( (distanceOH99 < minDist) && (eggs.innerHTML.indexOf('OH99') === -1)) { 
+   markerOH99.setVisible(true); 
+} else { 
+   markerOH99.setVisible(false);} 
+positionVQ12 = markerVQ12.getPosition(); 
+positionVQ12Lat = positionVQ12.lat(); 
+positionVQ12Long = positionVQ12.lng(); 
+distanceVQ12 = Math.sqrt(Math.pow((positionLat-positionVQ12Lat),2) + Math.pow((positionLong-positionVQ12Long),2)); 
+if ( (distanceVQ12 < minDist) && (eggs.innerHTML.indexOf('VQ12') === -1)) { 
+   markerVQ12.setVisible(true); 
+} else { 
+   markerVQ12.setVisible(false);} 
+positionDH45 = markerDH45.getPosition(); 
+positionDH45Lat = positionDH45.lat(); 
+positionDH45Long = positionDH45.lng(); 
+distanceDH45 = Math.sqrt(Math.pow((positionLat-positionDH45Lat),2) + Math.pow((positionLong-positionDH45Long),2)); 
+if ( (distanceDH45 < minDist) && (eggs.innerHTML.indexOf('DH45') === -1)) { 
+   markerDH45.setVisible(true); 
+} else { 
+   markerDH45.setVisible(false);} 
+positionXB59 = markerXB59.getPosition(); 
+positionXB59Lat = positionXB59.lat(); 
+positionXB59Long = positionXB59.lng(); 
+distanceXB59 = Math.sqrt(Math.pow((positionLat-positionXB59Lat),2) + Math.pow((positionLong-positionXB59Long),2)); 
+if ( (distanceXB59 < minDist) && (eggs.innerHTML.indexOf('XB59') === -1)) { 
+   markerXB59.setVisible(true); 
+} else { 
+   markerXB59.setVisible(false);} 
+positionNT78 = markerNT78.getPosition(); 
+positionNT78Lat = positionNT78.lat(); 
+positionNT78Long = positionNT78.lng(); 
+distanceNT78 = Math.sqrt(Math.pow((positionLat-positionNT78Lat),2) + Math.pow((positionLong-positionNT78Long),2)); 
+if ( (distanceNT78 < minDist) && (eggs.innerHTML.indexOf('NT78') === -1)) { 
+   markerNT78.setVisible(true); 
+} else { 
+   markerNT78.setVisible(false);} 
+positionUE48 = markerUE48.getPosition(); 
+positionUE48Lat = positionUE48.lat(); 
+positionUE48Long = positionUE48.lng(); 
+distanceUE48 = Math.sqrt(Math.pow((positionLat-positionUE48Lat),2) + Math.pow((positionLong-positionUE48Long),2)); 
+if ( (distanceUE48 < minDist) && (eggs.innerHTML.indexOf('UE48') === -1)) { 
+   markerUE48.setVisible(true); 
+} else { 
+   markerUE48.setVisible(false);} 
+positionPR42 = markerPR42.getPosition(); 
+positionPR42Lat = positionPR42.lat(); 
+positionPR42Long = positionPR42.lng(); 
+distancePR42 = Math.sqrt(Math.pow((positionLat-positionPR42Lat),2) + Math.pow((positionLong-positionPR42Long),2)); 
+if ( (distancePR42 < minDist) && (eggs.innerHTML.indexOf('PR42') === -1)) { 
+   markerPR42.setVisible(true); 
+} else { 
+   markerPR42.setVisible(false);} 
+positionFD56 = markerFD56.getPosition(); 
+positionFD56Lat = positionFD56.lat(); 
+positionFD56Long = positionFD56.lng(); 
+distanceFD56 = Math.sqrt(Math.pow((positionLat-positionFD56Lat),2) + Math.pow((positionLong-positionFD56Long),2)); 
+if ( (distanceFD56 < minDist) && (eggs.innerHTML.indexOf('FD56') === -1)) { 
+   markerFD56.setVisible(true); 
+} else { 
+   markerFD56.setVisible(false);} 
+positionQU47 = markerQU47.getPosition(); 
+positionQU47Lat = positionQU47.lat(); 
+positionQU47Long = positionQU47.lng(); 
+distanceQU47 = Math.sqrt(Math.pow((positionLat-positionQU47Lat),2) + Math.pow((positionLong-positionQU47Long),2)); 
+if ( (distanceQU47 < minDist) && (eggs.innerHTML.indexOf('QU47') === -1)) { 
+   markerQU47.setVisible(true); 
+} else { 
+   markerQU47.setVisible(false);} 
+positionPY21 = markerPY21.getPosition(); 
+positionPY21Lat = positionPY21.lat(); 
+positionPY21Long = positionPY21.lng(); 
+distancePY21 = Math.sqrt(Math.pow((positionLat-positionPY21Lat),2) + Math.pow((positionLong-positionPY21Long),2)); 
+if ( (distancePY21 < minDist) && (eggs.innerHTML.indexOf('PY21') === -1)) { 
+   markerPY21.setVisible(true); 
+} else { 
+   markerPY21.setVisible(false);} 
+positionBD14 = markerBD14.getPosition(); 
+positionBD14Lat = positionBD14.lat(); 
+positionBD14Long = positionBD14.lng(); 
+distanceBD14 = Math.sqrt(Math.pow((positionLat-positionBD14Lat),2) + Math.pow((positionLong-positionBD14Long),2)); 
+if ( (distanceBD14 < minDist) && (eggs.innerHTML.indexOf('BD14') === -1)) { 
+   markerBD14.setVisible(true); 
+} else { 
+   markerBD14.setVisible(false);} 
+   
+positionJP68 = markerJP68.getPosition(); 
+positionJP68Lat = positionJP68.lat(); 
+positionJP68Long = positionJP68.lng(); 
+distanceJP68 = Math.sqrt(Math.pow((positionLat-positionJP68Lat),2) + Math.pow((positionLong-positionJP68Long),2)); 
+if ( (distanceJP68 < minDist) && (eggs.innerHTML.indexOf('JP68') === -1)) { 
+   markerJP68.setVisible(true); 
+} else { 
+   markerJP68.setVisible(false);} 
+positionVS12 = markerVS12.getPosition(); 
+positionVS12Lat = positionVS12.lat(); 
+positionVS12Long = positionVS12.lng(); 
+distanceVS12 = Math.sqrt(Math.pow((positionLat-positionVS12Lat),2) + Math.pow((positionLong-positionVS12Long),2)); 
+if ( (distanceVS12 < minDist) && (eggs.innerHTML.indexOf('VS12') === -1)) { 
+   markerVS12.setVisible(true); 
+} else { 
+   markerVS12.setVisible(false);} 
+positionRB88 = markerRB88.getPosition(); 
+positionRB88Lat = positionRB88.lat(); 
+positionRB88Long = positionRB88.lng(); 
+distanceRB88 = Math.sqrt(Math.pow((positionLat-positionRB88Lat),2) + Math.pow((positionLong-positionRB88Long),2)); 
+if ( (distanceRB88 < minDist) && (eggs.innerHTML.indexOf('RB88') === -1)) { 
+   markerRB88.setVisible(true); 
+} else { 
+   markerRB88.setVisible(false);} 
+positionKB46 = markerKB46.getPosition(); 
+positionKB46Lat = positionKB46.lat(); 
+positionKB46Long = positionKB46.lng(); 
+distanceKB46 = Math.sqrt(Math.pow((positionLat-positionKB46Lat),2) + Math.pow((positionLong-positionKB46Long),2)); 
+if ( (distanceKB46 < minDist) && (eggs.innerHTML.indexOf('KB46') === -1)) { 
+   markerKB46.setVisible(true); 
+} else { 
+   markerKB46.setVisible(false);} 
+positionPM51 = markerPM51.getPosition(); 
+positionPM51Lat = positionPM51.lat(); 
+positionPM51Long = positionPM51.lng(); 
+distancePM51 = Math.sqrt(Math.pow((positionLat-positionPM51Lat),2) + Math.pow((positionLong-positionPM51Long),2)); 
+if ( (distancePM51 < minDist) && (eggs.innerHTML.indexOf('PM51') === -1)) { 
+   markerPM51.setVisible(true); 
+} else { 
+   markerPM51.setVisible(false);} 
+positionUM87 = markerUM87.getPosition(); 
+positionUM87Lat = positionUM87.lat(); 
+positionUM87Long = positionUM87.lng(); 
+distanceUM87 = Math.sqrt(Math.pow((positionLat-positionUM87Lat),2) + Math.pow((positionLong-positionUM87Long),2)); 
+if ( (distanceUM87 < minDist) && (eggs.innerHTML.indexOf('UM87') === -1)) { 
+   markerUM87.setVisible(true); 
+} else { 
+   markerUM87.setVisible(false);} 
+positionMQ35 = markerMQ35.getPosition(); 
+positionMQ35Lat = positionMQ35.lat(); 
+positionMQ35Long = positionMQ35.lng(); 
+distanceMQ35 = Math.sqrt(Math.pow((positionLat-positionMQ35Lat),2) + Math.pow((positionLong-positionMQ35Long),2)); 
+if ( (distanceMQ35 < minDist) && (eggs.innerHTML.indexOf('MQ35') === -1)) {         markerMQ35.setVisible(true); 
+} else { 
+   markerMQ35.setVisible(false);} 
+positionIR72 = markerIR72.getPosition(); 
+positionIR72Lat = positionIR72.lat(); 
+positionIR72Long = positionIR72.lng(); 
+distanceIR72 = Math.sqrt(Math.pow((positionLat-positionIR72Lat),2) + Math.pow((positionLong-positionIR72Long),2)); 
+if ( (distanceIR72 < minDist) && (eggs.innerHTML.indexOf('IR72') === -1)) { 
+   markerIR72.setVisible(true); 
+} else { 
+   markerIR72.setVisible(false);} 
+positionRP99 = markerRP99.getPosition(); 
+positionRP99Lat = positionRP99.lat(); 
+positionRP99Long = positionRP99.lng(); 
+distanceRP99 = Math.sqrt(Math.pow((positionLat-positionRP99Lat),2) + Math.pow((positionLong-positionRP99Long),2)); 
+if ( (distanceRP99 < minDist) && (eggs.innerHTML.indexOf('RP99') === -1)) { 
+   markerRP99.setVisible(true); 
+} else { 
+   markerRP99.setVisible(false);} 
+positionGE49 = markerGE49.getPosition(); 
+positionGE49Lat = positionGE49.lat(); 
+positionGE49Long = positionGE49.lng(); 
+distanceGE49 = Math.sqrt(Math.pow((positionLat-positionGE49Lat),2) + Math.pow((positionLong-positionGE49Long),2)); 
+if ( (distanceGE49 < minDist) && (eggs.innerHTML.indexOf('GE49') === -1)) { 
+   markerGE49.setVisible(true); 
+} else { 
+   markerGE49.setVisible(false);} 
+positionYJ12 = markerYJ12.getPosition(); 
+positionYJ12Lat = positionYJ12.lat(); 
+positionYJ12Long = positionYJ12.lng(); 
+distanceYJ12 = Math.sqrt(Math.pow((positionLat-positionYJ12Lat),2) + Math.pow((positionLong-positionYJ12Long),2)); 
+if ( (distanceYJ12 < minDist) && (eggs.innerHTML.indexOf('YJ12') === -1)) { 
+   markerYJ12.setVisible(true); 
+} else { 
+   markerYJ12.setVisible(false);} 
+positionFL43 = markerFL43.getPosition(); 
+positionFL43Lat = positionFL43.lat(); 
+positionFL43Long = positionFL43.lng(); 
+distanceFL43 = Math.sqrt(Math.pow((positionLat-positionFL43Lat),2) + Math.pow((positionLong-positionFL43Long),2)); 
+if ( (distanceFL43 < minDist) && (eggs.innerHTML.indexOf('FL43') === -1)) { 
+   markerFL43.setVisible(true); 
+} else { 
+   markerFL43.setVisible(false);} 
+positionBD66 = markerBD66.getPosition(); 
+positionBD66Lat = positionBD66.lat(); 
+positionBD66Long = positionBD66.lng(); 
+distanceBD66 = Math.sqrt(Math.pow((positionLat-positionBD66Lat),2) + Math.pow((positionLong-positionBD66Long),2)); 
+if ( (distanceBD66 < minDist) && (eggs.innerHTML.indexOf('BD66') === -1)) { 
+   markerBD66.setVisible(true); 
+} else { 
+   markerBD66.setVisible(false);}
+positionNO63 = markerNO63.getPosition(); 
+positionNO63Lat = positionNO63.lat(); 
+positionNO63Long = positionNO63.lng(); 
+distanceNO63 = Math.sqrt(Math.pow((positionLat-positionNO63Lat),2) + Math.pow((positionLong-positionNO63Long),2)); 
+if ( (distanceNO63 < minDist) && (eggs.innerHTML.indexOf('NO63') === -1)) { 
+   markerNO63.setVisible(true); 
+} else { 
+   markerNO63.setVisible(false);} 
+positionQG57 = markerQG57.getPosition(); 
+positionQG57Lat = positionQG57.lat(); 
+positionQG57Long = positionQG57.lng(); 
+distanceQG57 = Math.sqrt(Math.pow((positionLat-positionQG57Lat),2) + Math.pow((positionLong-positionQG57Long),2)); 
+if ( (distanceQG57 < minDist) && (eggs.innerHTML.indexOf('QG57') === -1)) { 
+   markerQG57.setVisible(true); 
+} else { 
+   markerQG57.setVisible(false);} 
+positionXN62 = markerXN62.getPosition(); 
+positionXN62Lat = positionXN62.lat(); 
+positionXN62Long = positionXN62.lng(); 
+distanceXN62 = Math.sqrt(Math.pow((positionLat-positionXN62Lat),2) + Math.pow((positionLong-positionXN62Long),2)); 
+if ( (distanceXN62 < minDist) && (eggs.innerHTML.indexOf('XN62') === -1)) { 
+   markerXN62.setVisible(true); 
+} else { 
+   markerXN62.setVisible(false);} 
+positionSU93 = markerSU93.getPosition(); 
+positionSU93Lat = positionSU93.lat(); 
+positionSU93Long = positionSU93.lng(); 
+distanceSU93 = Math.sqrt(Math.pow((positionLat-positionSU93Lat),2) + Math.pow((positionLong-positionSU93Long),2)); 
+if ( (distanceSU93 < minDist) && (eggs.innerHTML.indexOf('SU93') === -1)) { 
+   markerSU93.setVisible(true); 
+} else { 
+   markerSU93.setVisible(false);} 
+positionVX92 = markerVX92.getPosition(); 
+positionVX92Lat = positionVX92.lat(); 
+positionVX92Long = positionVX92.lng(); 
+distanceVX92 = Math.sqrt(Math.pow((positionLat-positionVX92Lat),2) + Math.pow((positionLong-positionVX92Long),2)); 
+if ( (distanceVX92 < minDist) && (eggs.innerHTML.indexOf('VX92') === -1)) { 
+   markerVX92.setVisible(true); 
+} else { 
+   markerVX92.setVisible(false);} 
+positionJR85 = markerJR85.getPosition(); 
+positionJR85Lat = positionJR85.lat(); 
+positionJR85Long = positionJR85.lng(); 
+distanceJR85 = Math.sqrt(Math.pow((positionLat-positionJR85Lat),2) + Math.pow((positionLong-positionJR85Long),2)); 
+if ( (distanceJR85 < minDist) && (eggs.innerHTML.indexOf('JR85') === -1)) { 
+   markerJR85.setVisible(true); 
+} else { 
+   markerJR85.setVisible(false);} 
+positionYY45 = markerYY45.getPosition(); 
+positionYY45Lat = positionYY45.lat(); 
+positionYY45Long = positionYY45.lng(); 
+distanceYY45 = Math.sqrt(Math.pow((positionLat-positionYY45Lat),2) + Math.pow((positionLong-positionYY45Long),2)); 
+if ( (distanceYY45 < minDist) && (eggs.innerHTML.indexOf('YY45') === -1)) { 
+   markerYY45.setVisible(true); 
+} else { 
+   markerYY45.setVisible(false);} 
+positionPL39 = markerPL39.getPosition(); 
+positionPL39Lat = positionPL39.lat(); 
+positionPL39Long = positionPL39.lng(); 
+distancePL39 = Math.sqrt(Math.pow((positionLat-positionPL39Lat),2) + Math.pow((positionLong-positionPL39Long),2)); 
+if ( (distancePL39 < minDist) && (eggs.innerHTML.indexOf('PL39') === -1)) { 
+   markerPL39.setVisible(true); 
+} else { 
+   markerPL39.setVisible(false);} 
+positionOO31 = markerOO31.getPosition(); 
+positionOO31Lat = positionOO31.lat(); 
+positionOO31Long = positionOO31.lng(); 
+distanceOO31 = Math.sqrt(Math.pow((positionLat-positionOO31Lat),2) + Math.pow((positionLong-positionOO31Long),2)); 
+if ( (distanceOO31 < minDist) && (eggs.innerHTML.indexOf('OO31') === -1)) { 
+   markerOO31.setVisible(true); 
+} else { 
+   markerOO31.setVisible(false);} 
+positionTS24 = markerTS24.getPosition(); 
+positionTS24Lat = positionTS24.lat(); 
+positionTS24Long = positionTS24.lng(); 
+distanceTS24 = Math.sqrt(Math.pow((positionLat-positionTS24Lat),2) + Math.pow((positionLong-positionTS24Long),2)); 
+if ( (distanceTS24 < minDist) && (eggs.innerHTML.indexOf('TS24') === -1)) { 
+   markerTS24.setVisible(true); 
+} else { 
+   markerTS24.setVisible(false);} 
+positionFX51 = markerFX51.getPosition(); 
+positionFX51Lat = positionFX51.lat(); 
+positionFX51Long = positionFX51.lng(); 
+distanceFX51 = Math.sqrt(Math.pow((positionLat-positionFX51Lat),2) + Math.pow((positionLong-positionFX51Long),2)); 
+if ( (distanceFX51 < minDist) && (eggs.innerHTML.indexOf('FX51') === -1)) { 
+   markerFX51.setVisible(true); 
+} else { 
+   markerFX51.setVisible(false);} 
+positionIY72 = markerIY72.getPosition(); 
+positionIY72Lat = positionIY72.lat(); 
+positionIY72Long = positionIY72.lng(); 
+distanceIY72 = Math.sqrt(Math.pow((positionLat-positionIY72Lat),2) + Math.pow((positionLong-positionIY72Long),2)); 
+if ( (distanceIY72 < minDist) && (eggs.innerHTML.indexOf('IY72') === -1)) { 
+   markerIY72.setVisible(true); 
+} else { 
+   markerIY72.setVisible(false);} 
+positionNG57 = markerNG57.getPosition(); 
+positionNG57Lat = positionNG57.lat(); 
+positionNG57Long = positionNG57.lng(); 
+distanceNG57 = Math.sqrt(Math.pow((positionLat-positionNG57Lat),2) + Math.pow((positionLong-positionNG57Long),2)); 
+if ( (distanceNG57 < minDist) && (eggs.innerHTML.indexOf('NG57') === -1)) { 
+   markerNG57.setVisible(true); 
+} else { 
+   markerNG57.setVisible(false);} 
+positionJN54 = markerJN54.getPosition(); 
+positionJN54Lat = positionJN54.lat(); 
+positionJN54Long = positionJN54.lng(); 
+distanceJN54 = Math.sqrt(Math.pow((positionLat-positionJN54Lat),2) + Math.pow((positionLong-positionJN54Long),2)); 
+if ( (distanceJN54 < minDist) && (eggs.innerHTML.indexOf('JN54') === -1)) { 
+   markerJN54.setVisible(true); 
+} else { 
+   markerJN54.setVisible(false);} 
+positionMY74 = markerMY74.getPosition(); 
+positionMY74Lat = positionMY74.lat(); 
+positionMY74Long = positionMY74.lng(); 
+distanceMY74 = Math.sqrt(Math.pow((positionLat-positionMY74Lat),2) + Math.pow((positionLong-positionMY74Long),2)); 
+if ( (distanceMY74 < minDist) && (eggs.innerHTML.indexOf('MY74') === -1)) { 
+   markerMY74.setVisible(true); 
+} else { 
+   markerMY74.setVisible(false);} 
+positionBJ96 = markerBJ96.getPosition(); 
+positionBJ96Lat = positionBJ96.lat(); 
+positionBJ96Long = positionBJ96.lng(); 
+distanceBJ96 = Math.sqrt(Math.pow((positionLat-positionBJ96Lat),2) + Math.pow((positionLong-positionBJ96Long),2)); 
+if ( (distanceBJ96 < minDist) && (eggs.innerHTML.indexOf('BJ96') === -1)) { 
+   markerBJ96.setVisible(true); 
+} else { 
+   markerBJ96.setVisible(false);} 
+positionQF51 = markerQF51.getPosition(); 
+positionQF51Lat = positionQF51.lat(); 
+positionQF51Long = positionQF51.lng(); 
+distanceQF51 = Math.sqrt(Math.pow((positionLat-positionQF51Lat),2) + Math.pow((positionLong-positionQF51Long),2)); 
+if ( (distanceQF51 < minDist) && (eggs.innerHTML.indexOf('QF51') === -1)) { 
+   markerQF51.setVisible(true); 
+} else { 
+   markerQF51.setVisible(false);} 
+positionMJ13 = markerMJ13.getPosition(); 
+positionMJ13Lat = positionMJ13.lat(); 
+positionMJ13Long = positionMJ13.lng(); 
+distanceMJ13 = Math.sqrt(Math.pow((positionLat-positionMJ13Lat),2) + Math.pow((positionLong-positionMJ13Long),2)); 
+if ( (distanceMJ13 < minDist) && (eggs.innerHTML.indexOf('MJ13') === -1)) { 
+   markerMJ13.setVisible(true); 
+} else { 
+   markerMJ13.setVisible(false);} 
+positionBC36 = markerBC36.getPosition(); 
+positionBC36Lat = positionBC36.lat(); 
+positionBC36Long = positionBC36.lng(); 
+distanceBC36 = Math.sqrt(Math.pow((positionLat-positionBC36Lat),2) + Math.pow((positionLong-positionBC36Long),2)); 
+if ( (distanceBC36 < minDist) && (eggs.innerHTML.indexOf('BC36') === -1)) { 
+   markerBC36.setVisible(true); 
+} else { 
+   markerBC36.setVisible(false);} 
+positionXR53 = markerXR53.getPosition(); 
+positionXR53Lat = positionXR53.lat(); 
+positionXR53Long = positionXR53.lng(); 
+distanceXR53 = Math.sqrt(Math.pow((positionLat-positionXR53Lat),2) + Math.pow((positionLong-positionXR53Long),2)); 
+if ( (distanceXR53 < minDist) && (eggs.innerHTML.indexOf('XR53') === -1)) { 
+   markerXR53.setVisible(true); 
+} else { 
+   markerXR53.setVisible(false);} 
+positionOZ74 = markerOZ74.getPosition(); 
+positionOZ74Lat = positionOZ74.lat(); 
+positionOZ74Long = positionOZ74.lng(); 
+distanceOZ74 = Math.sqrt(Math.pow((positionLat-positionOZ74Lat),2) + Math.pow((positionLong-positionOZ74Long),2)); 
+if ( (distanceOZ74 < minDist) && (eggs.innerHTML.indexOf('OZ74') === -1)) { 
+   markerOZ74.setVisible(true); 
+} else { 
+   markerOZ74.setVisible(false);} 
+positionLA41 = markerLA41.getPosition(); 
+positionLA41Lat = positionLA41.lat(); 
+positionLA41Long = positionLA41.lng(); 
+distanceLA41 = Math.sqrt(Math.pow((positionLat-positionLA41Lat),2) + Math.pow((positionLong-positionLA41Long),2)); 
+if ( (distanceLA41 < minDist) && (eggs.innerHTML.indexOf('LA41') === -1)) { 
+   markerLA41.setVisible(true); 
+} else { 
+   markerLA41.setVisible(false);} 
+positionVN73 = markerVN73.getPosition(); 
+positionVN73Lat = positionVN73.lat(); 
+positionVN73Long = positionVN73.lng(); 
+distanceVN73 = Math.sqrt(Math.pow((positionLat-positionVN73Lat),2) + Math.pow((positionLong-positionVN73Long),2)); 
+if ( (distanceVN73 < minDist) && (eggs.innerHTML.indexOf('VN73') === -1)) { 
+   markerVN73.setVisible(true); 
+} else { 
+   markerVN73.setVisible(false);} 
+positionRK91 = markerRK91.getPosition(); 
+positionRK91Lat = positionRK91.lat(); 
+positionRK91Long = positionRK91.lng(); 
+distanceRK91 = Math.sqrt(Math.pow((positionLat-positionRK91Lat),2) + Math.pow((positionLong-positionRK91Long),2)); 
+if ( (distanceRK91 < minDist) && (eggs.innerHTML.indexOf('RK91') === -1)) { 
+   markerRK91.setVisible(true); 
+} else { 
+   markerRK91.setVisible(false);} 
+positionRK62 = markerRK62.getPosition(); 
+positionRK62Lat = positionRK62.lat(); 
+positionRK62Long = positionRK62.lng(); 
+distanceRK62 = Math.sqrt(Math.pow((positionLat-positionRK62Lat),2) + Math.pow((positionLong-positionRK62Long),2)); 
+if ( (distanceRK62 < minDist) && (eggs.innerHTML.indexOf('RK62') === -1)) { 
+   markerRK62.setVisible(true); 
+} else { 
+   markerRK62.setVisible(false);} 
+positionYC36 = markerYC36.getPosition(); 
+positionYC36Lat = positionYC36.lat(); 
+positionYC36Long = positionYC36.lng(); 
+distanceYC36 = Math.sqrt(Math.pow((positionLat-positionYC36Lat),2) + Math.pow((positionLong-positionYC36Long),2)); 
+if ( (distanceYC36 < minDist) && (eggs.innerHTML.indexOf('YC36') === -1)) { 
+   markerYC36.setVisible(true); 
+} else { 
+   markerYC36.setVisible(false);} 
+positionWE71 = markerWE71.getPosition(); 
+positionWE71Lat = positionWE71.lat(); 
+positionWE71Long = positionWE71.lng(); 
+distanceWE71 = Math.sqrt(Math.pow((positionLat-positionWE71Lat),2) + Math.pow((positionLong-positionWE71Long),2)); 
+if ( (distanceWE71 < minDist) && (eggs.innerHTML.indexOf('WE71') === -1)) { 
+   markerWE71.setVisible(true); 
+} else { 
+   markerWE71.setVisible(false);} 
+positionPH92 = markerPH92.getPosition(); 
+positionPH92Lat = positionPH92.lat(); 
+positionPH92Long = positionPH92.lng(); 
+distancePH92 = Math.sqrt(Math.pow((positionLat-positionPH92Lat),2) + Math.pow((positionLong-positionPH92Long),2)); 
+if ( (distancePH92 < minDist) && (eggs.innerHTML.indexOf('PH92') === -1)) { 
+   markerPH92.setVisible(true); 
+} else { 
+   markerPH92.setVisible(false);} 
+positionBL59 = markerBL59.getPosition(); 
+positionBL59Lat = positionBL59.lat(); 
+positionBL59Long = positionBL59.lng(); 
+distanceBL59 = Math.sqrt(Math.pow((positionLat-positionBL59Lat),2) + Math.pow((positionLong-positionBL59Long),2)); 
+if ( (distanceBL59 < minDist) && (eggs.innerHTML.indexOf('BL59') === -1)) { 
+   markerBL59.setVisible(true); 
+} else { 
+   markerBL59.setVisible(false);} 
+positionGG71 = markerGG71.getPosition(); 
+positionGG71Lat = positionGG71.lat(); 
+positionGG71Long = positionGG71.lng(); 
+distanceGG71 = Math.sqrt(Math.pow((positionLat-positionGG71Lat),2) + Math.pow((positionLong-positionGG71Long),2)); 
+if ( (distanceGG71 < minDist) && (eggs.innerHTML.indexOf('GG71') === -1)) { 
+   markerGG71.setVisible(true); 
+} else { 
+   markerGG71.setVisible(false);} 
+positionYS95 = markerYS95.getPosition(); 
+positionYS95Lat = positionYS95.lat(); 
+positionYS95Long = positionYS95.lng(); 
+distanceYS95 = Math.sqrt(Math.pow((positionLat-positionYS95Lat),2) + Math.pow((positionLong-positionYS95Long),2)); 
+if ( (distanceYS95 < minDist) && (eggs.innerHTML.indexOf('YS95') === -1)) { 
+   markerYS95.setVisible(true); 
+} else { 
+   markerYS95.setVisible(false);} 
+positionCK59 = markerCK59.getPosition(); 
+positionCK59Lat = positionCK59.lat(); 
+positionCK59Long = positionCK59.lng(); 
+distanceCK59 = Math.sqrt(Math.pow((positionLat-positionCK59Lat),2) + Math.pow((positionLong-positionCK59Long),2)); 
+if ( (distanceCK59 < minDist) && (eggs.innerHTML.indexOf('CK59') === -1)) { 
+   markerCK59.setVisible(true); 
+} else { 
+   markerCK59.setVisible(false);} 
+positionDG14 = markerDG14.getPosition(); 
+positionDG14Lat = positionDG14.lat(); 
+positionDG14Long = positionDG14.lng(); 
+distanceDG14 = Math.sqrt(Math.pow((positionLat-positionDG14Lat),2) + Math.pow((positionLong-positionDG14Long),2)); 
+if ( (distanceDG14 < minDist) && (eggs.innerHTML.indexOf('DG14') === -1)) { 
+   markerDG14.setVisible(true); 
+} else { 
+   markerDG14.setVisible(false);} 
+positionRC65 = markerRC65.getPosition(); 
+positionRC65Lat = positionRC65.lat(); 
+positionRC65Long = positionRC65.lng(); 
+distanceRC65 = Math.sqrt(Math.pow((positionLat-positionRC65Lat),2) + Math.pow((positionLong-positionRC65Long),2)); 
+if ( (distanceRC65 < minDist) && (eggs.innerHTML.indexOf('RC65') === -1)) { 
+   markerRC65.setVisible(true); 
+} else { 
+   markerRC65.setVisible(false);} 
+positionNG64 = markerNG64.getPosition(); 
+positionNG64Lat = positionNG64.lat(); 
+positionNG64Long = positionNG64.lng(); 
+distanceNG64 = Math.sqrt(Math.pow((positionLat-positionNG64Lat),2) + Math.pow((positionLong-positionNG64Long),2)); 
+if ( (distanceNG64 < minDist) && (eggs.innerHTML.indexOf('NG64') === -1)) { 
+   markerNG64.setVisible(true); 
+} else { 
+   markerNG64.setVisible(false);} 
+positionTA24 = markerTA24.getPosition(); 
+positionTA24Lat = positionTA24.lat(); 
+positionTA24Long = positionTA24.lng(); 
+distanceTA24 = Math.sqrt(Math.pow((positionLat-positionTA24Lat),2) + Math.pow((positionLong-positionTA24Long),2)); 
+if ( (distanceTA24 < minDist) && (eggs.innerHTML.indexOf('TA24') === -1)) { 
+   markerTA24.setVisible(true); 
+} else { 
+   markerTA24.setVisible(false);} 
+positionDJ27 = markerDJ27.getPosition(); 
+positionDJ27Lat = positionDJ27.lat(); 
+positionDJ27Long = positionDJ27.lng(); 
+distanceDJ27 = Math.sqrt(Math.pow((positionLat-positionDJ27Lat),2) + Math.pow((positionLong-positionDJ27Long),2)); 
+if ( (distanceDJ27 < minDist) && (eggs.innerHTML.indexOf('DJ27') === -1)) { 
+   markerDJ27.setVisible(true); 
+} else { 
+   markerDJ27.setVisible(false);} 
+positionLS26 = markerLS26.getPosition(); 
+positionLS26Lat = positionLS26.lat(); 
+positionLS26Long = positionLS26.lng(); 
+distanceLS26 = Math.sqrt(Math.pow((positionLat-positionLS26Lat),2) + Math.pow((positionLong-positionLS26Long),2)); 
+if ( (distanceLS26 < minDist) && (eggs.innerHTML.indexOf('LS26') === -1)) { 
+   markerLS26.setVisible(true); 
+} else { 
+   markerLS26.setVisible(false);} 
+positionFI97 = markerFI97.getPosition(); 
+positionFI97Lat = positionFI97.lat(); 
+positionFI97Long = positionFI97.lng(); 
+distanceFI97 = Math.sqrt(Math.pow((positionLat-positionFI97Lat),2) + Math.pow((positionLong-positionFI97Long),2)); 
+if ( (distanceFI97 < minDist) && (eggs.innerHTML.indexOf('FI97') === -1)) { 
+   markerFI97.setVisible(true); 
+} else { 
+   markerFI97.setVisible(false);} 
+positionWE69 = markerWE69.getPosition(); 
+positionWE69Lat = positionWE69.lat(); 
+positionWE69Long = positionWE69.lng(); 
+distanceWE69 = Math.sqrt(Math.pow((positionLat-positionWE69Lat),2) + Math.pow((positionLong-positionWE69Long),2)); 
+if ( (distanceWE69 < minDist) && (eggs.innerHTML.indexOf('WE69') === -1)) { 
+   markerWE69.setVisible(true); 
+} else { 
+   markerWE69.setVisible(false);} 
+positionQU77 = markerQU77.getPosition(); 
+positionQU77Lat = positionQU77.lat(); 
+positionQU77Long = positionQU77.lng(); 
+distanceQU77 = Math.sqrt(Math.pow((positionLat-positionQU77Lat),2) + Math.pow((positionLong-positionQU77Long),2)); 
+if ( (distanceQU77 < minDist) && (eggs.innerHTML.indexOf('QU77') === -1)) { 
+   markerQU77.setVisible(true); 
+} else { 
+   markerQU77.setVisible(false);} 
+positionCR59 = markerCR59.getPosition(); 
+positionCR59Lat = positionCR59.lat(); 
+positionCR59Long = positionCR59.lng(); 
+distanceCR59 = Math.sqrt(Math.pow((positionLat-positionCR59Lat),2) + Math.pow((positionLong-positionCR59Long),2)); 
+if ( (distanceCR59 < minDist) && (eggs.innerHTML.indexOf('CR59') === -1)) { 
+   markerCR59.setVisible(true); 
+} else { 
+   markerCR59.setVisible(false);} 
+positionZG93 = markerZG93.getPosition(); 
+positionZG93Lat = positionZG93.lat(); 
+positionZG93Long = positionZG93.lng(); 
+distanceZG93 = Math.sqrt(Math.pow((positionLat-positionZG93Lat),2) + Math.pow((positionLong-positionZG93Long),2)); 
+if ( (distanceZG93 < minDist) && (eggs.innerHTML.indexOf('ZG93') === -1)) { 
+   markerZG93.setVisible(true); 
+} else { 
+   markerZG93.setVisible(false);} 
+positionTU46 = markerTU46.getPosition(); 
+positionTU46Lat = positionTU46.lat(); 
+positionTU46Long = positionTU46.lng(); 
+distanceTU46 = Math.sqrt(Math.pow((positionLat-positionTU46Lat),2) + Math.pow((positionLong-positionTU46Long),2)); 
+if ( (distanceTU46 < minDist) && (eggs.innerHTML.indexOf('TU46') === -1)) { 
+   markerTU46.setVisible(true); 
+} else { 
+   markerTU46.setVisible(false);} 
+positionFT12 = markerFT12.getPosition(); 
+positionFT12Lat = positionFT12.lat(); 
+positionFT12Long = positionFT12.lng(); 
+distanceFT12 = Math.sqrt(Math.pow((positionLat-positionFT12Lat),2) + Math.pow((positionLong-positionFT12Long),2)); 
+if ( (distanceFT12 < minDist) && (eggs.innerHTML.indexOf('FT12') === -1)) { 
+   markerFT12.setVisible(true); 
+} else { 
+   markerFT12.setVisible(false);} 
+positionUG83 = markerUG83.getPosition(); 
+positionUG83Lat = positionUG83.lat(); 
+positionUG83Long = positionUG83.lng(); 
+distanceUG83 = Math.sqrt(Math.pow((positionLat-positionUG83Lat),2) + Math.pow((positionLong-positionUG83Long),2)); 
+if ( (distanceUG83 < minDist) && (eggs.innerHTML.indexOf('UG83') === -1)) { 
+   markerUG83.setVisible(true); 
+} else { 
+   markerUG83.setVisible(false);} 
+positionPC48 = markerPC48.getPosition(); 
+positionPC48Lat = positionPC48.lat(); 
+positionPC48Long = positionPC48.lng(); 
+distancePC48 = Math.sqrt(Math.pow((positionLat-positionPC48Lat),2) + Math.pow((positionLong-positionPC48Long),2)); 
+if ( (distancePC48 < minDist) && (eggs.innerHTML.indexOf('PC48') === -1)) { 
+   markerPC48.setVisible(true); 
+} else { 
+   markerPC48.setVisible(false);} 
+positionLZ95 = markerLZ95.getPosition(); 
+positionLZ95Lat = positionLZ95.lat(); 
+positionLZ95Long = positionLZ95.lng(); 
+distanceLZ95 = Math.sqrt(Math.pow((positionLat-positionLZ95Lat),2) + Math.pow((positionLong-positionLZ95Long),2)); 
+if ( (distanceLZ95 < minDist) && (eggs.innerHTML.indexOf('LZ95') === -1)) { 
+   markerLZ95.setVisible(true); 
+} else { 
+   markerLZ95.setVisible(false);} 
+positionDV73 = markerDV73.getPosition(); 
+positionDV73Lat = positionDV73.lat(); 
+positionDV73Long = positionDV73.lng(); 
+distanceDV73 = Math.sqrt(Math.pow((positionLat-positionDV73Lat),2) + Math.pow((positionLong-positionDV73Long),2)); 
+if ( (distanceDV73 < minDist) && (eggs.innerHTML.indexOf('DV73') === -1)) { 
+   markerDV73.setVisible(true); 
+} else { 
+   markerDV73.setVisible(false);} 
+positionTO65 = markerTO65.getPosition(); 
+positionTO65Lat = positionTO65.lat(); 
+positionTO65Long = positionTO65.lng(); 
+distanceTO65 = Math.sqrt(Math.pow((positionLat-positionTO65Lat),2) + Math.pow((positionLong-positionTO65Long),2)); 
+if ( (distanceTO65 < minDist) && (eggs.innerHTML.indexOf('TO65') === -1)) { 
+   markerTO65.setVisible(true); 
+} else { 
+   markerTO65.setVisible(false);} 
+positionYU16 = markerYU16.getPosition(); 
+positionYU16Lat = positionYU16.lat(); 
+positionYU16Long = positionYU16.lng(); 
+distanceYU16 = Math.sqrt(Math.pow((positionLat-positionYU16Lat),2) + Math.pow((positionLong-positionYU16Long),2)); 
+if ( (distanceYU16 < minDist) && (eggs.innerHTML.indexOf('YU16') === -1)) { 
+   markerYU16.setVisible(true); 
+} else { 
+   markerYU16.setVisible(false);} 
+positionXL49 = markerXL49.getPosition(); 
+positionXL49Lat = positionXL49.lat(); 
+positionXL49Long = positionXL49.lng(); 
+distanceXL49 = Math.sqrt(Math.pow((positionLat-positionXL49Lat),2) + Math.pow((positionLong-positionXL49Long),2)); 
+if ( (distanceXL49 < minDist) && (eggs.innerHTML.indexOf('XL49') === -1)) { 
+   markerXL49.setVisible(true); 
+} else { 
+   markerXL49.setVisible(false);} 
+positionUQ49 = markerUQ49.getPosition(); 
+positionUQ49Lat = positionUQ49.lat(); 
+positionUQ49Long = positionUQ49.lng(); 
+distanceUQ49 = Math.sqrt(Math.pow((positionLat-positionUQ49Lat),2) + Math.pow((positionLong-positionUQ49Long),2)); 
+if ( (distanceUQ49 < minDist) && (eggs.innerHTML.indexOf('UQ49') === -1)) { 
+   markerUQ49.setVisible(true); 
+} else { 
+   markerUQ49.setVisible(false);} 
+positionZZ14 = markerZZ14.getPosition(); 
+positionZZ14Lat = positionZZ14.lat(); 
+positionZZ14Long = positionZZ14.lng(); 
+distanceZZ14 = Math.sqrt(Math.pow((positionLat-positionZZ14Lat),2) + Math.pow((positionLong-positionZZ14Long),2)); 
+if ( (distanceZZ14 < minDist) && (eggs.innerHTML.indexOf('ZZ14') === -1)) { 
+   markerZZ14.setVisible(true); 
+} else { 
+   markerZZ14.setVisible(false);} 
+positionPO27 = markerPO27.getPosition(); 
+positionPO27Lat = positionPO27.lat(); 
+positionPO27Long = positionPO27.lng(); 
+distancePO27 = Math.sqrt(Math.pow((positionLat-positionPO27Lat),2) + Math.pow((positionLong-positionPO27Long),2)); 
+if ( (distancePO27 < minDist) && (eggs.innerHTML.indexOf('PO27') === -1)) { 
+   markerPO27.setVisible(true); 
+} else { 
+   markerPO27.setVisible(false);} 
+
   /* ----------------------------------------------------------
   -----------------------------------------------------------*/
 markerWM74.addListener('click', function() { 
@@ -4443,1714 +6150,7 @@ markerPO27.addListener('click', function() {
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
    markerPO27.setVisible(false); 
- }); 
-
-
-
- 
-
-
-        
-          
-
-/* ---------------------------------------------------------------------------
-------------------------------------------------------------------------------
-            Map clicking
------------------------------------------------------------------------------*/
-
-        // We get the map's default panorama and set up some defaults.
-        // Note that we don't yet set it visible.
-        panorama = map.getStreetView();
-        panorama.setPosition(crossroads);
-        panorama.setPov(/** @type {google.maps.StreetViewPov} */({
-          heading: 170,
-          pitch: 0
-        }));
-        panorama.setVisible(true);
-        
-        var youremailcount = 0;  
-          
-        var spreadsheetID = "19mmsjD_CnocnAMGMMF9sY0tIIB2NTXlVjjKktBUaquE";
-        var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/1/public/values?alt=json";
-        $( document ).ready(function() {
-            $.getJSON(url,function(data){
-                var entry = data.feed.entry;
-                $(entry).each(function(){
-                    $('#eggIDlist').append(this.gsx$eggid.$t+'</br>');
-                    $('#emailList').append(this.gsx$email.$t+'</br>');
-                    
-                    if( this.gsx$count.$t.length !== 0 ) {
-                        var eggsRemain = 200 - this.gsx$count.$t;
-                        $('#eggCount').html(eggsRemain);
-                    }
-                    if (eggsRemain === 0) {
-                        $('#allEggsFound').css("display","block");
-                    }
-                    
-
-                });
-            });
-        });   
-
-       document.addEventListener("click", function(){
-            position = panorama.getPosition();
-            positionLat = position.lat();
-            positionLong = position.lng();
-           
-            var eggs = document.getElementById("eggIDlist");
-            
-           
-            $.getJSON(url,function(data){
-                var entry = data.feed.entry;
-                $(entry).each(function(){
-                    $('#eggIDlist').append(this.gsx$eggid.$t+'</br>');
-                    $('#emailList').append(this.gsx$email.$t+'</br>');
-                    
-                    if( this.gsx$count.$t.length !== 0 ) {
-                        var eggsRemain = 200 - this.gsx$count.$t;
-                        $('#eggCount').html(eggsRemain);
-                    }
-                    if (eggsRemain === 0) {
-                        $('#allEggsFound').css("display","block");
-                    }
-
-                });
-            });
-            
-           var eggs = document.getElementById("eggIDlist");
-           
-           var emails = document.getElementById("emailList").innerHTML;
-           var re = new RegExp(youremail,'g');
-           var youremailcount = (emails.match(re) || []).length;
-           console.log(youremailcount)
-           
-           if ( emailentered ){
-              document.getElementById("yourEggs").innerHTML = youremailcount;
-           }
-           else {
-               document.getElementById("yourEggs").innerHTML = 0;
-           }
-  
-/* ---------------------------------------------------------------------------
-------------------------------------------------------------------------------
-            Hide Found Eggs 
------------------------------------------------------------------------------*/           
-             
-           
-           
-           
-           
-          
-    var minDist = 0.000225;        
-/* ---------------------------------------------------------------------------
-------------------------------------------------------------------------------
-            Add code about hiding distant eggs here 
------------------------------------------------------------------------------*/
-
-           
- positionUU72 = markerUU72.getPosition(); 
-positionUU72Lat = positionUU72.lat(); 
-positionUU72Long = positionUU72.lng(); 
-distanceUU72 = Math.sqrt(Math.pow((positionLat-positionUU72Lat),2) + Math.pow((positionLong-positionUU72Long),2)); 
-if ( (distanceUU72 < minDist) && (eggs.innerHTML.indexOf('UU72') === -1)) { 
-   markerUU72.setVisible(true); 
-} else { 
-   markerUU72.setVisible(false);} 
-positionNN53 = markerNN53.getPosition(); 
-positionNN53Lat = positionNN53.lat(); 
-positionNN53Long = positionNN53.lng(); 
-distanceNN53 = Math.sqrt(Math.pow((positionLat-positionNN53Lat),2) + Math.pow((positionLong-positionNN53Long),2)); 
-if ( (distanceNN53 < minDist) && (eggs.innerHTML.indexOf('NN53') === -1)) { 
-   markerNN53.setVisible(true); 
-} else { 
-   markerNN53.setVisible(false);} 
-positionYH55 = markerYH55.getPosition(); 
-positionYH55Lat = positionYH55.lat(); 
-positionYH55Long = positionYH55.lng(); 
-distanceYH55 = Math.sqrt(Math.pow((positionLat-positionYH55Lat),2) + Math.pow((positionLong-positionYH55Long),2)); 
-if ( (distanceYH55 < minDist) && (eggs.innerHTML.indexOf('YH55') === -1)) { 
-   markerYH55.setVisible(true); 
-} else { 
-   markerYH55.setVisible(false);} 
-positionNH62 = markerNH62.getPosition(); 
-positionNH62Lat = positionNH62.lat(); 
-positionNH62Long = positionNH62.lng(); 
-distanceNH62 = Math.sqrt(Math.pow((positionLat-positionNH62Lat),2) + Math.pow((positionLong-positionNH62Long),2)); 
-if ( (distanceNH62 < minDist) && (eggs.innerHTML.indexOf('NH62') === -1)) { 
-   markerNH62.setVisible(true); 
-} else { 
-   markerNH62.setVisible(false);} 
-positionGP84 = markerGP84.getPosition(); 
-positionGP84Lat = positionGP84.lat(); 
-positionGP84Long = positionGP84.lng(); 
-distanceGP84 = Math.sqrt(Math.pow((positionLat-positionGP84Lat),2) + Math.pow((positionLong-positionGP84Long),2)); 
-if ( (distanceGP84 < minDist) && (eggs.innerHTML.indexOf('GP84') === -1)) { 
-   markerGP84.setVisible(true); 
-} else { 
-   markerGP84.setVisible(false);} 
-positionNZ82 = markerNZ82.getPosition(); 
-positionNZ82Lat = positionNZ82.lat(); 
-positionNZ82Long = positionNZ82.lng(); 
-distanceNZ82 = Math.sqrt(Math.pow((positionLat-positionNZ82Lat),2) + Math.pow((positionLong-positionNZ82Long),2)); 
-if ( (distanceNZ82 < minDist) && (eggs.innerHTML.indexOf('NZ82') === -1)) { 
-   markerNZ82.setVisible(true); 
-} else { 
-   markerNZ82.setVisible(false);} 
-positionJD17 = markerJD17.getPosition(); 
-positionJD17Lat = positionJD17.lat(); 
-positionJD17Long = positionJD17.lng(); 
-distanceJD17 = Math.sqrt(Math.pow((positionLat-positionJD17Lat),2) + Math.pow((positionLong-positionJD17Long),2)); 
-if ( (distanceJD17 < minDist) && (eggs.innerHTML.indexOf('JD17') === -1)) { 
-   markerJD17.setVisible(true); 
-} else { 
-   markerJD17.setVisible(false);} 
-positionYD23 = markerYD23.getPosition(); 
-positionYD23Lat = positionYD23.lat(); 
-positionYD23Long = positionYD23.lng(); 
-distanceYD23 = Math.sqrt(Math.pow((positionLat-positionYD23Lat),2) + Math.pow((positionLong-positionYD23Long),2)); 
-if ( (distanceYD23 < minDist) && (eggs.innerHTML.indexOf('YD23') === -1)) { 
-   markerYD23.setVisible(true); 
-} else { 
-   markerYD23.setVisible(false);} 
-positionCQ82 = markerCQ82.getPosition(); 
-positionCQ82Lat = positionCQ82.lat(); 
-positionCQ82Long = positionCQ82.lng(); 
-distanceCQ82 = Math.sqrt(Math.pow((positionLat-positionCQ82Lat),2) + Math.pow((positionLong-positionCQ82Long),2)); 
-if ( (distanceCQ82 < minDist) && (eggs.innerHTML.indexOf('CQ82') === -1)) { 
-   markerCQ82.setVisible(true); 
-} else { 
-   markerCQ82.setVisible(false);} 
-positionHE53 = markerHE53.getPosition(); 
-positionHE53Lat = positionHE53.lat(); 
-positionHE53Long = positionHE53.lng(); 
-distanceHE53 = Math.sqrt(Math.pow((positionLat-positionHE53Lat),2) + Math.pow((positionLong-positionHE53Long),2)); 
-if ( (distanceHE53 < minDist) && (eggs.innerHTML.indexOf('HE53') === -1)) { 
-   markerHE53.setVisible(true); 
-} else { 
-   markerHE53.setVisible(false);} 
-positionFX23 = markerFX23.getPosition(); 
-positionFX23Lat = positionFX23.lat(); 
-positionFX23Long = positionFX23.lng(); 
-distanceFX23 = Math.sqrt(Math.pow((positionLat-positionFX23Lat),2) + Math.pow((positionLong-positionFX23Long),2)); 
-if ( (distanceFX23 < minDist) && (eggs.innerHTML.indexOf('FX23') === -1)) { 
-   markerFX23.setVisible(true); 
-} else { 
-   markerFX23.setVisible(false);} 
-positionXF71 = markerXF71.getPosition(); 
-positionXF71Lat = positionXF71.lat(); 
-positionXF71Long = positionXF71.lng(); 
-distanceXF71 = Math.sqrt(Math.pow((positionLat-positionXF71Lat),2) + Math.pow((positionLong-positionXF71Long),2)); 
-if ( (distanceXF71 < minDist) && (eggs.innerHTML.indexOf('XF71') === -1)) { 
-   markerXF71.setVisible(true); 
-} else { 
-   markerXF71.setVisible(false);} 
-positionPB12 = markerPB12.getPosition(); 
-positionPB12Lat = positionPB12.lat(); 
-positionPB12Long = positionPB12.lng(); 
-distancePB12 = Math.sqrt(Math.pow((positionLat-positionPB12Lat),2) + Math.pow((positionLong-positionPB12Long),2)); 
-if ( (distancePB12 < minDist) && (eggs.innerHTML.indexOf('PB12') === -1)) { 
-   markerPB12.setVisible(true); 
-} else { 
-   markerPB12.setVisible(false);} 
-positionZV96 = markerZV96.getPosition(); 
-positionZV96Lat = positionZV96.lat(); 
-positionZV96Long = positionZV96.lng(); 
-distanceZV96 = Math.sqrt(Math.pow((positionLat-positionZV96Lat),2) + Math.pow((positionLong-positionZV96Long),2)); 
-if ( (distanceZV96 < minDist) && (eggs.innerHTML.indexOf('ZV96') === -1)) { 
-   markerZV96.setVisible(true); 
-} else { 
-   markerZV96.setVisible(false);} 
-positionZC13 = markerZC13.getPosition(); 
-positionZC13Lat = positionZC13.lat(); 
-positionZC13Long = positionZC13.lng(); 
-distanceZC13 = Math.sqrt(Math.pow((positionLat-positionZC13Lat),2) + Math.pow((positionLong-positionZC13Long),2)); 
-if ( (distanceZC13 < minDist) && (eggs.innerHTML.indexOf('ZC13') === -1)) { 
-   markerZC13.setVisible(true); 
-} else { 
-   markerZC13.setVisible(false);} 
-positionSW89 = markerSW89.getPosition(); 
-positionSW89Lat = positionSW89.lat(); 
-positionSW89Long = positionSW89.lng(); 
-distanceSW89 = Math.sqrt(Math.pow((positionLat-positionSW89Lat),2) + Math.pow((positionLong-positionSW89Long),2)); 
-if ( (distanceSW89 < minDist) && (eggs.innerHTML.indexOf('SW89') === -1)) { 
-   markerSW89.setVisible(true); 
-} else { 
-   markerSW89.setVisible(false);} 
-positionHC81 = markerHC81.getPosition(); 
-positionHC81Lat = positionHC81.lat(); 
-positionHC81Long = positionHC81.lng(); 
-distanceHC81 = Math.sqrt(Math.pow((positionLat-positionHC81Lat),2) + Math.pow((positionLong-positionHC81Long),2)); 
-if ( (distanceHC81 < minDist) && (eggs.innerHTML.indexOf('HC81') === -1)) { 
-   markerHC81.setVisible(true); 
-} else { 
-   markerHC81.setVisible(false);} 
-positionUF95 = markerUF95.getPosition(); 
-positionUF95Lat = positionUF95.lat(); 
-positionUF95Long = positionUF95.lng(); 
-distanceUF95 = Math.sqrt(Math.pow((positionLat-positionUF95Lat),2) + Math.pow((positionLong-positionUF95Long),2)); 
-if ( (distanceUF95 < minDist) && (eggs.innerHTML.indexOf('UF95') === -1)) { 
-   markerUF95.setVisible(true); 
-} else { 
-   markerUF95.setVisible(false);} 
-positionFT81 = markerFT81.getPosition(); 
-positionFT81Lat = positionFT81.lat(); 
-positionFT81Long = positionFT81.lng(); 
-distanceFT81 = Math.sqrt(Math.pow((positionLat-positionFT81Lat),2) + Math.pow((positionLong-positionFT81Long),2)); 
-if ( (distanceFT81 < minDist) && (eggs.innerHTML.indexOf('FT81') === -1)) { 
-   markerFT81.setVisible(true); 
-} else { 
-   markerFT81.setVisible(false);} 
-positionQF91 = markerQF91.getPosition(); 
-positionQF91Lat = positionQF91.lat(); 
-positionQF91Long = positionQF91.lng(); 
-distanceQF91 = Math.sqrt(Math.pow((positionLat-positionQF91Lat),2) + Math.pow((positionLong-positionQF91Long),2)); 
-if ( (distanceQF91 < minDist) && (eggs.innerHTML.indexOf('QF91') === -1)) { 
-   markerQF91.setVisible(true); 
-} else { 
-   markerQF91.setVisible(false);} 
-positionVS13 = markerVS13.getPosition(); 
-positionVS13Lat = positionVS13.lat(); 
-positionVS13Long = positionVS13.lng(); 
-distanceVS13 = Math.sqrt(Math.pow((positionLat-positionVS13Lat),2) + Math.pow((positionLong-positionVS13Long),2)); 
-if ( (distanceVS13 < minDist) && (eggs.innerHTML.indexOf('VS13') === -1)) { 
-   markerVS13.setVisible(true); 
-} else { 
-   markerVS13.setVisible(false);} 
-positionFG67 = markerFG67.getPosition(); 
-positionFG67Lat = positionFG67.lat(); 
-positionFG67Long = positionFG67.lng(); 
-distanceFG67 = Math.sqrt(Math.pow((positionLat-positionFG67Lat),2) + Math.pow((positionLong-positionFG67Long),2)); 
-if ( (distanceFG67 < minDist) && (eggs.innerHTML.indexOf('FG67') === -1)) { 
-   markerFG67.setVisible(true); 
-} else { 
-   markerFG67.setVisible(false);} 
-positionJV82 = markerJV82.getPosition(); 
-positionJV82Lat = positionJV82.lat(); 
-positionJV82Long = positionJV82.lng(); 
-distanceJV82 = Math.sqrt(Math.pow((positionLat-positionJV82Lat),2) + Math.pow((positionLong-positionJV82Long),2)); 
-if ( (distanceJV82 < minDist) && (eggs.innerHTML.indexOf('JV82') === -1)) { 
-   markerJV82.setVisible(true); 
-} else { 
-   markerJV82.setVisible(false);} 
-positionBR25 = markerBR25.getPosition(); 
-positionBR25Lat = positionBR25.lat(); 
-positionBR25Long = positionBR25.lng(); 
-distanceBR25 = Math.sqrt(Math.pow((positionLat-positionBR25Lat),2) + Math.pow((positionLong-positionBR25Long),2)); 
-if ( (distanceBR25 < minDist) && (eggs.innerHTML.indexOf('BR25') === -1)) { 
-   markerBR25.setVisible(true); 
-} else { 
-   markerBR25.setVisible(false);} 
-positionKM28 = markerKM28.getPosition(); 
-positionKM28Lat = positionKM28.lat(); 
-positionKM28Long = positionKM28.lng(); 
-distanceKM28 = Math.sqrt(Math.pow((positionLat-positionKM28Lat),2) + Math.pow((positionLong-positionKM28Long),2)); 
-if ( (distanceKM28 < minDist) && (eggs.innerHTML.indexOf('KM28') === -1)) { 
-   markerKM28.setVisible(true); 
-} else { 
-   markerKM28.setVisible(false);} 
-positionOI57 = markerOI57.getPosition(); 
-positionOI57Lat = positionOI57.lat(); 
-positionOI57Long = positionOI57.lng(); 
-distanceOI57 = Math.sqrt(Math.pow((positionLat-positionOI57Lat),2) + Math.pow((positionLong-positionOI57Long),2)); 
-if ( (distanceOI57 < minDist) && (eggs.innerHTML.indexOf('OI57') === -1)) { 
-   markerOI57.setVisible(true); 
-} else { 
-   markerOI57.setVisible(false);} 
-positionHZ88 = markerHZ88.getPosition(); 
-positionHZ88Lat = positionHZ88.lat(); 
-positionHZ88Long = positionHZ88.lng(); 
-distanceHZ88 = Math.sqrt(Math.pow((positionLat-positionHZ88Lat),2) + Math.pow((positionLong-positionHZ88Long),2)); 
-if ( (distanceHZ88 < minDist) && (eggs.innerHTML.indexOf('HZ88') === -1)) { 
-   markerHZ88.setVisible(true); 
-} else { 
-   markerHZ88.setVisible(false);} 
-positionYF71 = markerYF71.getPosition(); 
-positionYF71Lat = positionYF71.lat(); 
-positionYF71Long = positionYF71.lng(); 
-distanceYF71 = Math.sqrt(Math.pow((positionLat-positionYF71Lat),2) + Math.pow((positionLong-positionYF71Long),2)); 
-if ( (distanceYF71 < minDist) && (eggs.innerHTML.indexOf('YF71') === -1)) { 
-   markerYF71.setVisible(true); 
-} else { 
-   markerYF71.setVisible(false);} 
-positionQB59 = markerQB59.getPosition(); 
-positionQB59Lat = positionQB59.lat(); 
-positionQB59Long = positionQB59.lng(); 
-distanceQB59 = Math.sqrt(Math.pow((positionLat-positionQB59Lat),2) + Math.pow((positionLong-positionQB59Long),2)); 
-if ( (distanceQB59 < minDist) && (eggs.innerHTML.indexOf('QB59') === -1)) { 
-   markerQB59.setVisible(true); 
-} else { 
-   markerQB59.setVisible(false);} 
-positionVP52 = markerVP52.getPosition(); 
-positionVP52Lat = positionVP52.lat(); 
-positionVP52Long = positionVP52.lng(); 
-distanceVP52 = Math.sqrt(Math.pow((positionLat-positionVP52Lat),2) + Math.pow((positionLong-positionVP52Long),2)); 
-if ( (distanceVP52 < minDist) && (eggs.innerHTML.indexOf('VP52') === -1)) { 
-   markerVP52.setVisible(true); 
-} else { 
-   markerVP52.setVisible(false);} 
-positionBZ14 = markerBZ14.getPosition(); 
-positionBZ14Lat = positionBZ14.lat(); 
-positionBZ14Long = positionBZ14.lng(); 
-distanceBZ14 = Math.sqrt(Math.pow((positionLat-positionBZ14Lat),2) + Math.pow((positionLong-positionBZ14Long),2)); 
-if ( (distanceBZ14 < minDist) && (eggs.innerHTML.indexOf('BZ14') === -1)) { 
-   markerBZ14.setVisible(true); 
-} else { 
-   markerBZ14.setVisible(false);} 
-positionOQ29 = markerOQ29.getPosition(); 
-positionOQ29Lat = positionOQ29.lat(); 
-positionOQ29Long = positionOQ29.lng(); 
-distanceOQ29 = Math.sqrt(Math.pow((positionLat-positionOQ29Lat),2) + Math.pow((positionLong-positionOQ29Long),2)); 
-if ( (distanceOQ29 < minDist) && (eggs.innerHTML.indexOf('OQ29') === -1)) { 
-   markerOQ29.setVisible(true); 
-} else { 
-   markerOQ29.setVisible(false);} 
-positionFT73 = markerFT73.getPosition(); 
-positionFT73Lat = positionFT73.lat(); 
-positionFT73Long = positionFT73.lng(); 
-distanceFT73 = Math.sqrt(Math.pow((positionLat-positionFT73Lat),2) + Math.pow((positionLong-positionFT73Long),2)); 
-if ( (distanceFT73 < minDist) && (eggs.innerHTML.indexOf('FT73') === -1)) { 
-   markerFT73.setVisible(true); 
-} else { 
-   markerFT73.setVisible(false);} 
-positionPN47 = markerPN47.getPosition(); 
-positionPN47Lat = positionPN47.lat(); 
-positionPN47Long = positionPN47.lng(); 
-distancePN47 = Math.sqrt(Math.pow((positionLat-positionPN47Lat),2) + Math.pow((positionLong-positionPN47Long),2)); 
-if ( (distancePN47 < minDist) && (eggs.innerHTML.indexOf('PN47') === -1)) { 
-   markerPN47.setVisible(true); 
-} else { 
-   markerPN47.setVisible(false);} 
-positionCP52 = markerCP52.getPosition(); 
-positionCP52Lat = positionCP52.lat(); 
-positionCP52Long = positionCP52.lng(); 
-distanceCP52 = Math.sqrt(Math.pow((positionLat-positionCP52Lat),2) + Math.pow((positionLong-positionCP52Long),2)); 
-if ( (distanceCP52 < minDist) && (eggs.innerHTML.indexOf('CP52') === -1)) { 
-   markerCP52.setVisible(true); 
-} else { 
-   markerCP52.setVisible(false);} 
-positionCR12 = markerCR12.getPosition(); 
-positionCR12Lat = positionCR12.lat(); 
-positionCR12Long = positionCR12.lng(); 
-distanceCR12 = Math.sqrt(Math.pow((positionLat-positionCR12Lat),2) + Math.pow((positionLong-positionCR12Long),2)); 
-if ( (distanceCR12 < minDist) && (eggs.innerHTML.indexOf('CR12') === -1)) { 
-   markerCR12.setVisible(true); 
-} else { 
-   markerCR12.setVisible(false);} 
-positionRL98 = markerRL98.getPosition(); 
-positionRL98Lat = positionRL98.lat(); 
-positionRL98Long = positionRL98.lng(); 
-distanceRL98 = Math.sqrt(Math.pow((positionLat-positionRL98Lat),2) + Math.pow((positionLong-positionRL98Long),2)); 
-if ( (distanceRL98 < minDist) && (eggs.innerHTML.indexOf('RL98') === -1)) { 
-   markerRL98.setVisible(true); 
-} else { 
-   markerRL98.setVisible(false);} 
-positionJR79 = markerJR79.getPosition(); 
-positionJR79Lat = positionJR79.lat(); 
-positionJR79Long = positionJR79.lng(); 
-distanceJR79 = Math.sqrt(Math.pow((positionLat-positionJR79Lat),2) + Math.pow((positionLong-positionJR79Long),2)); 
-if ( (distanceJR79 < minDist) && (eggs.innerHTML.indexOf('JR79') === -1)) { 
-   markerJR79.setVisible(true); 
-} else { 
-   markerJR79.setVisible(false);} 
-positionKD38 = markerKD38.getPosition(); 
-positionKD38Lat = positionKD38.lat(); 
-positionKD38Long = positionKD38.lng(); 
-distanceKD38 = Math.sqrt(Math.pow((positionLat-positionKD38Lat),2) + Math.pow((positionLong-positionKD38Long),2)); 
-if ( (distanceKD38 < minDist) && (eggs.innerHTML.indexOf('KD38') === -1)) { 
-   markerKD38.setVisible(true); 
-} else { 
-   markerKD38.setVisible(false);} 
-positionKK34 = markerKK34.getPosition(); 
-positionKK34Lat = positionKK34.lat(); 
-positionKK34Long = positionKK34.lng(); 
-distanceKK34 = Math.sqrt(Math.pow((positionLat-positionKK34Lat),2) + Math.pow((positionLong-positionKK34Long),2)); 
-if ( (distanceKK34 < minDist) && (eggs.innerHTML.indexOf('KK34') === -1)) { 
-   markerKK34.setVisible(true); 
-} else { 
-   markerKK34.setVisible(false);} 
-positionHR61 = markerHR61.getPosition(); 
-positionHR61Lat = positionHR61.lat(); 
-positionHR61Long = positionHR61.lng(); 
-distanceHR61 = Math.sqrt(Math.pow((positionLat-positionHR61Lat),2) + Math.pow((positionLong-positionHR61Long),2)); 
-if ( (distanceHR61 < minDist) && (eggs.innerHTML.indexOf('HR61') === -1)) { 
-   markerHR61.setVisible(true); 
-} else { 
-   markerHR61.setVisible(false);} 
-positionXA41 = markerXA41.getPosition(); 
-positionXA41Lat = positionXA41.lat(); 
-positionXA41Long = positionXA41.lng(); 
-distanceXA41 = Math.sqrt(Math.pow((positionLat-positionXA41Lat),2) + Math.pow((positionLong-positionXA41Long),2)); 
-if ( (distanceXA41 < minDist) && (eggs.innerHTML.indexOf('XA41') === -1)) { 
-   markerXA41.setVisible(true); 
-} else { 
-   markerXA41.setVisible(false);} 
-positionMM75 = markerMM75.getPosition(); 
-positionMM75Lat = positionMM75.lat(); 
-positionMM75Long = positionMM75.lng(); 
-distanceMM75 = Math.sqrt(Math.pow((positionLat-positionMM75Lat),2) + Math.pow((positionLong-positionMM75Long),2)); 
-if ( (distanceMM75 < minDist) && (eggs.innerHTML.indexOf('MM75') === -1)) { 
-   markerMM75.setVisible(true); 
-} else { 
-   markerMM75.setVisible(false);} 
-positionDL54 = markerDL54.getPosition(); 
-positionDL54Lat = positionDL54.lat(); 
-positionDL54Long = positionDL54.lng(); 
-distanceDL54 = Math.sqrt(Math.pow((positionLat-positionDL54Lat),2) + Math.pow((positionLong-positionDL54Long),2)); 
-if ( (distanceDL54 < minDist) && (eggs.innerHTML.indexOf('DL54') === -1)) { 
-   markerDL54.setVisible(true); 
-} else { 
-   markerDL54.setVisible(false);} 
-positionCB65 = markerCB65.getPosition(); 
-positionCB65Lat = positionCB65.lat(); 
-positionCB65Long = positionCB65.lng(); 
-distanceCB65 = Math.sqrt(Math.pow((positionLat-positionCB65Lat),2) + Math.pow((positionLong-positionCB65Long),2)); 
-if ( (distanceCB65 < minDist) && (eggs.innerHTML.indexOf('CB65') === -1)) { 
-   markerCB65.setVisible(true); 
-} else { 
-   markerCB65.setVisible(false);} 
-positionKS16 = markerKS16.getPosition(); 
-positionKS16Lat = positionKS16.lat(); 
-positionKS16Long = positionKS16.lng(); 
-distanceKS16 = Math.sqrt(Math.pow((positionLat-positionKS16Lat),2) + Math.pow((positionLong-positionKS16Long),2)); 
-if ( (distanceKS16 < minDist) && (eggs.innerHTML.indexOf('KS16') === -1)) { 
-   markerKS16.setVisible(true); 
-} else { 
-   markerKS16.setVisible(false);} 
-positionTW26 = markerTW26.getPosition(); 
-positionTW26Lat = positionTW26.lat(); 
-positionTW26Long = positionTW26.lng(); 
-distanceTW26 = Math.sqrt(Math.pow((positionLat-positionTW26Lat),2) + Math.pow((positionLong-positionTW26Long),2)); 
-if ( (distanceTW26 < minDist) && (eggs.innerHTML.indexOf('TW26') === -1)) { 
-   markerTW26.setVisible(true); 
-} else { 
-   markerTW26.setVisible(false);} 
-positionUI38 = markerUI38.getPosition(); 
-positionUI38Lat = positionUI38.lat(); 
-positionUI38Long = positionUI38.lng(); 
-distanceUI38 = Math.sqrt(Math.pow((positionLat-positionUI38Lat),2) + Math.pow((positionLong-positionUI38Long),2)); 
-if ( (distanceUI38 < minDist) && (eggs.innerHTML.indexOf('UI38') === -1)) { 
-   markerUI38.setVisible(true); 
-} else { 
-   markerUI38.setVisible(false);} 
-positionGP51 = markerGP51.getPosition(); 
-positionGP51Lat = positionGP51.lat(); 
-positionGP51Long = positionGP51.lng(); 
-distanceGP51 = Math.sqrt(Math.pow((positionLat-positionGP51Lat),2) + Math.pow((positionLong-positionGP51Long),2)); 
-if ( (distanceGP51 < minDist) && (eggs.innerHTML.indexOf('GP51') === -1)) { 
-   markerGP51.setVisible(true); 
-} else { 
-   markerGP51.setVisible(false);} 
-positionUC78 = markerUC78.getPosition(); 
-positionUC78Lat = positionUC78.lat(); 
-positionUC78Long = positionUC78.lng(); 
-distanceUC78 = Math.sqrt(Math.pow((positionLat-positionUC78Lat),2) + Math.pow((positionLong-positionUC78Long),2)); 
-if ( (distanceUC78 < minDist) && (eggs.innerHTML.indexOf('UC78') === -1)) { 
-   markerUC78.setVisible(true); 
-} else { 
-   markerUC78.setVisible(false);} 
-positionIH31 = markerIH31.getPosition(); 
-positionIH31Lat = positionIH31.lat(); 
-positionIH31Long = positionIH31.lng(); 
-distanceIH31 = Math.sqrt(Math.pow((positionLat-positionIH31Lat),2) + Math.pow((positionLong-positionIH31Long),2)); 
-if ( (distanceIH31 < minDist) && (eggs.innerHTML.indexOf('IH31') === -1)) { 
-   markerIH31.setVisible(true); 
-} else { 
-   markerIH31.setVisible(false);} 
-positionUC64 = markerUC64.getPosition(); 
-positionUC64Lat = positionUC64.lat(); 
-positionUC64Long = positionUC64.lng(); 
-distanceUC64 = Math.sqrt(Math.pow((positionLat-positionUC64Lat),2) + Math.pow((positionLong-positionUC64Long),2)); 
-if ( (distanceUC64 < minDist) && (eggs.innerHTML.indexOf('UC64') === -1)) { 
-   markerUC64.setVisible(true); 
-} else { 
-   markerUC64.setVisible(false);} 
-positionYU83 = markerYU83.getPosition(); 
-positionYU83Lat = positionYU83.lat(); 
-positionYU83Long = positionYU83.lng(); 
-distanceYU83 = Math.sqrt(Math.pow((positionLat-positionYU83Lat),2) + Math.pow((positionLong-positionYU83Long),2)); 
-if ( (distanceYU83 < minDist) && (eggs.innerHTML.indexOf('YU83') === -1)) { 
-   markerYU83.setVisible(true); 
-} else { 
-   markerYU83.setVisible(false);} 
-positionXP36 = markerXP36.getPosition(); 
-positionXP36Lat = positionXP36.lat(); 
-positionXP36Long = positionXP36.lng(); 
-distanceXP36 = Math.sqrt(Math.pow((positionLat-positionXP36Lat),2) + Math.pow((positionLong-positionXP36Long),2)); 
-if ( (distanceXP36 < minDist) && (eggs.innerHTML.indexOf('XP36') === -1)) { 
-   markerXP36.setVisible(true); 
-} else { 
-   markerXP36.setVisible(false);} 
-positionHL51 = markerHL51.getPosition(); 
-positionHL51Lat = positionHL51.lat(); 
-positionHL51Long = positionHL51.lng(); 
-distanceHL51 = Math.sqrt(Math.pow((positionLat-positionHL51Lat),2) + Math.pow((positionLong-positionHL51Long),2)); 
-if ( (distanceHL51 < minDist) && (eggs.innerHTML.indexOf('HL51') === -1)) { 
-   markerHL51.setVisible(true); 
-} else { 
-   markerHL51.setVisible(false);} 
-positionDJ55 = markerDJ55.getPosition(); 
-positionDJ55Lat = positionDJ55.lat(); 
-positionDJ55Long = positionDJ55.lng(); 
-distanceDJ55 = Math.sqrt(Math.pow((positionLat-positionDJ55Lat),2) + Math.pow((positionLong-positionDJ55Long),2)); 
-if ( (distanceDJ55 < minDist) && (eggs.innerHTML.indexOf('DJ55') === -1)) { 
-   markerDJ55.setVisible(true); 
-} else { 
-   markerDJ55.setVisible(false);} 
-positionZF45 = markerZF45.getPosition(); 
-positionZF45Lat = positionZF45.lat(); 
-positionZF45Long = positionZF45.lng(); 
-distanceZF45 = Math.sqrt(Math.pow((positionLat-positionZF45Lat),2) + Math.pow((positionLong-positionZF45Long),2)); 
-if ( (distanceZF45 < minDist) && (eggs.innerHTML.indexOf('ZF45') === -1)) { 
-   markerZF45.setVisible(true); 
-} else { 
-   markerZF45.setVisible(false);} 
-positionPJ54 = markerPJ54.getPosition(); 
-positionPJ54Lat = positionPJ54.lat(); 
-positionPJ54Long = positionPJ54.lng(); 
-distancePJ54 = Math.sqrt(Math.pow((positionLat-positionPJ54Lat),2) + Math.pow((positionLong-positionPJ54Long),2)); 
-if ( (distancePJ54 < minDist) && (eggs.innerHTML.indexOf('PJ54') === -1)) { 
-   markerPJ54.setVisible(true); 
-} else { 
-   markerPJ54.setVisible(false);} 
-positionEG25 = markerEG25.getPosition(); 
-positionEG25Lat = positionEG25.lat(); 
-positionEG25Long = positionEG25.lng(); 
-distanceEG25 = Math.sqrt(Math.pow((positionLat-positionEG25Lat),2) + Math.pow((positionLong-positionEG25Long),2)); 
-if ( (distanceEG25 < minDist) && (eggs.innerHTML.indexOf('EG25') === -1)) { 
-   markerEG25.setVisible(true); 
-} else { 
-   markerEG25.setVisible(false);} 
-positionHC43 = markerHC43.getPosition(); 
-positionHC43Lat = positionHC43.lat(); 
-positionHC43Long = positionHC43.lng(); 
-distanceHC43 = Math.sqrt(Math.pow((positionLat-positionHC43Lat),2) + Math.pow((positionLong-positionHC43Long),2)); 
-if ( (distanceHC43 < minDist) && (eggs.innerHTML.indexOf('HC43') === -1)) { 
-   markerHC43.setVisible(true); 
-} else { 
-   markerHC43.setVisible(false);} 
-positionJI44 = markerJI44.getPosition(); 
-positionJI44Lat = positionJI44.lat(); 
-positionJI44Long = positionJI44.lng(); 
-distanceJI44 = Math.sqrt(Math.pow((positionLat-positionJI44Lat),2) + Math.pow((positionLong-positionJI44Long),2)); 
-if ( (distanceJI44 < minDist) && (eggs.innerHTML.indexOf('JI44') === -1)) { 
-   markerJI44.setVisible(true); 
-} else { 
-   markerJI44.setVisible(false);} 
-positionZZ15 = markerZZ15.getPosition(); 
-positionZZ15Lat = positionZZ15.lat(); 
-positionZZ15Long = positionZZ15.lng(); 
-distanceZZ15 = Math.sqrt(Math.pow((positionLat-positionZZ15Lat),2) + Math.pow((positionLong-positionZZ15Long),2)); 
-if ( (distanceZZ15 < minDist) && (eggs.innerHTML.indexOf('ZZ15') === -1)) { 
-   markerZZ15.setVisible(true); 
-} else { 
-   markerZZ15.setVisible(false);} 
-positionGM91 = markerGM91.getPosition(); 
-positionGM91Lat = positionGM91.lat(); 
-positionGM91Long = positionGM91.lng(); 
-distanceGM91 = Math.sqrt(Math.pow((positionLat-positionGM91Lat),2) + Math.pow((positionLong-positionGM91Long),2)); 
-if ( (distanceGM91 < minDist) && (eggs.innerHTML.indexOf('GM91') === -1)) { 
-   markerGM91.setVisible(true); 
-} else { 
-   markerGM91.setVisible(false);} 
-positionKJ78 = markerKJ78.getPosition(); 
-positionKJ78Lat = positionKJ78.lat(); 
-positionKJ78Long = positionKJ78.lng(); 
-distanceKJ78 = Math.sqrt(Math.pow((positionLat-positionKJ78Lat),2) + Math.pow((positionLong-positionKJ78Long),2)); 
-if ( (distanceKJ78 < minDist) && (eggs.innerHTML.indexOf('KJ78') === -1)) { 
-   markerKJ78.setVisible(true); 
-} else { 
-   markerKJ78.setVisible(false);} 
-positionMW95 = markerMW95.getPosition(); 
-positionMW95Lat = positionMW95.lat(); 
-positionMW95Long = positionMW95.lng(); 
-distanceMW95 = Math.sqrt(Math.pow((positionLat-positionMW95Lat),2) + Math.pow((positionLong-positionMW95Long),2)); 
-if ( (distanceMW95 < minDist) && (eggs.innerHTML.indexOf('MW95') === -1)) { 
-   markerMW95.setVisible(true); 
-} else { 
-   markerMW95.setVisible(false);} 
-positionAD33 = markerAD33.getPosition(); 
-positionAD33Lat = positionAD33.lat(); 
-positionAD33Long = positionAD33.lng(); 
-distanceAD33 = Math.sqrt(Math.pow((positionLat-positionAD33Lat),2) + Math.pow((positionLong-positionAD33Long),2)); 
-if ( (distanceAD33 < minDist) && (eggs.innerHTML.indexOf('AD33') === -1)) { 
-    markerAD33.setVisible(true); 
-} else { 
-   markerAD33.setVisible(false);} 
-positionRC33 = markerRC33.getPosition(); 
-positionRC33Lat = positionRC33.lat(); 
-positionRC33Long = positionRC33.lng(); 
-distanceRC33 = Math.sqrt(Math.pow((positionLat-positionRC33Lat),2) + Math.pow((positionLong-positionRC33Long),2)); 
-           
-if ( (distanceRC33 < minDist) && (eggs.innerHTML.indexOf('RC33') === -1)) { 
-   markerRC33.setVisible(true); 
-} else { 
-   markerRC33.setVisible(false);} 
-positionVM31 = markerVM31.getPosition(); 
-positionVM31Lat = positionVM31.lat(); 
-positionVM31Long = positionVM31.lng(); 
-distanceVM31 = Math.sqrt(Math.pow((positionLat-positionVM31Lat),2) + Math.pow((positionLong-positionVM31Long),2)); 
-if ( (distanceVM31 < minDist) && (eggs.innerHTML.indexOf('VM31') === -1)) { 
-   markerVM31.setVisible(true); 
-} else { 
-   markerVM31.setVisible(false);} 
-positionIE17 = markerIE17.getPosition(); 
-positionIE17Lat = positionIE17.lat(); 
-positionIE17Long = positionIE17.lng(); 
-distanceIE17 = Math.sqrt(Math.pow((positionLat-positionIE17Lat),2) + Math.pow((positionLong-positionIE17Long),2)); 
-if ( (distanceIE17 < minDist) && (eggs.innerHTML.indexOf('IE17') === -1)) { 
-   markerIE17.setVisible(true); 
-} else { 
-   markerIE17.setVisible(false);} 
-positionAK16 = markerAK16.getPosition(); 
-positionAK16Lat = positionAK16.lat(); 
-positionAK16Long = positionAK16.lng(); 
-distanceAK16 = Math.sqrt(Math.pow((positionLat-positionAK16Lat),2) + Math.pow((positionLong-positionAK16Long),2)); 
-if ( (distanceAK16 < minDist) && (eggs.innerHTML.indexOf('AK16') === -1)) { 
-   markerAK16.setVisible(true); 
-} else { 
-   markerAK16.setVisible(false);} 
-positionIO29 = markerIO29.getPosition(); 
-positionIO29Lat = positionIO29.lat(); 
-positionIO29Long = positionIO29.lng(); 
-distanceIO29 = Math.sqrt(Math.pow((positionLat-positionIO29Lat),2) + Math.pow((positionLong-positionIO29Long),2)); 
-if ( (distanceIO29 < minDist) && (eggs.innerHTML.indexOf('IO29') === -1)) { 
-   markerIO29.setVisible(true); 
-} else { 
-   markerIO29.setVisible(false);} 
-positionAM26 = markerAM26.getPosition(); 
-positionAM26Lat = positionAM26.lat(); 
-positionAM26Long = positionAM26.lng(); 
-distanceAM26 = Math.sqrt(Math.pow((positionLat-positionAM26Lat),2) + Math.pow((positionLong-positionAM26Long),2)); 
-if ( (distanceAM26 < minDist) && (eggs.innerHTML.indexOf('AM26') === -1)) { 
-   markerAM26.setVisible(true); 
-} else { 
-   markerAM26.setVisible(false);} 
-positionRS57 = markerRS57.getPosition(); 
-positionRS57Lat = positionRS57.lat(); 
-positionRS57Long = positionRS57.lng(); 
-distanceRS57 = Math.sqrt(Math.pow((positionLat-positionRS57Lat),2) + Math.pow((positionLong-positionRS57Long),2)); 
-if ( (distanceRS57 < minDist) && (eggs.innerHTML.indexOf('RS57') === -1)) { 
-   markerRS57.setVisible(true); 
-} else { 
-   markerRS57.setVisible(false);} 
-positionLY83 = markerLY83.getPosition(); 
-positionLY83Lat = positionLY83.lat(); 
-positionLY83Long = positionLY83.lng(); 
-distanceLY83 = Math.sqrt(Math.pow((positionLat-positionLY83Lat),2) + Math.pow((positionLong-positionLY83Long),2)); 
-if ( (distanceLY83 < minDist) && (eggs.innerHTML.indexOf('LY83') === -1)) { 
-   markerLY83.setVisible(true); 
-} else { 
-   markerLY83.setVisible(false);} 
-positionZS57 = markerZS57.getPosition(); 
-positionZS57Lat = positionZS57.lat(); 
-positionZS57Long = positionZS57.lng(); 
-distanceZS57 = Math.sqrt(Math.pow((positionLat-positionZS57Lat),2) + Math.pow((positionLong-positionZS57Long),2)); 
-if ( (distanceZS57 < minDist) && (eggs.innerHTML.indexOf('ZS57') === -1)) { 
-   markerZS57.setVisible(true); 
-} else { 
-   markerZS57.setVisible(false);} 
-positionLZ99 = markerLZ99.getPosition(); 
-positionLZ99Lat = positionLZ99.lat(); 
-positionLZ99Long = positionLZ99.lng(); 
-distanceLZ99 = Math.sqrt(Math.pow((positionLat-positionLZ99Lat),2) + Math.pow((positionLong-positionLZ99Long),2)); 
-if ( (distanceLZ99 < minDist) && (eggs.innerHTML.indexOf('LZ99') === -1)) { 
-   markerLZ99.setVisible(true); 
-} else { 
-   markerLZ99.setVisible(false);} 
-positionKB32 = markerKB32.getPosition(); 
-positionKB32Lat = positionKB32.lat(); 
-positionKB32Long = positionKB32.lng(); 
-distanceKB32 = Math.sqrt(Math.pow((positionLat-positionKB32Lat),2) + Math.pow((positionLong-positionKB32Long),2)); 
-if ( (distanceKB32 < minDist) && (eggs.innerHTML.indexOf('KB32') === -1)) { 
-   markerKB32.setVisible(true); 
-} else { 
-   markerKB32.setVisible(false);} 
-positionOO79 = markerOO79.getPosition(); 
-positionOO79Lat = positionOO79.lat(); 
-positionOO79Long = positionOO79.lng(); 
-distanceOO79 = Math.sqrt(Math.pow((positionLat-positionOO79Lat),2) + Math.pow((positionLong-positionOO79Long),2)); 
-if ( (distanceOO79 < minDist) && (eggs.innerHTML.indexOf('OO79') === -1)) { 
-   markerOO79.setVisible(true); 
-} else { 
-   markerOO79.setVisible(false);} 
-positionRG46 = markerRG46.getPosition(); 
-positionRG46Lat = positionRG46.lat(); 
-positionRG46Long = positionRG46.lng(); 
-distanceRG46 = Math.sqrt(Math.pow((positionLat-positionRG46Lat),2) + Math.pow((positionLong-positionRG46Long),2)); 
-if ( (distanceRG46 < minDist) && (eggs.innerHTML.indexOf('RG46') === -1)) { 
-   markerRG46.setVisible(true); 
-} else { 
-   markerRG46.setVisible(false);} 
-positionIB56 = markerIB56.getPosition(); 
-positionIB56Lat = positionIB56.lat(); 
-positionIB56Long = positionIB56.lng(); 
-distanceIB56 = Math.sqrt(Math.pow((positionLat-positionIB56Lat),2) + Math.pow((positionLong-positionIB56Long),2)); 
-if ( (distanceIB56 < minDist) && (eggs.innerHTML.indexOf('IB56') === -1)) { 
-   markerIB56.setVisible(true); 
-} else { 
-   markerIB56.setVisible(false);} 
-positionCQ16 = markerCQ16.getPosition(); 
-positionCQ16Lat = positionCQ16.lat(); 
-positionCQ16Long = positionCQ16.lng(); 
-distanceCQ16 = Math.sqrt(Math.pow((positionLat-positionCQ16Lat),2) + Math.pow((positionLong-positionCQ16Long),2)); 
-if ( (distanceCQ16 < minDist) && (eggs.innerHTML.indexOf('CQ16') === -1)) { 
-   markerCQ16.setVisible(true); 
-} else { 
-   markerCQ16.setVisible(false);} 
-positionNY26 = markerNY26.getPosition(); 
-positionNY26Lat = positionNY26.lat(); 
-positionNY26Long = positionNY26.lng(); 
-distanceNY26 = Math.sqrt(Math.pow((positionLat-positionNY26Lat),2) + Math.pow((positionLong-positionNY26Long),2)); 
-if ( (distanceNY26 < minDist) && (eggs.innerHTML.indexOf('NY26') === -1)) { 
-   markerNY26.setVisible(true); 
-} else { 
-   markerNY26.setVisible(false);} 
-positionAT14 = markerAT14.getPosition(); 
-positionAT14Lat = positionAT14.lat(); 
-positionAT14Long = positionAT14.lng(); 
-distanceAT14 = Math.sqrt(Math.pow((positionLat-positionAT14Lat),2) + Math.pow((positionLong-positionAT14Long),2)); 
-if ( (distanceAT14 < minDist) && (eggs.innerHTML.indexOf('AT14') === -1)) { 
-   markerAT14.setVisible(true); 
-} else { 
-   markerAT14.setVisible(false);} 
-positionWN37 = markerWN37.getPosition(); 
-positionWN37Lat = positionWN37.lat(); 
-positionWN37Long = positionWN37.lng(); 
-distanceWN37 = Math.sqrt(Math.pow((positionLat-positionWN37Lat),2) + Math.pow((positionLong-positionWN37Long),2)); 
-if ( (distanceWN37 < minDist) && (eggs.innerHTML.indexOf('WN37') === -1)) { 
-   markerWN37.setVisible(true); 
-} else { 
-   markerWN37.setVisible(false);} 
-positionYV79 = markerYV79.getPosition(); 
-positionYV79Lat = positionYV79.lat(); 
-positionYV79Long = positionYV79.lng(); 
-distanceYV79 = Math.sqrt(Math.pow((positionLat-positionYV79Lat),2) + Math.pow((positionLong-positionYV79Long),2)); 
-if ( (distanceYV79 < minDist) && (eggs.innerHTML.indexOf('YV79') === -1)) { 
-   markerYV79.setVisible(true); 
-} else { 
-   markerYV79.setVisible(false);} 
-positionWM74 = markerWM74.getPosition(); 
-positionWM74Lat = positionWM74.lat(); 
-positionWM74Long = positionWM74.lng(); 
-distanceWM74 = Math.sqrt(Math.pow((positionLat-positionWM74Lat),2) + Math.pow((positionLong-positionWM74Long),2)); 
-if ( (distanceWM74 < minDist) && (eggs.innerHTML.indexOf('WM74') === -1)) { 
-   markerWM74.setVisible(true); 
-} else { 
-   markerWM74.setVisible(false);} 
-positionQK69 = markerQK69.getPosition(); 
-positionQK69Lat = positionQK69.lat(); 
-positionQK69Long = positionQK69.lng(); 
-distanceQK69 = Math.sqrt(Math.pow((positionLat-positionQK69Lat),2) + Math.pow((positionLong-positionQK69Long),2)); 
-if ( (distanceQK69 < minDist) && (eggs.innerHTML.indexOf('QK69') === -1)) { 
-   markerQK69.setVisible(true); 
-} else { 
-   markerQK69.setVisible(false);} 
-positionAO27 = markerAO27.getPosition(); 
-positionAO27Lat = positionAO27.lat(); 
-positionAO27Long = positionAO27.lng(); 
-distanceAO27 = Math.sqrt(Math.pow((positionLat-positionAO27Lat),2) + Math.pow((positionLong-positionAO27Long),2)); 
-if ( (distanceAO27 < minDist) && (eggs.innerHTML.indexOf('AO27') === -1)) { 
-   markerAO27.setVisible(true); 
-} else { 
-   markerAO27.setVisible(false);} 
-positionJU69 = markerJU69.getPosition(); 
-positionJU69Lat = positionJU69.lat(); 
-positionJU69Long = positionJU69.lng(); 
-distanceJU69 = Math.sqrt(Math.pow((positionLat-positionJU69Lat),2) + Math.pow((positionLong-positionJU69Long),2)); 
-if ( (distanceJU69 < minDist) && (eggs.innerHTML.indexOf('JU69') === -1)) { 
-   markerJU69.setVisible(true); 
-} else { 
-   markerJU69.setVisible(false);} 
-positionUI82 = markerUI82.getPosition(); 
-positionUI82Lat = positionUI82.lat(); 
-positionUI82Long = positionUI82.lng(); 
-distanceUI82 = Math.sqrt(Math.pow((positionLat-positionUI82Lat),2) + Math.pow((positionLong-positionUI82Long),2)); 
-if ( (distanceUI82 < minDist) && (eggs.innerHTML.indexOf('UI82') === -1)) { 
-   markerUI82.setVisible(true); 
-} else { 
-   markerUI82.setVisible(false);} 
-positionVG65 = markerVG65.getPosition(); 
-positionVG65Lat = positionVG65.lat(); 
-positionVG65Long = positionVG65.lng(); 
-distanceVG65 = Math.sqrt(Math.pow((positionLat-positionVG65Lat),2) + Math.pow((positionLong-positionVG65Long),2)); 
-if ( (distanceVG65 < minDist) && (eggs.innerHTML.indexOf('VG65') === -1)) { 
-   markerVG65.setVisible(true); 
-} else { 
-   markerVG65.setVisible(false);} 
-positionWT92 = markerWT92.getPosition(); 
-positionWT92Lat = positionWT92.lat(); 
-positionWT92Long = positionWT92.lng(); 
-distanceWT92 = Math.sqrt(Math.pow((positionLat-positionWT92Lat),2) + Math.pow((positionLong-positionWT92Long),2)); 
-if ( (distanceWT92 < minDist) && (eggs.innerHTML.indexOf('WT92') === -1)) { 
-   markerWT92.setVisible(true); 
-} else { 
-   markerWT92.setVisible(false);} 
-positionJI68 = markerJI68.getPosition(); 
-positionJI68Lat = positionJI68.lat(); 
-positionJI68Long = positionJI68.lng(); 
-distanceJI68 = Math.sqrt(Math.pow((positionLat-positionJI68Lat),2) + Math.pow((positionLong-positionJI68Long),2)); 
-if ( (distanceJI68 < minDist) && (eggs.innerHTML.indexOf('JI68') === -1)) { 
-   markerJI68.setVisible(true); 
-} else { 
-   markerJI68.setVisible(false);} 
-positionCG81 = markerCG81.getPosition(); 
-positionCG81Lat = positionCG81.lat(); 
-positionCG81Long = positionCG81.lng(); 
-distanceCG81 = Math.sqrt(Math.pow((positionLat-positionCG81Lat),2) + Math.pow((positionLong-positionCG81Long),2)); 
-if ( (distanceCG81 < minDist) && (eggs.innerHTML.indexOf('CG81') === -1)) { 
-   markerCG81.setVisible(true); 
-} else { 
-   markerCG81.setVisible(false);} 
-positionQO72 = markerQO72.getPosition(); 
-positionQO72Lat = positionQO72.lat(); 
-positionQO72Long = positionQO72.lng(); 
-distanceQO72 = Math.sqrt(Math.pow((positionLat-positionQO72Lat),2) + Math.pow((positionLong-positionQO72Long),2)); 
-if ( (distanceQO72 < minDist) && (eggs.innerHTML.indexOf('QO72') === -1)) { 
-   markerQO72.setVisible(true); 
-} else { 
-   markerQO72.setVisible(false);} 
-positionEK44 = markerEK44.getPosition(); 
-positionEK44Lat = positionEK44.lat(); 
-positionEK44Long = positionEK44.lng(); 
-distanceEK44 = Math.sqrt(Math.pow((positionLat-positionEK44Lat),2) + Math.pow((positionLong-positionEK44Long),2)); 
-if ( (distanceEK44 < minDist) && (eggs.innerHTML.indexOf('EK44') === -1)) { 
-   markerEK44.setVisible(true); 
-} else { 
-   markerEK44.setVisible(false);} 
-positionOK89 = markerOK89.getPosition(); 
-positionOK89Lat = positionOK89.lat(); 
-positionOK89Long = positionOK89.lng(); 
-distanceOK89 = Math.sqrt(Math.pow((positionLat-positionOK89Lat),2) + Math.pow((positionLong-positionOK89Long),2)); 
-if ( (distanceOK89 < minDist) && (eggs.innerHTML.indexOf('OK89') === -1)) { 
-   markerOK89.setVisible(true); 
-} else { 
-   markerOK89.setVisible(false);} 
-positionHM77 = markerHM77.getPosition(); 
-positionHM77Lat = positionHM77.lat(); 
-positionHM77Long = positionHM77.lng(); 
-distanceHM77 = Math.sqrt(Math.pow((positionLat-positionHM77Lat),2) + Math.pow((positionLong-positionHM77Long),2)); 
-if ( (distanceHM77 < minDist) && (eggs.innerHTML.indexOf('HM77') === -1)) { 
-   markerHM77.setVisible(true); 
-} else { 
-   markerHM77.setVisible(false);} 
-positionLZ52 = markerLZ52.getPosition(); 
-positionLZ52Lat = positionLZ52.lat(); 
-positionLZ52Long = positionLZ52.lng(); 
-distanceLZ52 = Math.sqrt(Math.pow((positionLat-positionLZ52Lat),2) + Math.pow((positionLong-positionLZ52Long),2)); 
-if ( (distanceLZ52 < minDist) && (eggs.innerHTML.indexOf('LZ52') === -1)) { 
-   markerLZ52.setVisible(true); 
-} else { 
-   markerLZ52.setVisible(false);} 
-positionVL46 = markerVL46.getPosition(); 
-positionVL46Lat = positionVL46.lat(); 
-positionVL46Long = positionVL46.lng(); 
-distanceVL46 = Math.sqrt(Math.pow((positionLat-positionVL46Lat),2) + Math.pow((positionLong-positionVL46Long),2)); 
-if ( (distanceVL46 < minDist) && (eggs.innerHTML.indexOf('VL46') === -1)) { 
-   markerVL46.setVisible(true); 
-} else { 
-   markerVL46.setVisible(false);} 
-positionVG67 = markerVG67.getPosition(); 
-positionVG67Lat = positionVG67.lat(); 
-positionVG67Long = positionVG67.lng(); 
-distanceVG67 = Math.sqrt(Math.pow((positionLat-positionVG67Lat),2) + Math.pow((positionLong-positionVG67Long),2)); 
-if ( (distanceVG67 < minDist) && (eggs.innerHTML.indexOf('VG67') === -1)) { 
-   markerVG67.setVisible(true); 
-} else { 
-   markerVG67.setVisible(false);} 
-positionAD43 = markerAD43.getPosition(); 
-positionAD43Lat = positionAD43.lat(); 
-positionAD43Long = positionAD43.lng(); 
-distanceAD43 = Math.sqrt(Math.pow((positionLat-positionAD43Lat),2) + Math.pow((positionLong-positionAD43Long),2)); 
-if ( (distanceAD43 < minDist) && (eggs.innerHTML.indexOf('AD43') === -1)) { 
-   markerAD43.setVisible(true); 
-} else { 
-   markerAD43.setVisible(false);} 
-positionHG51 = markerHG51.getPosition(); 
-positionHG51Lat = positionHG51.lat(); 
-positionHG51Long = positionHG51.lng(); 
-distanceHG51 = Math.sqrt(Math.pow((positionLat-positionHG51Lat),2) + Math.pow((positionLong-positionHG51Long),2)); 
-if ( (distanceHG51 < minDist) && (eggs.innerHTML.indexOf('HG51') === -1)) { 
-   markerHG51.setVisible(true); 
-} else { 
-   markerHG51.setVisible(false);} 
-positionEB16 = markerEB16.getPosition(); 
-positionEB16Lat = positionEB16.lat(); 
-positionEB16Long = positionEB16.lng(); 
-distanceEB16 = Math.sqrt(Math.pow((positionLat-positionEB16Lat),2) + Math.pow((positionLong-positionEB16Long),2)); 
-if ( (distanceEB16 < minDist) && (eggs.innerHTML.indexOf('EB16') === -1)) { 
-   markerEB16.setVisible(true); 
-} else { 
-   markerEB16.setVisible(false);} 
-positionXC22 = markerXC22.getPosition(); 
-positionXC22Lat = positionXC22.lat(); 
-positionXC22Long = positionXC22.lng(); 
-distanceXC22 = Math.sqrt(Math.pow((positionLat-positionXC22Lat),2) + Math.pow((positionLong-positionXC22Long),2)); 
-if ( (distanceXC22 < minDist) && (eggs.innerHTML.indexOf('XC22') === -1)) { 
-   markerXC22.setVisible(true); 
-} else { 
-   markerXC22.setVisible(false);} 
-positionRO65 = markerRO65.getPosition(); 
-positionRO65Lat = positionRO65.lat(); 
-positionRO65Long = positionRO65.lng(); 
-distanceRO65 = Math.sqrt(Math.pow((positionLat-positionRO65Lat),2) + Math.pow((positionLong-positionRO65Long),2)); 
-if ( (distanceRO65 < minDist) && (eggs.innerHTML.indexOf('RO65') === -1)) { 
-   markerRO65.setVisible(true); 
-} else { 
-   markerRO65.setVisible(false);} 
-positionYS27 = markerYS27.getPosition(); 
-positionYS27Lat = positionYS27.lat(); 
-positionYS27Long = positionYS27.lng(); 
-distanceYS27 = Math.sqrt(Math.pow((positionLat-positionYS27Lat),2) + Math.pow((positionLong-positionYS27Long),2)); 
-if ( (distanceYS27 < minDist) && (eggs.innerHTML.indexOf('YS27') === -1)) { 
-   markerYS27.setVisible(true); 
-} else { 
-   markerYS27.setVisible(false);} 
-positionFJ91 = markerFJ91.getPosition(); 
-positionFJ91Lat = positionFJ91.lat(); 
-positionFJ91Long = positionFJ91.lng(); 
-distanceFJ91 = Math.sqrt(Math.pow((positionLat-positionFJ91Lat),2) + Math.pow((positionLong-positionFJ91Long),2)); 
-if ( (distanceFJ91 < minDist) && (eggs.innerHTML.indexOf('FJ91') === -1)) { 
-   markerFJ91.setVisible(true); 
-} else { 
-   markerFJ91.setVisible(false);} 
-positionOS56 = markerOS56.getPosition(); 
-positionOS56Lat = positionOS56.lat(); 
-positionOS56Long = positionOS56.lng(); 
-distanceOS56 = Math.sqrt(Math.pow((positionLat-positionOS56Lat),2) + Math.pow((positionLong-positionOS56Long),2)); 
-if ( (distanceOS56 < minDist) && (eggs.innerHTML.indexOf('OS56') === -1)) { 
-   markerOS56.setVisible(true); 
-} else { 
-   markerOS56.setVisible(false);} 
-positionBW19 = markerBW19.getPosition(); 
-positionBW19Lat = positionBW19.lat(); 
-positionBW19Long = positionBW19.lng(); 
-distanceBW19 = Math.sqrt(Math.pow((positionLat-positionBW19Lat),2) + Math.pow((positionLong-positionBW19Long),2)); 
-if ( (distanceBW19 < minDist) && (eggs.innerHTML.indexOf('BW19') === -1)) { 
-   markerBW19.setVisible(true); 
-} else { 
-   markerBW19.setVisible(false);} 
-positionRS35 = markerRS35.getPosition(); 
-positionRS35Lat = positionRS35.lat(); 
-positionRS35Long = positionRS35.lng(); 
-distanceRS35 = Math.sqrt(Math.pow((positionLat-positionRS35Lat),2) + Math.pow((positionLong-positionRS35Long),2)); 
-if ( (distanceRS35 < minDist) && (eggs.innerHTML.indexOf('RS35') === -1)) { 
-   markerRS35.setVisible(true); 
-} else { 
-   markerRS35.setVisible(false);} 
-positionUZ81 = markerUZ81.getPosition(); 
-positionUZ81Lat = positionUZ81.lat(); 
-positionUZ81Long = positionUZ81.lng(); 
-distanceUZ81 = Math.sqrt(Math.pow((positionLat-positionUZ81Lat),2) + Math.pow((positionLong-positionUZ81Long),2)); 
-if ( (distanceUZ81 < minDist) && (eggs.innerHTML.indexOf('UZ81') === -1)) { 
-   markerUZ81.setVisible(true); 
-} else { 
-   markerUZ81.setVisible(false);} 
-positionQI43 = markerQI43.getPosition(); 
-positionQI43Lat = positionQI43.lat(); 
-positionQI43Long = positionQI43.lng(); 
-distanceQI43 = Math.sqrt(Math.pow((positionLat-positionQI43Lat),2) + Math.pow((positionLong-positionQI43Long),2)); 
-if ( (distanceQI43 < minDist) && (eggs.innerHTML.indexOf('QI43') === -1)) { 
-   markerQI43.setVisible(true); 
-} else { 
-   markerQI43.setVisible(false);} 
-positionVC37 = markerVC37.getPosition(); 
-positionVC37Lat = positionVC37.lat(); 
-positionVC37Long = positionVC37.lng(); 
-distanceVC37 = Math.sqrt(Math.pow((positionLat-positionVC37Lat),2) + Math.pow((positionLong-positionVC37Long),2)); 
-if ( (distanceVC37 < minDist) && (eggs.innerHTML.indexOf('VC37') === -1)) { 
-   markerVC37.setVisible(true); 
-} else { 
-   markerVC37.setVisible(false);} 
-positionZI98 = markerZI98.getPosition(); 
-positionZI98Lat = positionZI98.lat(); 
-positionZI98Long = positionZI98.lng(); 
-distanceZI98 = Math.sqrt(Math.pow((positionLat-positionZI98Lat),2) + Math.pow((positionLong-positionZI98Long),2)); 
-if ( (distanceZI98 < minDist) && (eggs.innerHTML.indexOf('ZI98') === -1)) { 
-   markerZI98.setVisible(true); 
-} else { 
-   markerZI98.setVisible(false);} 
-positionIV92 = markerIV92.getPosition(); 
-positionIV92Lat = positionIV92.lat(); 
-positionIV92Long = positionIV92.lng(); 
-distanceIV92 = Math.sqrt(Math.pow((positionLat-positionIV92Lat),2) + Math.pow((positionLong-positionIV92Long),2)); 
-if ( (distanceIV92 < minDist) && (eggs.innerHTML.indexOf('IV92') === -1)) { 
-   markerIV92.setVisible(true); 
-} else { 
-   markerIV92.setVisible(false);} 
-positionHX41 = markerHX41.getPosition(); 
-positionHX41Lat = positionHX41.lat(); 
-positionHX41Long = positionHX41.lng(); 
-distanceHX41 = Math.sqrt(Math.pow((positionLat-positionHX41Lat),2) + Math.pow((positionLong-positionHX41Long),2)); 
-if ( (distanceHX41 < minDist) && (eggs.innerHTML.indexOf('HX41') === -1)) { 
-   markerHX41.setVisible(true); 
-} else { 
-   markerHX41.setVisible(false);} 
-positionNO59 = markerNO59.getPosition(); 
-positionNO59Lat = positionNO59.lat(); 
-positionNO59Long = positionNO59.lng(); 
-distanceNO59 = Math.sqrt(Math.pow((positionLat-positionNO59Lat),2) + Math.pow((positionLong-positionNO59Long),2)); 
-if ( (distanceNO59 < minDist) && (eggs.innerHTML.indexOf('NO59') === -1)) { 
-   markerNO59.setVisible(true); 
-} else { 
-   markerNO59.setVisible(false);} 
-positionTW47 = markerTW47.getPosition(); 
-positionTW47Lat = positionTW47.lat(); 
-positionTW47Long = positionTW47.lng(); 
-distanceTW47 = Math.sqrt(Math.pow((positionLat-positionTW47Lat),2) + Math.pow((positionLong-positionTW47Long),2)); 
-if ( (distanceTW47 < minDist) && (eggs.innerHTML.indexOf('TW47') === -1)) { 
-   markerTW47.setVisible(true); 
-} else { 
-   markerTW47.setVisible(false);} 
-positionIR53 = markerIR53.getPosition(); 
-positionIR53Lat = positionIR53.lat(); 
-positionIR53Long = positionIR53.lng(); 
-distanceIR53 = Math.sqrt(Math.pow((positionLat-positionIR53Lat),2) + Math.pow((positionLong-positionIR53Long),2)); 
-if ( (distanceIR53 < minDist) && (eggs.innerHTML.indexOf('IR53') === -1)) { 
-   markerIR53.setVisible(true); 
-} else { 
-   markerIR53.setVisible(false);} 
-positionIR63 = markerIR63.getPosition(); 
-positionIR63Lat = positionIR63.lat(); 
-positionIR63Long = positionIR63.lng(); 
-distanceIR63 = Math.sqrt(Math.pow((positionLat-positionIR63Lat),2) + Math.pow((positionLong-positionIR63Long),2)); 
-if ( (distanceIR63 < minDist) && (eggs.innerHTML.indexOf('IR63') === -1)) { 
-   markerIR63.setVisible(true); 
-} else { 
-   markerIR63.setVisible(false);} 
-positionOH99 = markerOH99.getPosition(); 
-positionOH99Lat = positionOH99.lat(); 
-positionOH99Long = positionOH99.lng(); 
-distanceOH99 = Math.sqrt(Math.pow((positionLat-positionOH99Lat),2) + Math.pow((positionLong-positionOH99Long),2)); 
-if ( (distanceOH99 < minDist) && (eggs.innerHTML.indexOf('OH99') === -1)) { 
-   markerOH99.setVisible(true); 
-} else { 
-   markerOH99.setVisible(false);} 
-positionVQ12 = markerVQ12.getPosition(); 
-positionVQ12Lat = positionVQ12.lat(); 
-positionVQ12Long = positionVQ12.lng(); 
-distanceVQ12 = Math.sqrt(Math.pow((positionLat-positionVQ12Lat),2) + Math.pow((positionLong-positionVQ12Long),2)); 
-if ( (distanceVQ12 < minDist) && (eggs.innerHTML.indexOf('VQ12') === -1)) { 
-   markerVQ12.setVisible(true); 
-} else { 
-   markerVQ12.setVisible(false);} 
-positionDH45 = markerDH45.getPosition(); 
-positionDH45Lat = positionDH45.lat(); 
-positionDH45Long = positionDH45.lng(); 
-distanceDH45 = Math.sqrt(Math.pow((positionLat-positionDH45Lat),2) + Math.pow((positionLong-positionDH45Long),2)); 
-if ( (distanceDH45 < minDist) && (eggs.innerHTML.indexOf('DH45') === -1)) { 
-   markerDH45.setVisible(true); 
-} else { 
-   markerDH45.setVisible(false);} 
-positionXB59 = markerXB59.getPosition(); 
-positionXB59Lat = positionXB59.lat(); 
-positionXB59Long = positionXB59.lng(); 
-distanceXB59 = Math.sqrt(Math.pow((positionLat-positionXB59Lat),2) + Math.pow((positionLong-positionXB59Long),2)); 
-if ( (distanceXB59 < minDist) && (eggs.innerHTML.indexOf('XB59') === -1)) { 
-   markerXB59.setVisible(true); 
-} else { 
-   markerXB59.setVisible(false);} 
-positionNT78 = markerNT78.getPosition(); 
-positionNT78Lat = positionNT78.lat(); 
-positionNT78Long = positionNT78.lng(); 
-distanceNT78 = Math.sqrt(Math.pow((positionLat-positionNT78Lat),2) + Math.pow((positionLong-positionNT78Long),2)); 
-if ( (distanceNT78 < minDist) && (eggs.innerHTML.indexOf('NT78') === -1)) { 
-   markerNT78.setVisible(true); 
-} else { 
-   markerNT78.setVisible(false);} 
-positionUE48 = markerUE48.getPosition(); 
-positionUE48Lat = positionUE48.lat(); 
-positionUE48Long = positionUE48.lng(); 
-distanceUE48 = Math.sqrt(Math.pow((positionLat-positionUE48Lat),2) + Math.pow((positionLong-positionUE48Long),2)); 
-if ( (distanceUE48 < minDist) && (eggs.innerHTML.indexOf('UE48') === -1)) { 
-   markerUE48.setVisible(true); 
-} else { 
-   markerUE48.setVisible(false);} 
-positionPR42 = markerPR42.getPosition(); 
-positionPR42Lat = positionPR42.lat(); 
-positionPR42Long = positionPR42.lng(); 
-distancePR42 = Math.sqrt(Math.pow((positionLat-positionPR42Lat),2) + Math.pow((positionLong-positionPR42Long),2)); 
-if ( (distancePR42 < minDist) && (eggs.innerHTML.indexOf('PR42') === -1)) { 
-   markerPR42.setVisible(true); 
-} else { 
-   markerPR42.setVisible(false);} 
-positionFD56 = markerFD56.getPosition(); 
-positionFD56Lat = positionFD56.lat(); 
-positionFD56Long = positionFD56.lng(); 
-distanceFD56 = Math.sqrt(Math.pow((positionLat-positionFD56Lat),2) + Math.pow((positionLong-positionFD56Long),2)); 
-if ( (distanceFD56 < minDist) && (eggs.innerHTML.indexOf('FD56') === -1)) { 
-   markerFD56.setVisible(true); 
-} else { 
-   markerFD56.setVisible(false);} 
-positionQU47 = markerQU47.getPosition(); 
-positionQU47Lat = positionQU47.lat(); 
-positionQU47Long = positionQU47.lng(); 
-distanceQU47 = Math.sqrt(Math.pow((positionLat-positionQU47Lat),2) + Math.pow((positionLong-positionQU47Long),2)); 
-if ( (distanceQU47 < minDist) && (eggs.innerHTML.indexOf('QU47') === -1)) { 
-   markerQU47.setVisible(true); 
-} else { 
-   markerQU47.setVisible(false);} 
-positionPY21 = markerPY21.getPosition(); 
-positionPY21Lat = positionPY21.lat(); 
-positionPY21Long = positionPY21.lng(); 
-distancePY21 = Math.sqrt(Math.pow((positionLat-positionPY21Lat),2) + Math.pow((positionLong-positionPY21Long),2)); 
-if ( (distancePY21 < minDist) && (eggs.innerHTML.indexOf('PY21') === -1)) { 
-   markerPY21.setVisible(true); 
-} else { 
-   markerPY21.setVisible(false);} 
-positionBD14 = markerBD14.getPosition(); 
-positionBD14Lat = positionBD14.lat(); 
-positionBD14Long = positionBD14.lng(); 
-distanceBD14 = Math.sqrt(Math.pow((positionLat-positionBD14Lat),2) + Math.pow((positionLong-positionBD14Long),2)); 
-if ( (distanceBD14 < minDist) && (eggs.innerHTML.indexOf('BD14') === -1)) { 
-   markerBD14.setVisible(true); 
-} else { 
-   markerBD14.setVisible(false);} 
-   
-positionJP68 = markerJP68.getPosition(); 
-positionJP68Lat = positionJP68.lat(); 
-positionJP68Long = positionJP68.lng(); 
-distanceJP68 = Math.sqrt(Math.pow((positionLat-positionJP68Lat),2) + Math.pow((positionLong-positionJP68Long),2)); 
-if ( (distanceJP68 < minDist) && (eggs.innerHTML.indexOf('JP68') === -1)) { 
-   markerJP68.setVisible(true); 
-} else { 
-   markerJP68.setVisible(false);} 
-positionVS12 = markerVS12.getPosition(); 
-positionVS12Lat = positionVS12.lat(); 
-positionVS12Long = positionVS12.lng(); 
-distanceVS12 = Math.sqrt(Math.pow((positionLat-positionVS12Lat),2) + Math.pow((positionLong-positionVS12Long),2)); 
-if ( (distanceVS12 < minDist) && (eggs.innerHTML.indexOf('VS12') === -1)) { 
-   markerVS12.setVisible(true); 
-} else { 
-   markerVS12.setVisible(false);} 
-positionRB88 = markerRB88.getPosition(); 
-positionRB88Lat = positionRB88.lat(); 
-positionRB88Long = positionRB88.lng(); 
-distanceRB88 = Math.sqrt(Math.pow((positionLat-positionRB88Lat),2) + Math.pow((positionLong-positionRB88Long),2)); 
-if ( (distanceRB88 < minDist) && (eggs.innerHTML.indexOf('RB88') === -1)) { 
-   markerRB88.setVisible(true); 
-} else { 
-   markerRB88.setVisible(false);} 
-positionKB46 = markerKB46.getPosition(); 
-positionKB46Lat = positionKB46.lat(); 
-positionKB46Long = positionKB46.lng(); 
-distanceKB46 = Math.sqrt(Math.pow((positionLat-positionKB46Lat),2) + Math.pow((positionLong-positionKB46Long),2)); 
-if ( (distanceKB46 < minDist) && (eggs.innerHTML.indexOf('KB46') === -1)) { 
-   markerKB46.setVisible(true); 
-} else { 
-   markerKB46.setVisible(false);} 
-positionPM51 = markerPM51.getPosition(); 
-positionPM51Lat = positionPM51.lat(); 
-positionPM51Long = positionPM51.lng(); 
-distancePM51 = Math.sqrt(Math.pow((positionLat-positionPM51Lat),2) + Math.pow((positionLong-positionPM51Long),2)); 
-if ( (distancePM51 < minDist) && (eggs.innerHTML.indexOf('PM51') === -1)) { 
-   markerPM51.setVisible(true); 
-} else { 
-   markerPM51.setVisible(false);} 
-positionUM87 = markerUM87.getPosition(); 
-positionUM87Lat = positionUM87.lat(); 
-positionUM87Long = positionUM87.lng(); 
-distanceUM87 = Math.sqrt(Math.pow((positionLat-positionUM87Lat),2) + Math.pow((positionLong-positionUM87Long),2)); 
-if ( (distanceUM87 < minDist) && (eggs.innerHTML.indexOf('UM87') === -1)) { 
-   markerUM87.setVisible(true); 
-} else { 
-   markerUM87.setVisible(false);} 
-positionMQ35 = markerMQ35.getPosition(); 
-positionMQ35Lat = positionMQ35.lat(); 
-positionMQ35Long = positionMQ35.lng(); 
-distanceMQ35 = Math.sqrt(Math.pow((positionLat-positionMQ35Lat),2) + Math.pow((positionLong-positionMQ35Long),2)); 
-if ( (distanceMQ35 < minDist) && (eggs.innerHTML.indexOf('MQ35') === -1)) {         markerMQ35.setVisible(true); 
-} else { 
-   markerMQ35.setVisible(false);} 
-positionIR72 = markerIR72.getPosition(); 
-positionIR72Lat = positionIR72.lat(); 
-positionIR72Long = positionIR72.lng(); 
-distanceIR72 = Math.sqrt(Math.pow((positionLat-positionIR72Lat),2) + Math.pow((positionLong-positionIR72Long),2)); 
-if ( (distanceIR72 < minDist) && (eggs.innerHTML.indexOf('IR72') === -1)) { 
-   markerIR72.setVisible(true); 
-} else { 
-   markerIR72.setVisible(false);} 
-positionRP99 = markerRP99.getPosition(); 
-positionRP99Lat = positionRP99.lat(); 
-positionRP99Long = positionRP99.lng(); 
-distanceRP99 = Math.sqrt(Math.pow((positionLat-positionRP99Lat),2) + Math.pow((positionLong-positionRP99Long),2)); 
-if ( (distanceRP99 < minDist) && (eggs.innerHTML.indexOf('RP99') === -1)) { 
-   markerRP99.setVisible(true); 
-} else { 
-   markerRP99.setVisible(false);} 
-positionGE49 = markerGE49.getPosition(); 
-positionGE49Lat = positionGE49.lat(); 
-positionGE49Long = positionGE49.lng(); 
-distanceGE49 = Math.sqrt(Math.pow((positionLat-positionGE49Lat),2) + Math.pow((positionLong-positionGE49Long),2)); 
-if ( (distanceGE49 < minDist) && (eggs.innerHTML.indexOf('GE49') === -1)) { 
-   markerGE49.setVisible(true); 
-} else { 
-   markerGE49.setVisible(false);} 
-positionYJ12 = markerYJ12.getPosition(); 
-positionYJ12Lat = positionYJ12.lat(); 
-positionYJ12Long = positionYJ12.lng(); 
-distanceYJ12 = Math.sqrt(Math.pow((positionLat-positionYJ12Lat),2) + Math.pow((positionLong-positionYJ12Long),2)); 
-if ( (distanceYJ12 < minDist) && (eggs.innerHTML.indexOf('YJ12') === -1)) { 
-   markerYJ12.setVisible(true); 
-} else { 
-   markerYJ12.setVisible(false);} 
-positionFL43 = markerFL43.getPosition(); 
-positionFL43Lat = positionFL43.lat(); 
-positionFL43Long = positionFL43.lng(); 
-distanceFL43 = Math.sqrt(Math.pow((positionLat-positionFL43Lat),2) + Math.pow((positionLong-positionFL43Long),2)); 
-if ( (distanceFL43 < minDist) && (eggs.innerHTML.indexOf('FL43') === -1)) { 
-   markerFL43.setVisible(true); 
-} else { 
-   markerFL43.setVisible(false);} 
-positionBD66 = markerBD66.getPosition(); 
-positionBD66Lat = positionBD66.lat(); 
-positionBD66Long = positionBD66.lng(); 
-distanceBD66 = Math.sqrt(Math.pow((positionLat-positionBD66Lat),2) + Math.pow((positionLong-positionBD66Long),2)); 
-if ( (distanceBD66 < minDist) && (eggs.innerHTML.indexOf('BD66') === -1)) { 
-   markerBD66.setVisible(true); 
-} else { 
-   markerBD66.setVisible(false);}
-positionNO63 = markerNO63.getPosition(); 
-positionNO63Lat = positionNO63.lat(); 
-positionNO63Long = positionNO63.lng(); 
-distanceNO63 = Math.sqrt(Math.pow((positionLat-positionNO63Lat),2) + Math.pow((positionLong-positionNO63Long),2)); 
-if ( (distanceNO63 < minDist) && (eggs.innerHTML.indexOf('NO63') === -1)) { 
-   markerNO63.setVisible(true); 
-} else { 
-   markerNO63.setVisible(false);} 
-positionQG57 = markerQG57.getPosition(); 
-positionQG57Lat = positionQG57.lat(); 
-positionQG57Long = positionQG57.lng(); 
-distanceQG57 = Math.sqrt(Math.pow((positionLat-positionQG57Lat),2) + Math.pow((positionLong-positionQG57Long),2)); 
-if ( (distanceQG57 < minDist) && (eggs.innerHTML.indexOf('QG57') === -1)) { 
-   markerQG57.setVisible(true); 
-} else { 
-   markerQG57.setVisible(false);} 
-positionXN62 = markerXN62.getPosition(); 
-positionXN62Lat = positionXN62.lat(); 
-positionXN62Long = positionXN62.lng(); 
-distanceXN62 = Math.sqrt(Math.pow((positionLat-positionXN62Lat),2) + Math.pow((positionLong-positionXN62Long),2)); 
-if ( (distanceXN62 < minDist) && (eggs.innerHTML.indexOf('XN62') === -1)) { 
-   markerXN62.setVisible(true); 
-} else { 
-   markerXN62.setVisible(false);} 
-positionSU93 = markerSU93.getPosition(); 
-positionSU93Lat = positionSU93.lat(); 
-positionSU93Long = positionSU93.lng(); 
-distanceSU93 = Math.sqrt(Math.pow((positionLat-positionSU93Lat),2) + Math.pow((positionLong-positionSU93Long),2)); 
-if ( (distanceSU93 < minDist) && (eggs.innerHTML.indexOf('SU93') === -1)) { 
-   markerSU93.setVisible(true); 
-} else { 
-   markerSU93.setVisible(false);} 
-positionVX92 = markerVX92.getPosition(); 
-positionVX92Lat = positionVX92.lat(); 
-positionVX92Long = positionVX92.lng(); 
-distanceVX92 = Math.sqrt(Math.pow((positionLat-positionVX92Lat),2) + Math.pow((positionLong-positionVX92Long),2)); 
-if ( (distanceVX92 < minDist) && (eggs.innerHTML.indexOf('VX92') === -1)) { 
-   markerVX92.setVisible(true); 
-} else { 
-   markerVX92.setVisible(false);} 
-positionJR85 = markerJR85.getPosition(); 
-positionJR85Lat = positionJR85.lat(); 
-positionJR85Long = positionJR85.lng(); 
-distanceJR85 = Math.sqrt(Math.pow((positionLat-positionJR85Lat),2) + Math.pow((positionLong-positionJR85Long),2)); 
-if ( (distanceJR85 < minDist) && (eggs.innerHTML.indexOf('JR85') === -1)) { 
-   markerJR85.setVisible(true); 
-} else { 
-   markerJR85.setVisible(false);} 
-positionYY45 = markerYY45.getPosition(); 
-positionYY45Lat = positionYY45.lat(); 
-positionYY45Long = positionYY45.lng(); 
-distanceYY45 = Math.sqrt(Math.pow((positionLat-positionYY45Lat),2) + Math.pow((positionLong-positionYY45Long),2)); 
-if ( (distanceYY45 < minDist) && (eggs.innerHTML.indexOf('YY45') === -1)) { 
-   markerYY45.setVisible(true); 
-} else { 
-   markerYY45.setVisible(false);} 
-positionPL39 = markerPL39.getPosition(); 
-positionPL39Lat = positionPL39.lat(); 
-positionPL39Long = positionPL39.lng(); 
-distancePL39 = Math.sqrt(Math.pow((positionLat-positionPL39Lat),2) + Math.pow((positionLong-positionPL39Long),2)); 
-if ( (distancePL39 < minDist) && (eggs.innerHTML.indexOf('PL39') === -1)) { 
-   markerPL39.setVisible(true); 
-} else { 
-   markerPL39.setVisible(false);} 
-positionOO31 = markerOO31.getPosition(); 
-positionOO31Lat = positionOO31.lat(); 
-positionOO31Long = positionOO31.lng(); 
-distanceOO31 = Math.sqrt(Math.pow((positionLat-positionOO31Lat),2) + Math.pow((positionLong-positionOO31Long),2)); 
-if ( (distanceOO31 < minDist) && (eggs.innerHTML.indexOf('OO31') === -1)) { 
-   markerOO31.setVisible(true); 
-} else { 
-   markerOO31.setVisible(false);} 
-positionTS24 = markerTS24.getPosition(); 
-positionTS24Lat = positionTS24.lat(); 
-positionTS24Long = positionTS24.lng(); 
-distanceTS24 = Math.sqrt(Math.pow((positionLat-positionTS24Lat),2) + Math.pow((positionLong-positionTS24Long),2)); 
-if ( (distanceTS24 < minDist) && (eggs.innerHTML.indexOf('TS24') === -1)) { 
-   markerTS24.setVisible(true); 
-} else { 
-   markerTS24.setVisible(false);} 
-positionFX51 = markerFX51.getPosition(); 
-positionFX51Lat = positionFX51.lat(); 
-positionFX51Long = positionFX51.lng(); 
-distanceFX51 = Math.sqrt(Math.pow((positionLat-positionFX51Lat),2) + Math.pow((positionLong-positionFX51Long),2)); 
-if ( (distanceFX51 < minDist) && (eggs.innerHTML.indexOf('FX51') === -1)) { 
-   markerFX51.setVisible(true); 
-} else { 
-   markerFX51.setVisible(false);} 
-positionIY72 = markerIY72.getPosition(); 
-positionIY72Lat = positionIY72.lat(); 
-positionIY72Long = positionIY72.lng(); 
-distanceIY72 = Math.sqrt(Math.pow((positionLat-positionIY72Lat),2) + Math.pow((positionLong-positionIY72Long),2)); 
-if ( (distanceIY72 < minDist) && (eggs.innerHTML.indexOf('IY72') === -1)) { 
-   markerIY72.setVisible(true); 
-} else { 
-   markerIY72.setVisible(false);} 
-positionNG57 = markerNG57.getPosition(); 
-positionNG57Lat = positionNG57.lat(); 
-positionNG57Long = positionNG57.lng(); 
-distanceNG57 = Math.sqrt(Math.pow((positionLat-positionNG57Lat),2) + Math.pow((positionLong-positionNG57Long),2)); 
-if ( (distanceNG57 < minDist) && (eggs.innerHTML.indexOf('NG57') === -1)) { 
-   markerNG57.setVisible(true); 
-} else { 
-   markerNG57.setVisible(false);} 
-positionJN54 = markerJN54.getPosition(); 
-positionJN54Lat = positionJN54.lat(); 
-positionJN54Long = positionJN54.lng(); 
-distanceJN54 = Math.sqrt(Math.pow((positionLat-positionJN54Lat),2) + Math.pow((positionLong-positionJN54Long),2)); 
-if ( (distanceJN54 < minDist) && (eggs.innerHTML.indexOf('JN54') === -1)) { 
-   markerJN54.setVisible(true); 
-} else { 
-   markerJN54.setVisible(false);} 
-positionMY74 = markerMY74.getPosition(); 
-positionMY74Lat = positionMY74.lat(); 
-positionMY74Long = positionMY74.lng(); 
-distanceMY74 = Math.sqrt(Math.pow((positionLat-positionMY74Lat),2) + Math.pow((positionLong-positionMY74Long),2)); 
-if ( (distanceMY74 < minDist) && (eggs.innerHTML.indexOf('MY74') === -1)) { 
-   markerMY74.setVisible(true); 
-} else { 
-   markerMY74.setVisible(false);} 
-positionBJ96 = markerBJ96.getPosition(); 
-positionBJ96Lat = positionBJ96.lat(); 
-positionBJ96Long = positionBJ96.lng(); 
-distanceBJ96 = Math.sqrt(Math.pow((positionLat-positionBJ96Lat),2) + Math.pow((positionLong-positionBJ96Long),2)); 
-if ( (distanceBJ96 < minDist) && (eggs.innerHTML.indexOf('BJ96') === -1)) { 
-   markerBJ96.setVisible(true); 
-} else { 
-   markerBJ96.setVisible(false);} 
-positionQF51 = markerQF51.getPosition(); 
-positionQF51Lat = positionQF51.lat(); 
-positionQF51Long = positionQF51.lng(); 
-distanceQF51 = Math.sqrt(Math.pow((positionLat-positionQF51Lat),2) + Math.pow((positionLong-positionQF51Long),2)); 
-if ( (distanceQF51 < minDist) && (eggs.innerHTML.indexOf('QF51') === -1)) { 
-   markerQF51.setVisible(true); 
-} else { 
-   markerQF51.setVisible(false);} 
-positionMJ13 = markerMJ13.getPosition(); 
-positionMJ13Lat = positionMJ13.lat(); 
-positionMJ13Long = positionMJ13.lng(); 
-distanceMJ13 = Math.sqrt(Math.pow((positionLat-positionMJ13Lat),2) + Math.pow((positionLong-positionMJ13Long),2)); 
-if ( (distanceMJ13 < minDist) && (eggs.innerHTML.indexOf('MJ13') === -1)) { 
-   markerMJ13.setVisible(true); 
-} else { 
-   markerMJ13.setVisible(false);} 
-positionBC36 = markerBC36.getPosition(); 
-positionBC36Lat = positionBC36.lat(); 
-positionBC36Long = positionBC36.lng(); 
-distanceBC36 = Math.sqrt(Math.pow((positionLat-positionBC36Lat),2) + Math.pow((positionLong-positionBC36Long),2)); 
-if ( (distanceBC36 < minDist) && (eggs.innerHTML.indexOf('BC36') === -1)) { 
-   markerBC36.setVisible(true); 
-} else { 
-   markerBC36.setVisible(false);} 
-positionXR53 = markerXR53.getPosition(); 
-positionXR53Lat = positionXR53.lat(); 
-positionXR53Long = positionXR53.lng(); 
-distanceXR53 = Math.sqrt(Math.pow((positionLat-positionXR53Lat),2) + Math.pow((positionLong-positionXR53Long),2)); 
-if ( (distanceXR53 < minDist) && (eggs.innerHTML.indexOf('XR53') === -1)) { 
-   markerXR53.setVisible(true); 
-} else { 
-   markerXR53.setVisible(false);} 
-positionOZ74 = markerOZ74.getPosition(); 
-positionOZ74Lat = positionOZ74.lat(); 
-positionOZ74Long = positionOZ74.lng(); 
-distanceOZ74 = Math.sqrt(Math.pow((positionLat-positionOZ74Lat),2) + Math.pow((positionLong-positionOZ74Long),2)); 
-if ( (distanceOZ74 < minDist) && (eggs.innerHTML.indexOf('OZ74') === -1)) { 
-   markerOZ74.setVisible(true); 
-} else { 
-   markerOZ74.setVisible(false);} 
-positionLA41 = markerLA41.getPosition(); 
-positionLA41Lat = positionLA41.lat(); 
-positionLA41Long = positionLA41.lng(); 
-distanceLA41 = Math.sqrt(Math.pow((positionLat-positionLA41Lat),2) + Math.pow((positionLong-positionLA41Long),2)); 
-if ( (distanceLA41 < minDist) && (eggs.innerHTML.indexOf('LA41') === -1)) { 
-   markerLA41.setVisible(true); 
-} else { 
-   markerLA41.setVisible(false);} 
-positionVN73 = markerVN73.getPosition(); 
-positionVN73Lat = positionVN73.lat(); 
-positionVN73Long = positionVN73.lng(); 
-distanceVN73 = Math.sqrt(Math.pow((positionLat-positionVN73Lat),2) + Math.pow((positionLong-positionVN73Long),2)); 
-if ( (distanceVN73 < minDist) && (eggs.innerHTML.indexOf('VN73') === -1)) { 
-   markerVN73.setVisible(true); 
-} else { 
-   markerVN73.setVisible(false);} 
-positionRK91 = markerRK91.getPosition(); 
-positionRK91Lat = positionRK91.lat(); 
-positionRK91Long = positionRK91.lng(); 
-distanceRK91 = Math.sqrt(Math.pow((positionLat-positionRK91Lat),2) + Math.pow((positionLong-positionRK91Long),2)); 
-if ( (distanceRK91 < minDist) && (eggs.innerHTML.indexOf('RK91') === -1)) { 
-   markerRK91.setVisible(true); 
-} else { 
-   markerRK91.setVisible(false);} 
-positionRK62 = markerRK62.getPosition(); 
-positionRK62Lat = positionRK62.lat(); 
-positionRK62Long = positionRK62.lng(); 
-distanceRK62 = Math.sqrt(Math.pow((positionLat-positionRK62Lat),2) + Math.pow((positionLong-positionRK62Long),2)); 
-if ( (distanceRK62 < minDist) && (eggs.innerHTML.indexOf('RK62') === -1)) { 
-   markerRK62.setVisible(true); 
-} else { 
-   markerRK62.setVisible(false);} 
-positionYC36 = markerYC36.getPosition(); 
-positionYC36Lat = positionYC36.lat(); 
-positionYC36Long = positionYC36.lng(); 
-distanceYC36 = Math.sqrt(Math.pow((positionLat-positionYC36Lat),2) + Math.pow((positionLong-positionYC36Long),2)); 
-if ( (distanceYC36 < minDist) && (eggs.innerHTML.indexOf('YC36') === -1)) { 
-   markerYC36.setVisible(true); 
-} else { 
-   markerYC36.setVisible(false);} 
-positionWE71 = markerWE71.getPosition(); 
-positionWE71Lat = positionWE71.lat(); 
-positionWE71Long = positionWE71.lng(); 
-distanceWE71 = Math.sqrt(Math.pow((positionLat-positionWE71Lat),2) + Math.pow((positionLong-positionWE71Long),2)); 
-if ( (distanceWE71 < minDist) && (eggs.innerHTML.indexOf('WE71') === -1)) { 
-   markerWE71.setVisible(true); 
-} else { 
-   markerWE71.setVisible(false);} 
-positionPH92 = markerPH92.getPosition(); 
-positionPH92Lat = positionPH92.lat(); 
-positionPH92Long = positionPH92.lng(); 
-distancePH92 = Math.sqrt(Math.pow((positionLat-positionPH92Lat),2) + Math.pow((positionLong-positionPH92Long),2)); 
-if ( (distancePH92 < minDist) && (eggs.innerHTML.indexOf('PH92') === -1)) { 
-   markerPH92.setVisible(true); 
-} else { 
-   markerPH92.setVisible(false);} 
-positionBL59 = markerBL59.getPosition(); 
-positionBL59Lat = positionBL59.lat(); 
-positionBL59Long = positionBL59.lng(); 
-distanceBL59 = Math.sqrt(Math.pow((positionLat-positionBL59Lat),2) + Math.pow((positionLong-positionBL59Long),2)); 
-if ( (distanceBL59 < minDist) && (eggs.innerHTML.indexOf('BL59') === -1)) { 
-   markerBL59.setVisible(true); 
-} else { 
-   markerBL59.setVisible(false);} 
-positionGG71 = markerGG71.getPosition(); 
-positionGG71Lat = positionGG71.lat(); 
-positionGG71Long = positionGG71.lng(); 
-distanceGG71 = Math.sqrt(Math.pow((positionLat-positionGG71Lat),2) + Math.pow((positionLong-positionGG71Long),2)); 
-if ( (distanceGG71 < minDist) && (eggs.innerHTML.indexOf('GG71') === -1)) { 
-   markerGG71.setVisible(true); 
-} else { 
-   markerGG71.setVisible(false);} 
-positionYS95 = markerYS95.getPosition(); 
-positionYS95Lat = positionYS95.lat(); 
-positionYS95Long = positionYS95.lng(); 
-distanceYS95 = Math.sqrt(Math.pow((positionLat-positionYS95Lat),2) + Math.pow((positionLong-positionYS95Long),2)); 
-if ( (distanceYS95 < minDist) && (eggs.innerHTML.indexOf('YS95') === -1)) { 
-   markerYS95.setVisible(true); 
-} else { 
-   markerYS95.setVisible(false);} 
-positionCK59 = markerCK59.getPosition(); 
-positionCK59Lat = positionCK59.lat(); 
-positionCK59Long = positionCK59.lng(); 
-distanceCK59 = Math.sqrt(Math.pow((positionLat-positionCK59Lat),2) + Math.pow((positionLong-positionCK59Long),2)); 
-if ( (distanceCK59 < minDist) && (eggs.innerHTML.indexOf('CK59') === -1)) { 
-   markerCK59.setVisible(true); 
-} else { 
-   markerCK59.setVisible(false);} 
-positionDG14 = markerDG14.getPosition(); 
-positionDG14Lat = positionDG14.lat(); 
-positionDG14Long = positionDG14.lng(); 
-distanceDG14 = Math.sqrt(Math.pow((positionLat-positionDG14Lat),2) + Math.pow((positionLong-positionDG14Long),2)); 
-if ( (distanceDG14 < minDist) && (eggs.innerHTML.indexOf('DG14') === -1)) { 
-   markerDG14.setVisible(true); 
-} else { 
-   markerDG14.setVisible(false);} 
-positionRC65 = markerRC65.getPosition(); 
-positionRC65Lat = positionRC65.lat(); 
-positionRC65Long = positionRC65.lng(); 
-distanceRC65 = Math.sqrt(Math.pow((positionLat-positionRC65Lat),2) + Math.pow((positionLong-positionRC65Long),2)); 
-if ( (distanceRC65 < minDist) && (eggs.innerHTML.indexOf('RC65') === -1)) { 
-   markerRC65.setVisible(true); 
-} else { 
-   markerRC65.setVisible(false);} 
-positionNG64 = markerNG64.getPosition(); 
-positionNG64Lat = positionNG64.lat(); 
-positionNG64Long = positionNG64.lng(); 
-distanceNG64 = Math.sqrt(Math.pow((positionLat-positionNG64Lat),2) + Math.pow((positionLong-positionNG64Long),2)); 
-if ( (distanceNG64 < minDist) && (eggs.innerHTML.indexOf('NG64') === -1)) { 
-   markerNG64.setVisible(true); 
-} else { 
-   markerNG64.setVisible(false);} 
-positionTA24 = markerTA24.getPosition(); 
-positionTA24Lat = positionTA24.lat(); 
-positionTA24Long = positionTA24.lng(); 
-distanceTA24 = Math.sqrt(Math.pow((positionLat-positionTA24Lat),2) + Math.pow((positionLong-positionTA24Long),2)); 
-if ( (distanceTA24 < minDist) && (eggs.innerHTML.indexOf('TA24') === -1)) { 
-   markerTA24.setVisible(true); 
-} else { 
-   markerTA24.setVisible(false);} 
-positionDJ27 = markerDJ27.getPosition(); 
-positionDJ27Lat = positionDJ27.lat(); 
-positionDJ27Long = positionDJ27.lng(); 
-distanceDJ27 = Math.sqrt(Math.pow((positionLat-positionDJ27Lat),2) + Math.pow((positionLong-positionDJ27Long),2)); 
-if ( (distanceDJ27 < minDist) && (eggs.innerHTML.indexOf('DJ27') === -1)) { 
-   markerDJ27.setVisible(true); 
-} else { 
-   markerDJ27.setVisible(false);} 
-positionLS26 = markerLS26.getPosition(); 
-positionLS26Lat = positionLS26.lat(); 
-positionLS26Long = positionLS26.lng(); 
-distanceLS26 = Math.sqrt(Math.pow((positionLat-positionLS26Lat),2) + Math.pow((positionLong-positionLS26Long),2)); 
-if ( (distanceLS26 < minDist) && (eggs.innerHTML.indexOf('LS26') === -1)) { 
-   markerLS26.setVisible(true); 
-} else { 
-   markerLS26.setVisible(false);} 
-positionFI97 = markerFI97.getPosition(); 
-positionFI97Lat = positionFI97.lat(); 
-positionFI97Long = positionFI97.lng(); 
-distanceFI97 = Math.sqrt(Math.pow((positionLat-positionFI97Lat),2) + Math.pow((positionLong-positionFI97Long),2)); 
-if ( (distanceFI97 < minDist) && (eggs.innerHTML.indexOf('FI97') === -1)) { 
-   markerFI97.setVisible(true); 
-} else { 
-   markerFI97.setVisible(false);} 
-positionWE69 = markerWE69.getPosition(); 
-positionWE69Lat = positionWE69.lat(); 
-positionWE69Long = positionWE69.lng(); 
-distanceWE69 = Math.sqrt(Math.pow((positionLat-positionWE69Lat),2) + Math.pow((positionLong-positionWE69Long),2)); 
-if ( (distanceWE69 < minDist) && (eggs.innerHTML.indexOf('WE69') === -1)) { 
-   markerWE69.setVisible(true); 
-} else { 
-   markerWE69.setVisible(false);} 
-positionQU77 = markerQU77.getPosition(); 
-positionQU77Lat = positionQU77.lat(); 
-positionQU77Long = positionQU77.lng(); 
-distanceQU77 = Math.sqrt(Math.pow((positionLat-positionQU77Lat),2) + Math.pow((positionLong-positionQU77Long),2)); 
-if ( (distanceQU77 < minDist) && (eggs.innerHTML.indexOf('QU77') === -1)) { 
-   markerQU77.setVisible(true); 
-} else { 
-   markerQU77.setVisible(false);} 
-positionCR59 = markerCR59.getPosition(); 
-positionCR59Lat = positionCR59.lat(); 
-positionCR59Long = positionCR59.lng(); 
-distanceCR59 = Math.sqrt(Math.pow((positionLat-positionCR59Lat),2) + Math.pow((positionLong-positionCR59Long),2)); 
-if ( (distanceCR59 < minDist) && (eggs.innerHTML.indexOf('CR59') === -1)) { 
-   markerCR59.setVisible(true); 
-} else { 
-   markerCR59.setVisible(false);} 
-positionZG93 = markerZG93.getPosition(); 
-positionZG93Lat = positionZG93.lat(); 
-positionZG93Long = positionZG93.lng(); 
-distanceZG93 = Math.sqrt(Math.pow((positionLat-positionZG93Lat),2) + Math.pow((positionLong-positionZG93Long),2)); 
-if ( (distanceZG93 < minDist) && (eggs.innerHTML.indexOf('ZG93') === -1)) { 
-   markerZG93.setVisible(true); 
-} else { 
-   markerZG93.setVisible(false);} 
-positionTU46 = markerTU46.getPosition(); 
-positionTU46Lat = positionTU46.lat(); 
-positionTU46Long = positionTU46.lng(); 
-distanceTU46 = Math.sqrt(Math.pow((positionLat-positionTU46Lat),2) + Math.pow((positionLong-positionTU46Long),2)); 
-if ( (distanceTU46 < minDist) && (eggs.innerHTML.indexOf('TU46') === -1)) { 
-   markerTU46.setVisible(true); 
-} else { 
-   markerTU46.setVisible(false);} 
-positionFT12 = markerFT12.getPosition(); 
-positionFT12Lat = positionFT12.lat(); 
-positionFT12Long = positionFT12.lng(); 
-distanceFT12 = Math.sqrt(Math.pow((positionLat-positionFT12Lat),2) + Math.pow((positionLong-positionFT12Long),2)); 
-if ( (distanceFT12 < minDist) && (eggs.innerHTML.indexOf('FT12') === -1)) { 
-   markerFT12.setVisible(true); 
-} else { 
-   markerFT12.setVisible(false);} 
-positionUG83 = markerUG83.getPosition(); 
-positionUG83Lat = positionUG83.lat(); 
-positionUG83Long = positionUG83.lng(); 
-distanceUG83 = Math.sqrt(Math.pow((positionLat-positionUG83Lat),2) + Math.pow((positionLong-positionUG83Long),2)); 
-if ( (distanceUG83 < minDist) && (eggs.innerHTML.indexOf('UG83') === -1)) { 
-   markerUG83.setVisible(true); 
-} else { 
-   markerUG83.setVisible(false);} 
-positionPC48 = markerPC48.getPosition(); 
-positionPC48Lat = positionPC48.lat(); 
-positionPC48Long = positionPC48.lng(); 
-distancePC48 = Math.sqrt(Math.pow((positionLat-positionPC48Lat),2) + Math.pow((positionLong-positionPC48Long),2)); 
-if ( (distancePC48 < minDist) && (eggs.innerHTML.indexOf('PC48') === -1)) { 
-   markerPC48.setVisible(true); 
-} else { 
-   markerPC48.setVisible(false);} 
-positionLZ95 = markerLZ95.getPosition(); 
-positionLZ95Lat = positionLZ95.lat(); 
-positionLZ95Long = positionLZ95.lng(); 
-distanceLZ95 = Math.sqrt(Math.pow((positionLat-positionLZ95Lat),2) + Math.pow((positionLong-positionLZ95Long),2)); 
-if ( (distanceLZ95 < minDist) && (eggs.innerHTML.indexOf('LZ95') === -1)) { 
-   markerLZ95.setVisible(true); 
-} else { 
-   markerLZ95.setVisible(false);} 
-positionDV73 = markerDV73.getPosition(); 
-positionDV73Lat = positionDV73.lat(); 
-positionDV73Long = positionDV73.lng(); 
-distanceDV73 = Math.sqrt(Math.pow((positionLat-positionDV73Lat),2) + Math.pow((positionLong-positionDV73Long),2)); 
-if ( (distanceDV73 < minDist) && (eggs.innerHTML.indexOf('DV73') === -1)) { 
-   markerDV73.setVisible(true); 
-} else { 
-   markerDV73.setVisible(false);} 
-positionTO65 = markerTO65.getPosition(); 
-positionTO65Lat = positionTO65.lat(); 
-positionTO65Long = positionTO65.lng(); 
-distanceTO65 = Math.sqrt(Math.pow((positionLat-positionTO65Lat),2) + Math.pow((positionLong-positionTO65Long),2)); 
-if ( (distanceTO65 < minDist) && (eggs.innerHTML.indexOf('TO65') === -1)) { 
-   markerTO65.setVisible(true); 
-} else { 
-   markerTO65.setVisible(false);} 
-positionYU16 = markerYU16.getPosition(); 
-positionYU16Lat = positionYU16.lat(); 
-positionYU16Long = positionYU16.lng(); 
-distanceYU16 = Math.sqrt(Math.pow((positionLat-positionYU16Lat),2) + Math.pow((positionLong-positionYU16Long),2)); 
-if ( (distanceYU16 < minDist) && (eggs.innerHTML.indexOf('YU16') === -1)) { 
-   markerYU16.setVisible(true); 
-} else { 
-   markerYU16.setVisible(false);} 
-positionXL49 = markerXL49.getPosition(); 
-positionXL49Lat = positionXL49.lat(); 
-positionXL49Long = positionXL49.lng(); 
-distanceXL49 = Math.sqrt(Math.pow((positionLat-positionXL49Lat),2) + Math.pow((positionLong-positionXL49Long),2)); 
-if ( (distanceXL49 < minDist) && (eggs.innerHTML.indexOf('XL49') === -1)) { 
-   markerXL49.setVisible(true); 
-} else { 
-   markerXL49.setVisible(false);} 
-positionUQ49 = markerUQ49.getPosition(); 
-positionUQ49Lat = positionUQ49.lat(); 
-positionUQ49Long = positionUQ49.lng(); 
-distanceUQ49 = Math.sqrt(Math.pow((positionLat-positionUQ49Lat),2) + Math.pow((positionLong-positionUQ49Long),2)); 
-if ( (distanceUQ49 < minDist) && (eggs.innerHTML.indexOf('UQ49') === -1)) { 
-   markerUQ49.setVisible(true); 
-} else { 
-   markerUQ49.setVisible(false);} 
-positionZZ14 = markerZZ14.getPosition(); 
-positionZZ14Lat = positionZZ14.lat(); 
-positionZZ14Long = positionZZ14.lng(); 
-distanceZZ14 = Math.sqrt(Math.pow((positionLat-positionZZ14Lat),2) + Math.pow((positionLong-positionZZ14Long),2)); 
-if ( (distanceZZ14 < minDist) && (eggs.innerHTML.indexOf('ZZ14') === -1)) { 
-   markerZZ14.setVisible(true); 
-} else { 
-   markerZZ14.setVisible(false);} 
-positionPO27 = markerPO27.getPosition(); 
-positionPO27Lat = positionPO27.lat(); 
-positionPO27Long = positionPO27.lng(); 
-distancePO27 = Math.sqrt(Math.pow((positionLat-positionPO27Lat),2) + Math.pow((positionLong-positionPO27Long),2)); 
-if ( (distancePO27 < minDist) && (eggs.innerHTML.indexOf('PO27') === -1)) { 
-   markerPO27.setVisible(true); 
-} else { 
-   markerPO27.setVisible(false);} 
-
-    
+ });    
 
             
            
