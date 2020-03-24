@@ -342,6 +342,13 @@
      // Submit function:
         $form.submit(function(){
             $.post($(this).attr('action'), $(this).serialize(), function(response){
+              
+                var formsubmitted2 = $("#myForm").serializeArray();
+                var eggIDcaptured = formsubmitted2[0].value;
+                var markerText = "marker";
+                var markerName = markerText.strcat(markerName);
+                console.log(markerName);
+              
           // On success, clear all inputs;
                 $impt.val('').attr('value','').removeAttr('checked').removeAttr('selected');
        // Write a confirmation message:
