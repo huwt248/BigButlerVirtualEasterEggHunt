@@ -332,62 +332,7 @@
       var youremail;
       var emailentered = 0;
         
-      $(document).ready(function(){
-        //Egg Found Form
-          // References:
-        var $form = $('#myForm');
-        var $conf = $('#myConf');
-        var $subm = $('#mySubmit');
-        var $impt = $form.find(':input').not(':button, :submit, :reset, :hidden');
-     // Submit function:
-        $form.submit(function(){
-            $.post($(this).attr('action'), $(this).serialize(), function(response){
-              
-                var formsubmitted2 = $("#myForm").serializeArray();
-                var eggIDcaptured = formsubmitted2[0].value;
-                var markerText = "marker";
-                var markerName = markerText.concat(markerName);
-                console.log(markerName);
-              
-          // On success, clear all inputs;
-                $impt.val('').attr('value','').removeAttr('checked').removeAttr('selected');
-       // Write a confirmation message:
-                $conf.html("Submitted!");
-       // Disable the submit button:
-                $subm.prop('disabled', true);
-            },'json');
-            return false;
-        });
-          
-        var $formemail = $('#emaillogging');
-        var $confemail = $('#emailconf');
-        var $submemail = $('#emailloggingsubmit');
-        var $imptemail = $formemail.find(':input').not(':button, :submit, :reset, :hidden');
-     // Submit function:
-        $formemail.submit(function(){
-            $.post($(this).attr('action'), $(this).serialize(), function(response){
-          // Store response
-                var formsubmitted = $("#emaillogging").serializeArray();
-                console.log(formsubmitted);
-                console.log(formsubmitted[1].value);
-                yourname = formsubmitted[0].value;
-                youremail = formsubmitted[1].value;
-                emailentered = 1;
-               // On success, clear all inputs;
-                $imptemail.val('').attr('value','').removeAttr('checked').removeAttr('selected');
-       // Write a confirmation message:
-                $confemail.html("Submitted!");
-       // Disable the submit button:
-                $submemail.prop('disabled', true);
-                $('#intro').hide();
-                
-            },'json');
-            return false;
-        });
-          
-
-          
-    });
+      
 
         
       function initMap() {
@@ -1637,7 +1582,64 @@
 
  
 
+        $(document).ready(function(){
+        //Egg Found Form
+          // References:
+        var $form = $('#myForm');
+        var $conf = $('#myConf');
+        var $subm = $('#mySubmit');
+        var $impt = $form.find(':input').not(':button, :submit, :reset, :hidden');
+     // Submit function:
+        $form.submit(function(){
+            $.post($(this).attr('action'), $(this).serialize(), function(response){
+              
+                var formsubmitted2 = $("#myForm").serializeArray();
+                var eggIDcaptured = formsubmitted2[0].value;
+                console.log(eggIDcaptured)
+                var markerText = "marker";
+                var markerName = markerText.concat(eggIDcaptured);
+                console.log(markerName);
+                eval(markerName).setIcon('blank.png');
+              
+          // On success, clear all inputs;
+                $impt.val('').attr('value','').removeAttr('checked').removeAttr('selected');
+       // Write a confirmation message:
+                $conf.html("Submitted!");
+       // Disable the submit button:
+                $subm.prop('disabled', true);
+            },'json');
+            return false;
+        });
+          
+        var $formemail = $('#emaillogging');
+        var $confemail = $('#emailconf');
+        var $submemail = $('#emailloggingsubmit');
+        var $imptemail = $formemail.find(':input').not(':button, :submit, :reset, :hidden');
+     // Submit function:
+        $formemail.submit(function(){
+            $.post($(this).attr('action'), $(this).serialize(), function(response){
+          // Store response
+                var formsubmitted = $("#emaillogging").serializeArray();
+                console.log(formsubmitted);
+                console.log(formsubmitted[1].value);
+                yourname = formsubmitted[0].value;
+                youremail = formsubmitted[1].value;
+                emailentered = 1;
+               // On success, clear all inputs;
+                $imptemail.val('').attr('value','').removeAttr('checked').removeAttr('selected');
+       // Write a confirmation message:
+                $confemail.html("Submitted!");
+       // Disable the submit button:
+                $submemail.prop('disabled', true);
+                $('#intro').hide();
+                
+            },'json');
+            return false;
+        });
+          
 
+          
+    });
 
  
 
@@ -3356,7 +3358,6 @@ markerWM74.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = '';
-   markerWM74.setIcon('blank.png');
  });            
 markerJI68.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block';
@@ -3370,7 +3371,6 @@ markerJI68.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerJI68.setIcon('blank.png');
  }); 
 markerOH99.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block';
@@ -3384,7 +3384,6 @@ markerOH99.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = '';
-   markerOH99.setIcon('blank.png');
  }); 
  markerSW89.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block';
@@ -3398,7 +3397,6 @@ markerOH99.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerSW89.setIcon('blank.png');
  });
 markerYH55.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block';
@@ -3412,7 +3410,6 @@ markerYH55.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYH55.setIcon('blank.png');
  }); 
           
 markerZC13.addListener('click', function() { 
@@ -3427,7 +3424,6 @@ markerZC13.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerZC13.setIcon('blank.png');
  }); 
   /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -3453,7 +3449,6 @@ markerUU72.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUU72.setIcon('blank.png'); 
  }); 
 markerNN53.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3467,8 +3462,8 @@ markerNN53.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerNN53.setIcon('blank.png'); 
  }); 
+
 markerNH62.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
    document.getElementById('eggFound').style.backgroundImage='url("EasterBackground.png")'; 
@@ -3481,7 +3476,6 @@ markerNH62.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerNH62.setIcon('blank.png'); 
  }); 
 markerGP84.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3495,7 +3489,6 @@ markerGP84.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerGP84.setIcon('blank.png'); 
  }); 
 markerNZ82.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3509,7 +3502,6 @@ markerNZ82.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerNZ82.setIcon('blank.png'); 
  }); 
 markerJD17.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3523,7 +3515,6 @@ markerJD17.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerJD17.setIcon('blank.png'); 
  }); 
 markerYD23.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3537,7 +3528,6 @@ markerYD23.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYD23.setIcon('blank.png'); 
  }); 
 markerCQ82.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3551,7 +3541,6 @@ markerCQ82.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerCQ82.setIcon('blank.png'); 
  }); 
 markerHE53.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3565,7 +3554,6 @@ markerHE53.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerHE53.setIcon('blank.png'); 
  }); 
 markerFX23.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3579,7 +3567,6 @@ markerFX23.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFX23.setIcon('blank.png'); 
  }); 
 markerXF71.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3593,7 +3580,6 @@ markerXF71.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerXF71.setIcon('blank.png'); 
  }); 
 markerPB12.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3607,7 +3593,6 @@ markerPB12.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPB12.setIcon('blank.png'); 
  }); 
 markerZV96.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3621,7 +3606,6 @@ markerZV96.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerZV96.setIcon('blank.png'); 
  }); 
 
 
@@ -3637,7 +3621,6 @@ markerHC81.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerHC81.setIcon('blank.png'); 
  }); 
 markerUF95.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3651,7 +3634,6 @@ markerUF95.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUF95.setIcon('blank.png'); 
  }); 
 markerFT81.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3665,7 +3647,6 @@ markerFT81.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFT81.setIcon('blank.png'); 
  }); 
 markerQF91.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3679,7 +3660,6 @@ markerQF91.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerQF91.setIcon('blank.png'); 
  }); 
 markerVS13.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3693,7 +3673,6 @@ markerVS13.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVS13.setIcon('blank.png'); 
  }); 
 markerFG67.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3707,7 +3686,6 @@ markerFG67.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFG67.setIcon('blank.png'); 
  }); 
 markerJV82.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3721,7 +3699,6 @@ markerJV82.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerJV82.setIcon('blank.png'); 
  }); 
 markerBR25.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3735,7 +3712,6 @@ markerBR25.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerBR25.setIcon('blank.png'); 
  }); 
 markerKM28.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3749,7 +3725,6 @@ markerKM28.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerKM28.setIcon('blank.png'); 
  }); 
 markerOI57.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3763,7 +3738,6 @@ markerOI57.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerOI57.setIcon('blank.png'); 
  }); 
 markerHZ88.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3777,7 +3751,6 @@ markerHZ88.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerHZ88.setIcon('blank.png'); 
  }); 
 markerYF71.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3791,7 +3764,6 @@ markerYF71.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYF71.setIcon('blank.png'); 
  }); 
 markerQB59.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3805,7 +3777,6 @@ markerQB59.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerQB59.setIcon('blank.png'); 
  }); 
 markerVP52.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3819,7 +3790,6 @@ markerVP52.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVP52.setIcon('blank.png'); 
  }); 
 markerBZ14.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3833,7 +3803,6 @@ markerBZ14.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerBZ14.setIcon('blank.png'); 
  }); 
 markerOQ29.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3847,7 +3816,6 @@ markerOQ29.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerOQ29.setIcon('blank.png'); 
  }); 
 markerFT73.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3861,7 +3829,6 @@ markerFT73.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFT73.setIcon('blank.png'); 
  }); 
 markerPN47.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3875,7 +3842,6 @@ markerPN47.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPN47.setIcon('blank.png'); 
  }); 
 markerCP52.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3889,7 +3855,6 @@ markerCP52.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerCP52.setIcon('blank.png'); 
  }); 
 markerCR12.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3903,7 +3868,6 @@ markerCR12.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerCR12.setIcon('blank.png'); 
  }); 
 markerRL98.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3917,7 +3881,6 @@ markerRL98.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRL98.setIcon('blank.png'); 
  }); 
 markerJR79.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3931,7 +3894,6 @@ markerJR79.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerJR79.setIcon('blank.png'); 
  }); 
 markerKD38.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3945,7 +3907,6 @@ markerKD38.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerKD38.setIcon('blank.png'); 
  }); 
 markerKK34.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3959,7 +3920,6 @@ markerKK34.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerKK34.setIcon('blank.png'); 
  }); 
 markerHR61.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3973,7 +3933,6 @@ markerHR61.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerHR61.setIcon('blank.png'); 
  }); 
 markerXA41.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -3987,7 +3946,6 @@ markerXA41.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerXA41.setIcon('blank.png'); 
  }); 
 markerMM75.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4001,7 +3959,6 @@ markerMM75.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerMM75.setIcon('blank.png'); 
  }); 
 markerDL54.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4015,7 +3972,6 @@ markerDL54.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerDL54.setIcon('blank.png'); 
  }); 
 markerCB65.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4029,7 +3985,6 @@ markerCB65.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerCB65.setIcon('blank.png'); 
  }); 
 markerKS16.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4043,7 +3998,6 @@ markerKS16.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerKS16.setIcon('blank.png'); 
  }); 
 markerTW26.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4057,7 +4011,6 @@ markerTW26.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerTW26.setIcon('blank.png'); 
  }); 
 markerUI38.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4071,7 +4024,6 @@ markerUI38.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUI38.setIcon('blank.png'); 
  }); 
 markerGP51.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4085,7 +4037,6 @@ markerGP51.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerGP51.setIcon('blank.png'); 
  }); 
 markerUC78.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4099,7 +4050,6 @@ markerUC78.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUC78.setIcon('blank.png'); 
  }); 
 markerIH31.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4113,7 +4063,6 @@ markerIH31.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerIH31.setIcon('blank.png'); 
  }); 
 markerUC64.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4127,7 +4076,6 @@ markerUC64.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUC64.setIcon('blank.png'); 
  }); 
 markerYU83.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4141,7 +4089,6 @@ markerYU83.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYU83.setIcon('blank.png'); 
  }); 
 markerXP36.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4155,7 +4102,6 @@ markerXP36.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerXP36.setIcon('blank.png'); 
  }); 
 markerHL51.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4169,7 +4115,6 @@ markerHL51.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerHL51.setIcon('blank.png'); 
  }); 
 markerDJ55.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4183,7 +4128,6 @@ markerDJ55.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerDJ55.setIcon('blank.png'); 
  }); 
 markerZF45.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4197,7 +4141,6 @@ markerZF45.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerZF45.setIcon('blank.png'); 
  }); 
 markerPJ54.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4211,7 +4154,6 @@ markerPJ54.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPJ54.setIcon('blank.png'); 
  }); 
 markerEG25.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4225,7 +4167,6 @@ markerEG25.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerEG25.setIcon('blank.png'); 
  }); 
 markerHC43.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4239,7 +4180,6 @@ markerHC43.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerHC43.setIcon('blank.png'); 
  }); 
 markerJI44.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4253,7 +4193,6 @@ markerJI44.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerJI44.setIcon('blank.png'); 
  }); 
 markerZZ15.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4267,7 +4206,6 @@ markerZZ15.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerZZ15.setIcon('blank.png'); 
  }); 
 markerGM91.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4281,7 +4219,6 @@ markerGM91.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerGM91.setIcon('blank.png'); 
  }); 
 markerKJ78.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4295,7 +4232,6 @@ markerKJ78.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerKJ78.setIcon('blank.png'); 
  }); 
 markerMW95.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4309,7 +4245,6 @@ markerMW95.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerMW95.setIcon('blank.png'); 
  }); 
 markerAD33.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4323,7 +4258,6 @@ markerAD33.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerAD33.setIcon('blank.png'); 
  }); 
 markerRC33.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4337,7 +4271,6 @@ markerRC33.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRC33.setIcon('blank.png'); 
  }); 
 markerVM31.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4351,7 +4284,6 @@ markerVM31.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVM31.setIcon('blank.png'); 
  }); 
 markerIE17.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4365,7 +4297,6 @@ markerIE17.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerIE17.setIcon('blank.png'); 
  }); 
 markerAK16.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4379,7 +4310,6 @@ markerAK16.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerAK16.setIcon('blank.png'); 
  }); 
 markerIO29.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4393,7 +4323,6 @@ markerIO29.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerIO29.setIcon('blank.png'); 
  }); 
 markerAM26.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4407,7 +4336,6 @@ markerAM26.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerAM26.setIcon('blank.png'); 
  }); 
 markerRS57.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4421,7 +4349,6 @@ markerRS57.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRS57.setIcon('blank.png'); 
  }); 
 markerLY83.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4435,7 +4362,6 @@ markerLY83.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerLY83.setIcon('blank.png'); 
  }); 
 markerZS57.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4449,7 +4375,6 @@ markerZS57.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerZS57.setIcon('blank.png'); 
  }); 
 markerLZ99.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4463,7 +4388,6 @@ markerLZ99.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerLZ99.setIcon('blank.png'); 
  }); 
 markerKB32.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4477,7 +4401,6 @@ markerKB32.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerKB32.setIcon('blank.png'); 
  }); 
 markerOO79.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4491,7 +4414,6 @@ markerOO79.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerOO79.setIcon('blank.png'); 
  }); 
 markerRG46.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4505,7 +4427,6 @@ markerRG46.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRG46.setIcon('blank.png'); 
  }); 
 markerIB56.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4519,7 +4440,6 @@ markerIB56.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerIB56.setIcon('blank.png'); 
  }); 
 markerCQ16.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4533,7 +4453,6 @@ markerCQ16.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerCQ16.setIcon('blank.png'); 
  }); 
 markerNY26.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4547,7 +4466,6 @@ markerNY26.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerNY26.setIcon('blank.png'); 
  }); 
 markerAT14.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4561,7 +4479,6 @@ markerAT14.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerAT14.setIcon('blank.png'); 
  }); 
 markerWN37.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4575,7 +4492,6 @@ markerWN37.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerWN37.setIcon('blank.png'); 
  }); 
 markerYV79.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4589,9 +4505,7 @@ markerYV79.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYV79.setIcon('blank.png'); 
  }); 
-
 markerQK69.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
    document.getElementById('eggFound').style.backgroundImage='url("EasterBackground.png")'; 
@@ -4604,7 +4518,6 @@ markerQK69.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerQK69.setIcon('blank.png'); 
  }); 
 markerAO27.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4618,7 +4531,6 @@ markerAO27.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerAO27.setIcon('blank.png'); 
  }); 
 markerJU69.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4632,7 +4544,6 @@ markerJU69.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerJU69.setIcon('blank.png'); 
  }); 
 markerUI82.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4646,7 +4557,6 @@ markerUI82.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUI82.setIcon('blank.png'); 
  }); 
 markerVG65.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4660,7 +4570,6 @@ markerVG65.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVG65.setIcon('blank.png'); 
  }); 
 markerWT92.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4674,7 +4583,6 @@ markerWT92.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerWT92.setIcon('blank.png'); 
  }); 
 
 markerCG81.addListener('click', function() { 
@@ -4689,7 +4597,6 @@ markerCG81.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerCG81.setIcon('blank.png'); 
  }); 
 markerQO72.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4703,7 +4610,6 @@ markerQO72.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerQO72.setIcon('blank.png'); 
  }); 
 markerEK44.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4717,7 +4623,6 @@ markerEK44.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerEK44.setIcon('blank.png'); 
  }); 
 markerOK89.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4731,7 +4636,6 @@ markerOK89.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerOK89.setIcon('blank.png'); 
  }); 
 markerHM77.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4745,7 +4649,6 @@ markerHM77.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerHM77.setIcon('blank.png'); 
  }); 
 markerLZ52.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4759,7 +4662,6 @@ markerLZ52.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerLZ52.setIcon('blank.png'); 
  }); 
 markerVL46.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4773,7 +4675,6 @@ markerVL46.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVL46.setIcon('blank.png'); 
  }); 
 markerVG67.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4787,7 +4688,6 @@ markerVG67.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVG67.setIcon('blank.png'); 
  }); 
 markerAD43.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4801,7 +4701,6 @@ markerAD43.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerAD43.setIcon('blank.png'); 
  }); 
 markerHG51.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4815,7 +4714,6 @@ markerHG51.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerHG51.setIcon('blank.png'); 
  }); 
 markerEB16.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4829,7 +4727,6 @@ markerEB16.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerEB16.setIcon('blank.png'); 
  }); 
 markerXC22.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4843,7 +4740,6 @@ markerXC22.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerXC22.setIcon('blank.png'); 
  }); 
 markerRO65.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4857,7 +4753,6 @@ markerRO65.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRO65.setIcon('blank.png'); 
  }); 
 markerYS27.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4871,7 +4766,6 @@ markerYS27.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYS27.setIcon('blank.png'); 
  }); 
 markerFJ91.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4885,7 +4779,6 @@ markerFJ91.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFJ91.setIcon('blank.png'); 
  }); 
 markerOS56.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4899,7 +4792,6 @@ markerOS56.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerOS56.setIcon('blank.png'); 
  }); 
 markerBW19.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4913,7 +4805,6 @@ markerBW19.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerBW19.setIcon('blank.png'); 
  }); 
 markerRS35.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4927,7 +4818,6 @@ markerRS35.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRS35.setIcon('blank.png'); 
  }); 
 markerUZ81.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4941,7 +4831,6 @@ markerUZ81.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUZ81.setIcon('blank.png'); 
  }); 
 markerQI43.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4955,7 +4844,6 @@ markerQI43.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerQI43.setIcon('blank.png'); 
  }); 
 markerVC37.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4969,7 +4857,6 @@ markerVC37.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVC37.setIcon('blank.png'); 
  }); 
 markerZI98.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4983,7 +4870,6 @@ markerZI98.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerZI98.setIcon('blank.png'); 
  }); 
 markerIV92.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -4997,7 +4883,6 @@ markerIV92.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerIV92.setIcon('blank.png'); 
  }); 
 markerHX41.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5011,7 +4896,6 @@ markerHX41.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerHX41.setIcon('blank.png'); 
  }); 
 markerNO59.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5025,7 +4909,6 @@ markerNO59.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerNO59.setIcon('blank.png'); 
  }); 
 markerTW47.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5039,7 +4922,6 @@ markerTW47.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerTW47.setIcon('blank.png'); 
  }); 
 markerIR53.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5053,7 +4935,6 @@ markerIR53.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerIR53.setIcon('blank.png'); 
  }); 
 markerIR63.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5067,7 +4948,6 @@ markerIR63.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerIR63.setIcon('blank.png'); 
  }); 
 
 markerVQ12.addListener('click', function() { 
@@ -5082,7 +4962,6 @@ markerVQ12.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVQ12.setIcon('blank.png'); 
  }); 
 markerDH45.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5096,7 +4975,6 @@ markerDH45.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerDH45.setIcon('blank.png'); 
  }); 
 markerXB59.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5110,7 +4988,6 @@ markerXB59.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerXB59.setIcon('blank.png'); 
  }); 
 markerNT78.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5124,7 +5001,6 @@ markerNT78.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerNT78.setIcon('blank.png'); 
  }); 
 markerUE48.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5138,7 +5014,6 @@ markerUE48.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUE48.setIcon('blank.png'); 
  }); 
 markerPR42.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5152,7 +5027,6 @@ markerPR42.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPR42.setIcon('blank.png'); 
  }); 
 markerFD56.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5166,7 +5040,6 @@ markerFD56.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFD56.setIcon('blank.png'); 
  }); 
 markerQU47.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5180,7 +5053,6 @@ markerQU47.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerQU47.setIcon('blank.png'); 
  }); 
 markerPY21.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5194,7 +5066,6 @@ markerPY21.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPY21.setIcon('blank.png'); 
  }); 
 markerBD14.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5208,7 +5079,6 @@ markerBD14.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerBD14.setIcon('blank.png'); 
  }); 
 markerJP68.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5222,7 +5092,6 @@ markerJP68.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerJP68.setIcon('blank.png'); 
  }); 
 markerVS12.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5236,7 +5105,6 @@ markerVS12.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVS12.setIcon('blank.png'); 
  }); 
 markerRB88.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5250,7 +5118,6 @@ markerRB88.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRB88.setIcon('blank.png'); 
  }); 
 markerKB46.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5264,7 +5131,6 @@ markerKB46.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerKB46.setIcon('blank.png'); 
  }); 
 markerPM51.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5278,7 +5144,6 @@ markerPM51.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPM51.setIcon('blank.png'); 
  }); 
 markerUM87.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5292,7 +5157,6 @@ markerUM87.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUM87.setIcon('blank.png'); 
  }); 
 markerMQ35.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5306,7 +5170,6 @@ markerMQ35.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerMQ35.setIcon('blank.png'); 
  }); 
 markerIR72.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5320,7 +5183,6 @@ markerIR72.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerIR72.setIcon('blank.png'); 
  }); 
 markerRP99.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5334,7 +5196,6 @@ markerRP99.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRP99.setIcon('blank.png'); 
  }); 
 markerGE49.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5348,7 +5209,6 @@ markerGE49.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerGE49.setIcon('blank.png'); 
  }); 
 markerYJ12.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5362,7 +5222,6 @@ markerYJ12.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYJ12.setIcon('blank.png'); 
  }); 
 markerFL43.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5376,7 +5235,6 @@ markerFL43.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFL43.setIcon('blank.png'); 
  }); 
 markerBD66.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5390,7 +5248,6 @@ markerBD66.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerBD66.setIcon('blank.png'); 
  }); 
 markerNO63.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5404,7 +5261,6 @@ markerNO63.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerNO63.setIcon('blank.png'); 
  }); 
 markerQG57.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5418,7 +5274,6 @@ markerQG57.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerQG57.setIcon('blank.png'); 
  }); 
 markerXN62.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5432,7 +5287,6 @@ markerXN62.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerXN62.setIcon('blank.png'); 
  }); 
 markerSU93.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5446,7 +5300,6 @@ markerSU93.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerSU93.setIcon('blank.png'); 
  }); 
 markerVX92.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5460,7 +5313,6 @@ markerVX92.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVX92.setIcon('blank.png'); 
  }); 
 markerJR85.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5474,7 +5326,6 @@ markerJR85.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerJR85.setIcon('blank.png'); 
  }); 
 markerYY45.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5488,7 +5339,6 @@ markerYY45.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYY45.setIcon('blank.png'); 
  }); 
 markerPL39.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5502,7 +5352,6 @@ markerPL39.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPL39.setIcon('blank.png'); 
  }); 
 markerOO31.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5516,7 +5365,6 @@ markerOO31.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerOO31.setIcon('blank.png'); 
  }); 
 markerTS24.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5530,7 +5378,6 @@ markerTS24.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerTS24.setIcon('blank.png'); 
  }); 
 markerFX51.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5544,7 +5391,6 @@ markerFX51.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFX51.setIcon('blank.png'); 
  }); 
 markerIY72.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5558,7 +5404,6 @@ markerIY72.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerIY72.setIcon('blank.png'); 
  }); 
 markerNG57.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5572,7 +5417,6 @@ markerNG57.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerNG57.setIcon('blank.png'); 
  }); 
 markerJN54.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5586,7 +5430,6 @@ markerJN54.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerJN54.setIcon('blank.png'); 
  }); 
 markerMY74.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5600,7 +5443,6 @@ markerMY74.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerMY74.setIcon('blank.png'); 
  }); 
 markerBJ96.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5614,7 +5456,6 @@ markerBJ96.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerBJ96.setIcon('blank.png'); 
  }); 
 markerQF51.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5628,7 +5469,6 @@ markerQF51.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerQF51.setIcon('blank.png'); 
  }); 
 markerMJ13.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5642,7 +5482,6 @@ markerMJ13.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerMJ13.setIcon('blank.png'); 
  }); 
 markerBC36.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5656,7 +5495,6 @@ markerBC36.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerBC36.setIcon('blank.png'); 
  }); 
 markerXR53.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5670,7 +5508,6 @@ markerXR53.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerXR53.setIcon('blank.png'); 
  }); 
 markerOZ74.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5684,7 +5521,6 @@ markerOZ74.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerOZ74.setIcon('blank.png'); 
  }); 
 markerLA41.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5698,7 +5534,6 @@ markerLA41.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerLA41.setIcon('blank.png'); 
  }); 
 markerVN73.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5712,7 +5547,6 @@ markerVN73.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerVN73.setIcon('blank.png'); 
  }); 
 markerRK91.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5726,7 +5560,6 @@ markerRK91.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRK91.setIcon('blank.png'); 
  }); 
 markerRK62.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5740,7 +5573,6 @@ markerRK62.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRK62.setIcon('blank.png'); 
  }); 
 markerYC36.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5754,7 +5586,6 @@ markerYC36.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYC36.setIcon('blank.png'); 
  }); 
 markerWE71.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5768,7 +5599,6 @@ markerWE71.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerWE71.setIcon('blank.png'); 
  }); 
 markerPH92.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5782,7 +5612,6 @@ markerPH92.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPH92.setIcon('blank.png'); 
  }); 
 markerBL59.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5796,7 +5625,6 @@ markerBL59.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerBL59.setIcon('blank.png'); 
  }); 
 markerGG71.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5810,7 +5638,6 @@ markerGG71.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerGG71.setIcon('blank.png'); 
  }); 
 markerYS95.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5824,7 +5651,6 @@ markerYS95.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYS95.setIcon('blank.png'); 
  }); 
 markerCK59.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5838,7 +5664,6 @@ markerCK59.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerCK59.setIcon('blank.png'); 
  }); 
 markerDG14.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5852,7 +5677,6 @@ markerDG14.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerDG14.setIcon('blank.png'); 
  }); 
 markerRC65.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5866,7 +5690,6 @@ markerRC65.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerRC65.setIcon('blank.png'); 
  }); 
 markerNG64.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5880,7 +5703,6 @@ markerNG64.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerNG64.setIcon('blank.png'); 
  }); 
 markerTA24.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5894,7 +5716,6 @@ markerTA24.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerTA24.setIcon('blank.png'); 
  }); 
 markerDJ27.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5908,7 +5729,6 @@ markerDJ27.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerDJ27.setIcon('blank.png'); 
  }); 
 markerLS26.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5922,7 +5742,6 @@ markerLS26.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerLS26.setIcon('blank.png'); 
  }); 
 markerFI97.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5936,7 +5755,6 @@ markerFI97.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFI97.setIcon('blank.png'); 
  }); 
 markerWE69.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5950,7 +5768,6 @@ markerWE69.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerWE69.setIcon('blank.png'); 
  }); 
 markerQU77.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5964,7 +5781,6 @@ markerQU77.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerQU77.setIcon('blank.png'); 
  }); 
 markerCR59.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5978,7 +5794,6 @@ markerCR59.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerCR59.setIcon('blank.png'); 
  }); 
 markerZG93.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -5992,7 +5807,6 @@ markerZG93.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerZG93.setIcon('blank.png'); 
  }); 
 markerTU46.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6006,7 +5820,6 @@ markerTU46.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerTU46.setIcon('blank.png'); 
  }); 
 markerFT12.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6020,7 +5833,6 @@ markerFT12.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerFT12.setIcon('blank.png'); 
  }); 
 markerUG83.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6034,7 +5846,6 @@ markerUG83.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUG83.setIcon('blank.png'); 
  }); 
 markerPC48.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6048,7 +5859,6 @@ markerPC48.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPC48.setIcon('blank.png'); 
  }); 
 markerLZ95.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6062,7 +5872,6 @@ markerLZ95.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerLZ95.setIcon('blank.png'); 
  }); 
 markerDV73.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6076,7 +5885,6 @@ markerDV73.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerDV73.setIcon('blank.png'); 
  }); 
 markerTO65.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6090,7 +5898,6 @@ markerTO65.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerTO65.setIcon('blank.png'); 
  }); 
 markerYU16.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6104,7 +5911,6 @@ markerYU16.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerYU16.setIcon('blank.png'); 
  }); 
 markerXL49.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6118,7 +5924,6 @@ markerXL49.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerXL49.setIcon('blank.png'); 
  }); 
 markerUQ49.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6132,7 +5937,6 @@ markerUQ49.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerUQ49.setIcon('blank.png'); 
  }); 
 markerZZ14.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6146,7 +5950,6 @@ markerZZ14.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerZZ14.setIcon('blank.png'); 
  }); 
 markerPO27.addListener('click', function() { 
    document.getElementById('eggFound').style.display='block'; 
@@ -6160,8 +5963,8 @@ markerPO27.addListener('click', function() {
    document.getElementById('formEmailInput').value = youremail; 
    document.getElementById('mySubmit').disabled = false; 
    document.getElementById('myConf').innerHTML = ''; 
-   markerPO27.setIcon('blank.png'); 
  }); 
+
 
 
             
