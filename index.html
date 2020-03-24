@@ -6169,6 +6169,8 @@ markerPO27.addListener('click', function() {
         document.getElementById('instructions').style.display='none';
         document.getElementById('map').click();
         document.getElementById('map').click();
+        google.maps.event.trigger(map,'click');
+        console.log('map click event trigger');
     }
         
      function toggleStreetView() {
