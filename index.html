@@ -606,7 +606,8 @@
                         //},'json');
                         return false;
                     });
-
+                    spreadsheetID = "19mmsjD_CnocnAMGMMF9sY0tIIB2NTXlVjjKktBUaquE";
+                    url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/1/public/values?alt=json";
                     // Get eggs remaining, username list and egg found list on page load
                     $.getJSON(url,function(data){
                         var entry = data.feed.entry;
@@ -632,6 +633,8 @@
             positionLong = position.lng();
 
             //Get data from egg spreadsheet and store in array
+          spreadsheetID = "19mmsjD_CnocnAMGMMF9sY0tIIB2NTXlVjjKktBUaquE";
+          url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/1/public/values?alt=json";
             $.getJSON(url,function(data){
                 eggList = [];
                 userList = [];
