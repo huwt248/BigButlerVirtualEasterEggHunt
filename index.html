@@ -642,7 +642,6 @@
                 var entry = data.feed.entry;
                 $(entry).each(function(){
                     eggList.push(this.gsx$eggid.$t); // add egg and usernames from google sheet to array
-                    console.log(eggList);
                     userList.push(this.gsx$email.$t);
                     hashList.push(this.gsx$hash.$t);
                     //Check if all eggs are found
