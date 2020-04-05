@@ -292,6 +292,7 @@
       var clickedMarker;
       var eggList = [];
       var userList = [];
+      var hashList = [];
       var specialEggs = [3, 16, 86, 93, 122];
       var markers = [];
       var locations;
@@ -535,8 +536,8 @@
 
                 google.maps.event.addListener(marker, 'click', (function(marker, i){ //if clicked on egg (marker)
                     return function(){
-                        var eggList2 = eggList;
-                        var eggsFoundString = eggList2.join().concat(locations[i][0]);
+                        var lastHash = String(hashList[hashList.length-1]);
+                        var eggsFoundString = lastHash.join().concat(locations[i][0],youremail);
                         var hashValue = eggsFoundString.hashCode(); 
                         document.getElementById('eggFound').style.display='block';  // show egg found panel
                         document.getElementById('eggidcode').value = locations[i][0]; //egg id in 1st column of locations data
@@ -612,6 +613,7 @@
                         $(entry).each(function(){
                             eggList.push(this.gsx$eggid.$t);
                             userList.push(this.gsx$email.$t);
+                            hashList.push(this.gsx$hash.$t);
                             if( this.gsx$count.$t.length !== 0 ) {
                                 var eggsRemain = locations.length - this.gsx$count.$t;
                                 $('#eggCount').html(eggsRemain);
@@ -636,10 +638,12 @@
             $.getJSON(url,function(data){
                 eggList = [];
                 userList = [];
+                hashList = [];
                 var entry = data.feed.entry;
                 $(entry).each(function(){
                     eggList.push(this.gsx$eggid.$t); // add egg and usernames from google sheet to array
                     userList.push(this.gsx$email.$t);
+                    hashList.push(this.gsx$hash.$t);
                     //Check if all eggs are found
                     if( this.gsx$count.$t.length !== 0 ) {
                         var eggsRemain = locations.length - this.gsx$count.$t; // eggs remain = total eggs - number of found eggs
@@ -710,7 +714,7 @@
       }; // End map init function
     //-----------------------------------------------------------------------       
     
-    var countDownDate = new Date("Apr 12, 2020 10:00:00").getTime();
+    var countDownDate = new Date("Apr 2, 2020 10:00:00").getTime();
     // Update the count down every 1 second
     var x = setInterval(function() {
       // Get today's date and time
