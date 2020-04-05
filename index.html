@@ -537,7 +537,7 @@
                 google.maps.event.addListener(marker, 'click', (function(marker, i){ //if clicked on egg (marker)
                     return function(){
                         var lastHash = String(hashList[hashList.length-1]);
-                        var eggsFoundString = lastHash.join().concat(locations[i][0],youremail);
+                        var eggsFoundString = lastHash.concat(locations[i][0],youremail);
                         var hashValue = eggsFoundString.hashCode(); 
                         document.getElementById('eggFound').style.display='block';  // show egg found panel
                         document.getElementById('eggidcode').value = locations[i][0]; //egg id in 1st column of locations data
